@@ -1,3 +1,8 @@
 body{
      background-color: red;
 }
+
+nav a{
+    float: left;
+    margin:0 5px 0 0;
+}
