@@ -1,17 +1,24 @@
+import './header.css';
+import { Link } from 'react-router-dom';
+
 export default function Header(){
     return(
         <header className="example">
             <div>
-            <h2><a className="home" href="/">Art gallery</a></h2>
-            <nav className="navi1">
-                <a className="sm1" href="#">Register painter</a>
+            <h2><Link className="home" to="/">Art gallery</Link></h2>
+            <nav>
+                <Link to="/register-painter">Enter for painters</Link>
+                <div id="painters">
+                    <Link to="/register-painter">Register painter</Link>
+                    <Link to="/create-picture">Create picture</Link>
+                </div>
                 <div id="user">
-                    <a className="sm2" href="#">All pictures</a>
-                    <a  className="sm3" href="#">Logout</a>
+                    <Link to="/all-pictures">All pictures</Link>
+                    <Link to="/logout">Logout</Link>
                 </div>
                 <div id="guests">
-                    <a className="sm4" href="/login">Login</a>
-                    <a className="sm5" href="/register">Register</a>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
                 </div>
             </nav>
             </ div>
