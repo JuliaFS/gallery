@@ -1,11 +1,27 @@
+import { useNavigate } from 'react-router-dom';
+
+import * as pictureService from '../../services/pictureService';
+
 import './create.css';
 
 export default function CreatePicture() {
-    const createPictureSubmitHandler = (e) => {
+    const navigate = useNavigate();
+
+    const createPictureSubmitHandler = async (e) => {
         e.preventDefault();
 
         const pictureData = Object.fromEntries(new FormData(e.currentTarget));
-        console.log(pictureData)
+        console.log(pictureData);
+
+        //const result = await pictureService.create(pictureData);
+        //console.log(result);
+        try{
+            await pictureService.create(pictureData);
+            navigate('/all-pictures');
+        } catch(err){
+            //add error notification
+            console.log(err);
+        }
     }
 
     return (
