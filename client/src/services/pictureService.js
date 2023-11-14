@@ -1,5 +1,10 @@
 const baseUrl = "http://localhost:3030/jsonstore";
 
+export const getAll = async () => {
+    
+};
+
+
 export const create = async (data) => {
     const response = await fetch(`${baseUrl}/pictures`,{
         method: 'POST',
@@ -12,4 +17,4 @@ export const create = async (data) => {
     const result = await response.json();
 
     return result;
-}
+};

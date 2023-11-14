@@ -1,6 +1,14 @@
+import { useEffect} from 'react';
+
+import * as pictureService from '../../services/pictureService';
+
 import './picturesList.css';
 
 export default function PicturesList(){
+    useEffect(() => {
+        
+    }, []);
+
     return(
         <section>
             <div className="gallery">
