@@ -1,20 +1,17 @@
 import './create.css';
 
 export default function CreatePicture() {
-    // <!-- const {onCreateGameSubmit} = useGameContext();
-    // const { values, changeHandler, onSubmit } = useForm({
-    //     title: '',
-    //     category: '',
-    //     maxLevel: '',
-    //     imageUrl: '',
-    //     summary: '',
-    // }, onCreateGameSubmit); -->
+    const createPictureSubmitHandler = (e) => {
+        e.preventDefault();
+
+        const pictureData = Object.fromEntries(new FormData(e.currentTarget));
+        console.log(pictureData)
+    }
 
     return (
         <section id="create-page" className="auth">
-            <form id="create" method="post" >
+            <form id="create" method="post" onSubmit={createPictureSubmitHandler} >
                     <h1>Create New Paint</h1>
-
                     <label htmlFor="title">Legendary title:</label>
                     <input  type="text" id="title" name="title" placeholder="Enter game title..." />
 
