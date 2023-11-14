@@ -1,4 +1,4 @@
-
+import './create.css';
 
 export default function CreatePicture() {
     // <!-- const {onCreateGameSubmit} = useGameContext();
@@ -13,7 +13,6 @@ export default function CreatePicture() {
     return (
         <section id="create-page" className="auth">
             <form id="create" method="post" >
-                <div className="container">
                     <h1>Create Game</h1>
 
                     <label htmlFor="title">Legendary title:</label>
@@ -32,7 +31,6 @@ export default function CreatePicture() {
                     <textarea name="description" ></textarea>
 
                     <input type="submit" value="Create Picture" />
-                </div>
             </form>
         </section>
     );
