@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import PicturesList from './components/PicturesList/PicturesList';
 import CreatePicture from './components/CreatePicture/CreatePicture';
+import Login from './components/Login/Login';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/all-pictures" element={<PicturesList />} />
         <Route path="/create-picture" element={<CreatePicture />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

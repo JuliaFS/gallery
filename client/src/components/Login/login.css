@@ -1,4 +1,4 @@
-#create-page, {
+#login-page {
     border: 1px solid red;
     width: 40%;
     height: auto;
@@ -9,18 +9,34 @@
     box-shadow: 0px 0px 18px 0px #32485e, -7px -7px 10px #6f71740f;
 }
 
-#create-page{
+#login-page{
     display: inline-flex;
     align-self: center;
     margin-top: 30px;
 }
 
-#create-page label{
+#login-page form{
+    text-align: center;
+}
+
+#login-page form label{
     display: block;
     margin-top: 20px;
     margin-bottom: 0;
 }
-#create-page input[type="text"], input[type="submit"], textarea {
+
+#login-page form input[type="submit"]{
+    display: block;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-top: 20px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+#login-page form input{
     background: #ecf0f3;
     padding: 10px;
     text-align: center;
@@ -30,16 +46,3 @@
     box-shadow: inset 2px 2px 2px #c0c2c5, inset -2px -2px 2px white;
 }
 
-#create-page textarea {
-    width: 100%;
-    min-width: 20vw;
-    min-height: 7em;
-    border: 2px solid #86a480;
-    border-radius: 0.7em;
-    border-bottom-color: #ecf0f3;
-    background-color: #ecf0f3;
-    border-right-color: #ecf0f3;
-    margin-top: 7px;
-    color: black;
-    box-shadow: inset 2px 2px 2px #c0c2c5, inset -6px -6px 6px white;
-}
