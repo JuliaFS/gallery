@@ -13,7 +13,7 @@ export default function CreatePicture() {
     return (
         <section id="create-page" className="auth">
             <form id="create" method="post" >
-                    <h1>Create Game</h1>
+                    <h1>Create New Paint</h1>
 
                     <label htmlFor="title">Legendary title:</label>
                     <input  type="text" id="title" name="title" placeholder="Enter game title..." />
