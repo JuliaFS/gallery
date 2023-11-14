@@ -1,13 +1,19 @@
-import { useEffect} from 'react';
+import { useEffect, useState} from 'react';
 
 import * as pictureService from '../../services/pictureService';
 
 import './picturesList.css';
 
 export default function PicturesList(){
+
+    const [pictures, setPictures] = useState([]);
+
     useEffect(() => {
-        
+        pictureService.getAll()
+        .then(result => setPictures(result));
     }, []);
+
+    console.log(pictures);
 
     return(
         <section>
