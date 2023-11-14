@@ -1,0 +1,76 @@
+@font-face {
+    font-family: "Finger_Paint";
+    src:
+      local("Trickster"),
+      url("../fonts/Finger_Paint/FingerPaint-Regular.ttf") format("TrueType");
+  }
+
+header {
+    background-color: rgb(183, 169, 145);
+    width: 100%;
+    overflow: hidden;
+    color: white;
+}
+
+.home {
+    font-size: 1.2em;
+    font-family: "Finger_Paint", Times, serif;
+    color: white;
+}
+
+header {
+    position: relative;
+    padding: 10px;
+}
+
+header h2 {
+    display: inline-block;
+    color: white;
+    margin-bottom: auto;
+    margin-left: 30px;
+}
+
+header nav {
+    font-size: auto;
+    font-family: sans-serif;
+    position: absolute;
+    right: 0;
+    bottom: 8px;
+}
+
+header nav>* {
+    float: left;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+}
+
+footer {
+    padding: 0.5em;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+nav a {
+    margin: 0 0.5em;
+}
+
+nav a:hover {
+    cursor: pointer;
+    color: rgb(82, 133, 139);
+    font-weight: bolder;
+}
+
+.home:hover {
+    color: rgb(82, 133, 139);
+}
+
+#user,
+#guest {
+    margin: 0;
+    padding: 0;
+}

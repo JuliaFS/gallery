@@ -1,8 +1,7 @@
-body{
-     background-color: red;
-}
+@import "navigation.css";
 
-nav a{
-    float: left;
-    margin:0 5px 0 0;
+
+body {
+    background-color: rgba(152, 137, 137, 0.346); 
+    
 }
