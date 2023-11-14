@@ -3,6 +3,7 @@ import { useEffect, useState} from 'react';
 import * as pictureService from '../../services/pictureService';
 
 import './picturesList.css';
+import PictureListItem from './PictureListItem/PictureListItem';
 
 export default function PicturesList(){
 
@@ -17,16 +18,13 @@ export default function PicturesList(){
 
     return(
         <section>
-            <div className="gallery">
-                <h2>Best Lilies</h2>
-                <img src="../public/images/lilium-72dpi.jpg" />
-                <p>Details</p>
-            </ div>
-            <div className="gallery"> 
-                <h2>Best Lilies 1</h2>
-                <img src="../public/images/lilium-72dpi.jpg" />
-                <p>Details 11111</p>
-            </ div>
+           <h1>Pictures gallery</h1>
+           {pictures.map(picture => (
+                <PictureListItem key={picture._id} {...picture} />
+           ))}
+           {pictures.length === 0 && (
+                <h3>No pictures yet!</h3>
+            )}
         </section>   
     );
 }

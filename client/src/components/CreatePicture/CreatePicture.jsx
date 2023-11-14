@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import * as pictureService from '../../services/pictureService';
+import { paths } from '../../constants/constants';
 
 import './create.css';
 
@@ -17,7 +18,7 @@ export default function CreatePicture() {
         //console.log(result);
         try{
             await pictureService.create(pictureData);
-            navigate('/all-pictures');
+            navigate(paths.gallery);
         } catch(err){
             //add error notification
             console.log(err);

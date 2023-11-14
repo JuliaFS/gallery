@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { paths } from '../../constants/constants';
 import './login.css';
 
 export default function Login() {
@@ -13,7 +14,7 @@ export default function Login() {
                 <input type="password" id="login-password" placeholder="Enter your password..." />
                 <input type="submit" value="Login" />
                 <p>
-                    <span>If you don't have profile click <Link to="/register">here</Link></span>
+                    <span>If you don't have profile click <Link to={paths.register}>here</Link></span>
                 </p>
             </form>
         </section>

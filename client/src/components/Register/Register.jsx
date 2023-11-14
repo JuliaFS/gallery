@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { paths } from '../../constants/constants';
 import './register.css';
 
 export default function Register() {
@@ -30,7 +31,7 @@ export default function Register() {
                 />
                 <input type="submit" value="Register" />
                 <p className="field">
-                    <span>If you already have profile click <Link to="/login">here</Link></span>
+                    <span>If you already have profile click <Link to={paths.login}>here</Link></span>
                 </p>
             </form>
         </section>
