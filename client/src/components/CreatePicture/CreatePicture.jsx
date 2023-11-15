@@ -12,12 +12,9 @@ export default function CreatePicture() {
         e.preventDefault();
 
         const pictureData = Object.fromEntries(new FormData(e.currentTarget));
-        console.log(pictureData);
 
-        //const result = await pictureService.create(pictureData);
-        //console.log(result);
         try{
-            await pictureService.create(pictureData);
+            const response = await pictureService.create(pictureData);
             navigate(paths.gallery);
         } catch(err){
             //add error notification

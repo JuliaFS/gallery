@@ -8,11 +8,12 @@ import PictureListItem from './PictureListItem/PictureListItem';
 export default function PicturesList(){
 
     const [pictures, setPictures] = useState([]);
-
+    console.log(pictures)
     useEffect(() => {
         pictureService.getAll()
         .then(result => setPictures(result));
     }, []);
+    console.log(pictures)
 
     return(
         <section>
