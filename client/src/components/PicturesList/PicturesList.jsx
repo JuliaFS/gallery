@@ -14,8 +14,6 @@ export default function PicturesList(){
         .then(result => setPictures(result));
     }, []);
 
-    console.log(pictures);
-
     return(
         <section>
            <h1>Pictures gallery</h1>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { paths } from "../../../constants/constants";
+//import { paths } from "../../constants/constants";
 
 export default function PictureListItem({
     _id,
@@ -12,7 +12,7 @@ export default function PictureListItem({
             <h2>{title}</h2>
             <img src={imageUrl} />
             <p>Details: {description}</p>
-            <Link to={paths.details}>Details</Link>
+            <Link to={`/pictures/${_id}`}>Details</Link>
         </ div>
     );
 }

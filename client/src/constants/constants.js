@@ -6,7 +6,7 @@ const paths = {
     gallery: "/gallery",
     registerPainter: "/register-painter",
     createPicture: "/create-picture",
-    details: "/gallery/:pictureId",
+    details: "/pictures/:pictureId",
 
     error404Path: "/404",
 

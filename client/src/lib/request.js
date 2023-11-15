@@ -12,8 +12,8 @@ const buildOptions = (data) => {
 
 export const request = async (method, url, data) => {
     const response = await fetch(url, {
+        ...buildOptions(data),
         method,
-        ...buildOptions(data)
     });
 
     // if(!response.ok){
@@ -21,8 +21,19 @@ export const request = async (method, url, data) => {
     // }
 
     const result = await response.json();
+    
     return result;
 };
 
 //pravi se po analogiq za vsichki metodi, za da se izvikva s metoda - request.get(parametri)
 //export const get = request.bind(null, 'GET')
+
+// export const requestFactory = () => {
+//     return {
+//         get: requester.bind(null, 'GET'),
+//         post: requester.bind(null, 'POST'),
+//         put: requester.bind(null, 'PUT'),
+//         patch: requester.bind(null, 'PATCH'),
+//         delete: requester.bind(null, 'DELETE'),
+//     }
+// };
