@@ -8,6 +8,7 @@ import PicturesList from './components/PicturesList/PicturesList';
 import CreatePicture from './components/CreatePicture/CreatePicture';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import PictureDetails from './components/PictureDetails/PictureDetails';
 
 export default function App() {
 
@@ -21,6 +22,7 @@ export default function App() {
         <Route path={paths.createPicture} element={<CreatePicture />} />
         <Route path={paths.login} element={<Login />} />
         <Route path={paths.register} element={<Register />} />
+        <Route path={paths.details} element={<PictureDetails />} />
       </Routes>
     </div>
   );
