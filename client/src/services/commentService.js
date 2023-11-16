@@ -7,7 +7,7 @@ export const getAll = async (pictureId) => {
         where: `pictureId="${pictureId}"`
     });
 
-    const result = await request.get(`${baseUrl}`);
+    const result = await request.get(baseUrl);
 
     // TODO: temp solution until migration to collections service 
     return Object.values(result).filter(comment => comment.pictureId === pictureId);
