@@ -8,11 +8,15 @@ import * as commentService from '../../services/commentService';
 
 export default function PictureDetails() {
     const [picture, setPicture] = useState({});
+    const [comments, setComments] = useState([]);
     const { pictureId } = useParams();
 
     useEffect(() => {
         pictureService.getOne(pictureId)
             .then(setPicture);
+
+        commentService.getAll(pictureId)
+            .then(setComments);
     }, [pictureId]);
 
     const addCommentHandler = async (e) => {
@@ -25,8 +29,9 @@ export default function PictureDetails() {
             formData.get('username'),
             formData.get('comment')
         );
-        console.log('New comment: ' + newComment);
-      
+
+        setComments(state => [...state, newComment]);
+        console.log('comments: ' + comments);
     }
 
     return (
@@ -45,12 +50,15 @@ export default function PictureDetails() {
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        <li className="comment">
-                            <p></p>
+                        { comments.map(({_id, username, text}) => (
+                            <li className="comment" key={_id}>
+                            <p>{username}: {text}</p>
                         </li>
+                        ))}
                     </ul>
-
-                    <p className="no-comment">No comments.</p>
+                    {comments.length === 0 && 
+                        <p className="no-comment">No comments.</p>
+                    }
                 </div>
 
                 <div className="buttons">
