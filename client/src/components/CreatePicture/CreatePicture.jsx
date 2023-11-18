@@ -8,63 +8,49 @@ import { paths } from '../../constants/constants';
 import './create.css';
 
 const formInitialState = {
-        title: '',
-        category: '',
-        painter: '',
-        imageUrl: '',
-        description: '',
+    title: '',
+    category: '',
+    painter: '',
+    imageUrl: '',
+    description: '',
 };
 
 export default function CreatePicture() {
     const [formValues, setFormValues] = useState(formInitialState);
-
-    const pictureChangeHandler = (e) => {
-        console.log(e.target.value);
-    }
+    const navigate = useNavigate();
 
     const changeHandler = (e) => {
-        {/*console.log("e target name: " + e.target.name);*/}
+        console.log("e target name: " + e.target.name);
+        
         setFormValues(state => ({
             ...state,
             [e.target.name]: e.target.value
         }));
-    }
+    };
 
     const resetFormHandler = () => {
         setFormValues(formInitialState);
     };
 
-    const submitHandler = (e) => {
-        console.log(formValues);
-        resetFormHandler();
-    };
+    const submitHandler = async (e) => {
 
+        try {
+            const response = await pictureService.create(formValues);
+            resetFormHandler();
+            navigate(paths.gallery);
+        } catch (err) {
+            //add error notification
+            console.log(err);
+        }
+    };
 
 {/* -lekciq forms 1:02 controlled forms
     - add onblur for validation for better UI
     - input type submit predotvratqva defaultnoto prezarejdane na stranicata
 */}
-
-{/*
-const navigate = useNavigate();
-const createPictureSubmitHandler = async (e) => {
-    e.preventDefault();
-
-    const pictureData = Object.fromEntries(new FormData(e.currentTarget));
-
-    try{
-        const response = await pictureService.create(pictureData);
-        navigate(paths.gallery);
-    } catch(err){
-        //add error notification
-        console.log(err);
-    }
-}
-*/}
-
     return (
         <section id="create-page" className="auth">
-            <form id="create" >
+            <form method="post" id="create" >
                     <h1>Create New Paint</h1>
                     <label htmlFor="title">Legendary title:</label>
                     <input  type="text" 
