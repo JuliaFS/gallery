@@ -11,6 +11,19 @@ export const login = async (email, password) => {
     return result;
 }
 
+export const register = async (email, password, confirmPassword) => {
+    if(password !== confirmPassword){
+        //to do -> add user message
+        throw new Error('Passwords do not match! Pls try again...');
+      }
+    const result = await request.post(`${baseUrl}/register`, {
+        email,
+        password
+    });
+
+    return result;
+}
+
 // export const authServiceFactory = (token) => {
 //     const request = requestFactory(token);
 

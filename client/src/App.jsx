@@ -31,11 +31,12 @@ export default function App() {
   };
 
   const registerSubmitHandler = async (values) => {
-    console.log(values);
+    //console.log(values['confirm-password']);
     try{
-      // const result = await authService.login(values.email, values.password);
-      // setAuth(result);
-      // navigate(Path.Gallery);
+      const result = await authService.register(values.email, values.password, values['confirm-password']);
+      setAuth(result);
+      //console.log(result)
+       navigate(Path.Gallery);
     } catch(err){
       console.log(err);
     }
@@ -44,7 +45,7 @@ export default function App() {
   const values = {
     loginSubmitHandler,
     registerSubmitHandler,
-    username: auth.username,
+    //username: auth.username,
     email: auth.email,
     isAuthenticated: !!auth.email //double nogation, ako ima username, obrashtame v truti stoinost ili folsi
   };
