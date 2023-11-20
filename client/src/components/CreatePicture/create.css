@@ -1,5 +1,4 @@
-#create-page, {
-    border: 1px solid red;
+#create-page{
     width: 40%;
     height: auto;
     border-radius: 20px;
@@ -7,9 +6,6 @@
     box-sizing: border-box;
     text-align: center;
     box-shadow: 0px 0px 18px 0px #32485e, -7px -7px 10px #6f71740f;
-}
-
-#create-page{
     display: inline-flex;
     align-self: center;
     margin-top: 30px;
@@ -20,12 +16,11 @@
     margin-top: 20px;
     margin-bottom: 0;
 }
-#create-page input[type="text"], input[type="submit"], textarea {
+#create-page input[type="text"], button{
     background: #ecf0f3;
     padding: 10px;
     text-align: center;
     height: 20px;
-    margin-top: 0.7em;
     border-radius: 30px;
     box-shadow: inset 2px 2px 2px #c0c2c5, inset -2px -2px 2px white;
 }
@@ -42,4 +37,10 @@
     margin-top: 7px;
     color: black;
     box-shadow: inset 2px 2px 2px #c0c2c5, inset -6px -6px 6px white;
+}
+
+#create-page button {
+    padding-bottom: 20px;
+    margin-top: 30px;
+    margin-left: 25px;
 }

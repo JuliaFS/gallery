@@ -16,8 +16,8 @@ const formInitialState = {
 };
 
 export default function CreatePicture() {
-    const [formValues, setFormValues] = useState(formInitialState);
     const navigate = useNavigate();
+    const [formValues, setFormValues] = useState(formInitialState);
 
     const changeHandler = (e) => {
         console.log("e target name: " + e.target.name);
@@ -32,8 +32,7 @@ export default function CreatePicture() {
         setFormValues(formInitialState);
     };
 
-    const submitHandler = async (e) => {
-
+    const submitHandler = async () => {
         try {
             const response = await pictureService.create(formValues);
             resetFormHandler();
@@ -77,7 +76,7 @@ export default function CreatePicture() {
                             onChange={changeHandler}
                             placeholder="Enter painter..." 
                     />
-                    <label htmlFor="picture-img">Picture:</label>
+                    <label htmlFor="imageUrl">Picture:</label>
                     <input  type="text" 
                             id="imageUrl" 
                             name="imageUrl" 

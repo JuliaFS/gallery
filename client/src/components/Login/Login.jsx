@@ -1,11 +1,12 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { paths } from '../../constants/constants';
-import './login.css';
+import styles from './Login.module.css';
 
 export default function Login() {
     return (
-        <section id="login-page">
-            <form id="login" method="POST" >
+        <section className={styles.loginPage}>
+            <form method="POST" >
                 <h1>Login</h1>
                 <label htmlFor="email">Email:</label>
                 <input type="email" id="email" placeholder="Sokka@gmail.com" />
