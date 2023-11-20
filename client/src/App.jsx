@@ -1,7 +1,10 @@
+import { useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
-import { Routes, Route } from 'react-router-dom';
+import * as authService from './services/authService';
+import AuthContext from './contexts/AuthContext';
 
-import { paths } from './constants/constants';
+import { Path } from './constants/constants';
 
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -10,30 +13,37 @@ import CreatePicture from './components/CreatePicture/CreatePicture';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import PictureDetails from './components/PictureDetails/PictureDetails';
-import { useState } from 'react';
-import authContext from './contexts/AuthContext';
+
 
 export default function App() {
+  const navigate = useNavigate();
   const [auth, setAuth] = useState({});
 
-  const loginSubmitHandler = (values) => {
+  const loginSubmitHandler = async (values) => {
     console.log(values);
+    try{
+      const result = await authService.login(values.email, values.password);
+      setAuth(result);
+      navigate(Path.Gallery);
+    } catch(err){
+      console.log(err);
+    }
   }
 
   return (
-    <authContext.Provider value={{loginSubmitHandler}}>
+    <AuthContext.Provider value={{loginSubmitHandler}}>
       <div>
         <Header />
 
         <Routes>
-          <Route path={paths.home} element={<Home />} />
-          <Route path={paths.gallery} element={<PicturesList />} />
-          <Route path={paths.createPicture} element={<CreatePicture />} />
-          <Route path={paths.login} element={<Login />} />
-          <Route path={paths.register} element={<Register />} />
-          <Route path={paths.details} element={<PictureDetails />} />
+          <Route path={Path.Home} element={<Home />} />
+          <Route path={Path.Gallery} element={<PicturesList />} />
+          <Route path={Path.CreatePicture} element={<CreatePicture />} />
+          <Route path={Path.Login} element={<Login />} />
+          <Route path={Path.Register} element={<Register />} />
+          <Route path={Path.Details} element={<PictureDetails />} />
         </Routes>
       </div>
-    </authContext.Provider>
+    </AuthContext.Provider>
   );
 }

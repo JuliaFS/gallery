@@ -1,21 +1,21 @@
 import './header.css';
 import { Link } from 'react-router-dom';
-import { paths } from '../../constants/constants';
+import { Path } from '../../constants/constants';
 
 export default function Header(){
     return(
         <header className="example">
             <div>
-            <h2><Link className="home" to={paths.home}>Art gallery</Link></h2>
+            <h2><Link className="home" to={Path.Home}>Art gallery</Link></h2>
             <nav>
                 <div id="user">
-                    <Link to={paths.createPicture}>Create picture</Link>
-                    <Link to={paths.gallery}>All pictures</Link>
-                    <Link to={paths.logout}>Logout</Link>
+                    <Link to={Path.CreatePicture}>Create picture</Link>
+                    <Link to={Path.Gallery}>All pictures</Link>
+                    <Link to={Path.Logout}>Logout</Link>
                 </div>
                 <div id="guests">
-                    <Link to={paths.login}>Login</Link>
-                    <Link to={paths.register}>Register</Link>
+                    <Link to={Path.Login}>Login</Link>
+                    <Link to={Path.Register}>Register</Link>
                 </div>
             </nav>
             </ div>

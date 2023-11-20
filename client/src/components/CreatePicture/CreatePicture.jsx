@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 import * as pictureService from '../../services/pictureService';
-import { paths } from '../../constants/constants';
+import { Path } from '../../constants/constants';
 
 import './create.css';
 
@@ -36,7 +36,7 @@ export default function CreatePicture() {
         try {
             const response = await pictureService.create(formValues);
             resetFormHandler();
-            navigate(paths.gallery);
+            navigate(Path.Gallery);
         } catch (err) {
             //add error notification
             console.log(err);

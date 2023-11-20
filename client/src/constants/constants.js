@@ -1,15 +1,12 @@
-const paths = {
-    home: "/",
-    register: "/register",
-    login: "/login",
-    logout: "/logout",
-    gallery: "/gallery",
-    registerPainter: "/register-painter",
-    createPicture: "/create-picture",
-    details: "/pictures/:pictureId",
-
-    error404Path: "/404",
-
+const Path = {
+    Home: "/",
+    Register: "/register",
+    Login: "/login",
+    Logout: "/logout",
+    Gallery: "/gallery",
+    CreatePicture: "/create-picture",
+    Details: "/pictures/:pictureId",
+    Error404Path: "/404",
 }
 
 // const notifications ={
@@ -54,6 +51,6 @@ const paths = {
 // }
 
 export {
-    paths,
+    Path,
     //notifications
 }
