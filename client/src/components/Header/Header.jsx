@@ -16,6 +16,7 @@ export default function Header(){
             <div>
             <h2><Link className="home" to={Path.Home}>Art gallery</Link></h2>
             <nav>
+                <Link to={Path.Gallery}>Gallery</Link>
                 {isAuthenticated && (
                      <div id="user">
                      <Link to={Path.CreatePicture}>Create picture</Link>
@@ -24,7 +25,6 @@ export default function Header(){
                 )}
                 {!isAuthenticated && (
                 <div id="guests">
-                    <Link to={Path.Gallery}>Gallery</Link>
                     <Link to={Path.Login}>Login</Link>
                     <Link to={Path.Register}>Register</Link>
                 </div>
