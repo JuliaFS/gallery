@@ -1,4 +1,4 @@
-.loginPage {
+.login-page {
     border: 1px solid red;
     width: 40%;
     height: auto;
@@ -9,24 +9,24 @@
     box-shadow: 0px 0px 18px 0px #32485e, -7px -7px 10px #6f71740f;
 }
 
-.loginPage{
+.login-page{
     display: inline-flex;
     align-self: center;
     margin-top: 30px;
 }
 
-.loginPage form{
+.login-page form{
     text-align: center;
 }
 
-.loginPage form label{
+.login-page form label{
     display: block;
     margin-top: 20px;
     margin-bottom: 0;
     border: 2px solid red;
 }
 
-.loginPage form input[type="submit"]{
+.login-page form input[type="submit"]{
     display: block;
     padding: 20px;
     font-size: 20px;
@@ -37,7 +37,7 @@
     padding-bottom: 30px;
 }
 
-.loginPage form input{
+.login-page form input{
     background: #ecf0f3;
     padding: 10px;
     text-align: center;
