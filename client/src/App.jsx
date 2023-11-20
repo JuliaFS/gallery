@@ -10,21 +10,30 @@ import CreatePicture from './components/CreatePicture/CreatePicture';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import PictureDetails from './components/PictureDetails/PictureDetails';
+import { useState } from 'react';
+import authContext from './contexts/AuthContext';
 
 export default function App() {
+  const [auth, setAuth] = useState({});
+
+  const loginSubmitHandler = (values) => {
+    console.log(values);
+  }
 
   return (
-    <div>
-      <Header />
+    <authContext.Provider value={{loginSubmitHandler}}>
+      <div>
+        <Header />
 
-      <Routes>
-        <Route path={paths.home} element={<Home />} />
-        <Route path={paths.gallery} element={<PicturesList />} />
-        <Route path={paths.createPicture} element={<CreatePicture />} />
-        <Route path={paths.login} element={<Login />} />
-        <Route path={paths.register} element={<Register />} />
-        <Route path={paths.details} element={<PictureDetails />} />
-      </Routes>
-    </div>
+        <Routes>
+          <Route path={paths.home} element={<Home />} />
+          <Route path={paths.gallery} element={<PicturesList />} />
+          <Route path={paths.createPicture} element={<CreatePicture />} />
+          <Route path={paths.login} element={<Login />} />
+          <Route path={paths.register} element={<Register />} />
+          <Route path={paths.details} element={<PictureDetails />} />
+        </Routes>
+      </div>
+    </authContext.Provider>
   );
 }

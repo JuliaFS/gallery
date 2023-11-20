@@ -5,21 +5,20 @@ import { Link } from 'react-router-dom';
 //import { useForm } from "../../hooks/useForm";
 import { paths } from '../../constants/constants';
 import styles from './Login.module.css';
+import { useContext } from 'react';
+import authContext from '../../contexts/AuthContext';
 
-// const LoginFormKeys = {
-//     Email: 'email',
-//     Password: 'password'
-// };
+const LoginFormKeys = {
+    [LoginFormKeys.email]: 'email',
+    [LoginFormKeys.Password]: 'password'
+};
 
-export default function Login() {
-        // const { onLoginSubmit } = auth;
-        //const { onLoginSubmit } = useAuthContext();
-        //const { values, changeHandler, onSubmit } = useForm({
-        //    [LoginFormKeys.Email]: '',
-        //    [LoginFormKeys.Password]: '',
-        //}, onLoginSubmit);
+export default function Login({
+    //loginSubmitHandler - izpolzvaiki podavaneto prez context otpada predavaneto prez props
+}) {
+    const { loginSubmitHandler } = useContext(authContext);
 
-    const { values, onChange, onSubmit } = useForm({
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
         email: '',
         password: ''
     });
@@ -32,18 +31,18 @@ export default function Login() {
             type="email"
             id="email"
             placeholder="Sokka@gmail.com"
-            name="email"
+            name={LoginFormKeys.Email}
             onChange={onChange}
-            value={values.email}
+            value={values[LoginFormKeys.Email]}
         />
 
                 <label htmlFor="login-password">Password:</label>
                 <input
             type="password"
             id="login-password"
-            name="password"
+            name={LoginFormKeys.Password}
             onChange={onChange}
-            value={values.password}
+            value={values[LoginFormKeys.Password]}
         />
                 <input type="submit" value="Login" />
                 <p>

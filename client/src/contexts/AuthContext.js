@@ -1,75 +1,82 @@
-import { createContext, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { createContext } from "react";
 
-import { authServiceFactory } from '../services/authService';
+const authContext = createContext();
 
-export const AuthContext = createContext();
+export default authContext;
 
-export const AuthProvider = ({
-    children,
-}) => {
-    const [auth, setAuth] = useLocalStorage('auth', {});
-    const navigate = useNavigate();
 
-    const authService = authServiceFactory(auth.accessToken)
+// import { createContext, useState, useContext } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { useLocalStorage } from '../hooks/useLocalStorage';
 
-    const onLoginSubmit = async (data) => {
-        try {
-            const result = await authService.login(data);
+// import { authServiceFactory } from '../services/authService';
 
-            setAuth(result);
+// export const AuthContext = createContext();
 
-            navigate('/catalog');
-        } catch (error) {
-            console.log('There is a problem');
-        }
-    };
+// export const AuthProvider = ({
+//     children,
+// }) => {
+//     const [auth, setAuth] = useLocalStorage('auth', {});
+//     const navigate = useNavigate();
 
-    const onRegisterSubmit = async (values) => {
-        const { confirmPassword, ...registerData } = values;
-        if (confirmPassword !== registerData.password) {
-            return;
-        }
+//     const authService = authServiceFactory(auth.accessToken)
 
-        try {
-            const result = await authService.register(registerData);
+//     const onLoginSubmit = async (data) => {
+//         try {
+//             const result = await authService.login(data);
 
-            setAuth(result);
+//             setAuth(result);
 
-            navigate('/catalog');
-        } catch (error) {
-            console.log('There is a problem');
-        }
-    };
+//             navigate('/catalog');
+//         } catch (error) {
+//             console.log('There is a problem');
+//         }
+//     };
 
-    const onLogout = async () => {
-        await authService.logout();
+//     const onRegisterSubmit = async (values) => {
+//         const { confirmPassword, ...registerData } = values;
+//         if (confirmPassword !== registerData.password) {
+//             return;
+//         }
 
-        setAuth({});
-    };
+//         try {
+//             const result = await authService.register(registerData);
 
-    const contextValues = {
-        onLoginSubmit,
-        onRegisterSubmit,
-        onLogout,
-        userId: auth._id,
-        token: auth.accessToken,
-        userEmail: auth.email,
-        isAuthenticated: !!auth.accessToken,
-    };
+//             setAuth(result);
 
-    return (
-        <>
-            <AuthContext.Provider value={contextValues}>
-                {children}
-            </AuthContext.Provider>
-        </>
-    );
-};
+//             navigate('/catalog');
+//         } catch (error) {
+//             console.log('There is a problem');
+//         }
+//     };
 
-export const useAuthContext = () => {
-    const context = useContext(AuthContext);
+//     const onLogout = async () => {
+//         await authService.logout();
 
-    return context;
-};
+//         setAuth({});
+//     };
+
+//     const contextValues = {
+//         onLoginSubmit,
+//         onRegisterSubmit,
+//         onLogout,
+//         userId: auth._id,
+//         token: auth.accessToken,
+//         userEmail: auth.email,
+//         isAuthenticated: !!auth.accessToken,
+//     };
+
+//     return (
+//         <>
+//             <AuthContext.Provider value={contextValues}>
+//                 {children}
+//             </AuthContext.Provider>
+//         </>
+//     );
+// };
+
+// export const useAuthContext = () => {
+//     const context = useContext(AuthContext);
+
+//     return context;
+// };
