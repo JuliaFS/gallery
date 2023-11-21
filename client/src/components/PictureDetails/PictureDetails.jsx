@@ -8,7 +8,7 @@ import AuthContext from "../../contexts/AuthContext";
 
 
 export default function PictureDetails() {
-    const  { email } = useContext(AuthContext);
+    const { email } = useContext(AuthContext);
     const [picture, setPicture] = useState({});
     const [comments, setComments] = useState([]);
     const { pictureId } = useParams();
@@ -51,7 +51,7 @@ export default function PictureDetails() {
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        { comments.map(({_id, text, owner: { email}}) => (
+                        { comments.map(({_id, text, owner: {email}}) => (
                             <li className="comment" key={_id}>
                             <p>{email}: {text}</p>
                         </li>
