@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import * as authService from './services/authService';
-import AuthContext from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 import { Path } from './constants/constants';
 
@@ -20,7 +20,7 @@ export default function App() {
   const navigate = useNavigate();
   const [auth, setAuth] = useState(() => {
     localStorage.removeItem('accessToken');
-    
+
     return {};
   });
 
@@ -68,7 +68,7 @@ export default function App() {
   };
 
   return (
-    <AuthContext.Provider value={values}>
+    <AuthProvider value={values}>
       <div>
         <Header />
 
@@ -82,6 +82,6 @@ export default function App() {
           <Route path={Path.Logout} element={<Logout />} />
         </Routes>
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
