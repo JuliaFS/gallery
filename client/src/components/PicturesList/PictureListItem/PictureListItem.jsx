@@ -8,7 +8,7 @@ export default function PictureListItem({
     description
 }){
     return(
-        <div className="gallery">
+        <div>
             <h2>{title}</h2>
             <img src={imageUrl} />
             <p>Details: {description}</p>

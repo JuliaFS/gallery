@@ -16,7 +16,7 @@ export default function PicturesList(){
     console.log(pictures)
 
     return(
-        <section>
+        <section className="gallery">
            <h1>Pictures gallery</h1>
            {pictures.map(picture => (
                 <PictureListItem key={picture._id} {...picture} />

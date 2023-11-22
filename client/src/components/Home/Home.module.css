@@ -1,66 +1,135 @@
-.image-rotate {
-    height: 200px;
-    width: 700px;
-    margin: 100px auto;
+/*body {
+    margin: 0px;
+    font-family: 'Cedarville Cursive', cursive;
+  }
+  
+  div#background {
+    height: 700px;
+    width: 100%;
+    background-image: url(http://garchitecture.ca/php/images/headers/wood.jpg);
+    padding-top: 20px;
+  }
+  
+  div#gallery {
+    width: 800px;
+    margin: auto;
+  }
+  
+  
+  #background img {
+    height: 150px;
+    margin: 0px;
+  }
+  
+  #background figure {
+    float: left;
     position: relative;
+    background-color: white;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 1px 2px 3px black;
   }
   
-  img {
-    height: 100px;
+  figure.pic1 {
+    -webkit-transform : rotate(-10deg);
+    z-index: 1;
+  }
+  
+  figure.pic2 {
+    -webkit-transform : rotate(15deg);
+    z-index: 2;
+  }
+  
+  figure.pic3 {
+    -webkit-transform : rotate(-25deg);
+    z-index: 1;
+  }
+  
+  figure.pic4 {
+    -webkit-transform : rotate(5deg);
+    z-index:1;
+  }
+  
+  figure.pic5 {
+    -webkit-transform : rotate(5deg);
+    z-index:1;
+  }
+  
+  figure.pic6 {
+    -webkit-transform : rotate(-8deg);
+    z-index:1;
+  }
+  
+  figure.pic7 {
+    -webkit-transform : rotate(2deg);
+    z-index:1;
+  }
+  
+  figure.pic8 {
+    -webkit-transform : rotate(-13deg);
+    z-index:1;
+  }
+  
+  figure.pic9 {
+    -webkit-transform : rotate(-7deg);
+    z-index:1;
+  }
+  
+  figure.pic10 {
+    -webkit-transform : rotate(2deg);
+    z-index:1;
+  }
+  
+  figure.pic11 {
+   -webkit-transform : rotate(-3deg);
+    z-index:1;
+  }
+  
+  #background figure:hover {
+    box-shadow: 5px 10px 100px black;
+    -webkit-transform: scale(1.1,1.1);
+    z-index: 20;
+  }
+  */
+  
+
+  ul{
     position: absolute;
-    left: 0;
-    offset-path: path('m 0 50 q 50-30 100-30 t 100 30 100 0 100-30 100 30');
-    box-shadow: 1px 1px 3px #0008;
-    transition: transform .4s ease-out, offset-path .4s cubic-bezier(.77,-1.17,.75,.84),box-shadow .3s, z-index .3s;
-    z-index: 0;
+    margin-top: 15%;
+    list-style-type: none;
+    width:70%;
+    height:100%;
+    box-shadow:inset 0 0 1px rgba(0,0,0,.05);
+  }
+  li{
+    position:relative;
+    float:left;
+    width:33.33%;
+    height:50%;
+  }
+  li a img{
+    position:absolute;
+    width:70%;
+    margin:15%;
+    background:#ddd;
+    border-radius: 20px;
+    box-shadow:0 0 1px 1px rgba(0,0,0,.2);
+    transform:rotate(4deg);
+    transition:all .5s ease-in-out;
+    -webkit-transition:all .5s ease-in-out;
+    -moz-transition:all .5s ease-in-out;
+    -o-transition:all .5s ease-in-out;
+    -ms-transition:all .5s ease-in-out;
+  }
+  li a img:hover{
+    width:90%;
+    height:90%;
+    margin:5%;
+    transform:rotate(0deg);
+    background:#f5f5f5;
+    box-shadow:0 0 10px 1px rgba(0,0,0,.5);
   }
   
-  img:hover {
-    transform: scale(3);
-    /* on hover, the path gets a bit shorter & flattened & shifted to left/bottom a bit for nicer movement */
-    offset-path: path('m 5 65 q 45-0 90-0 t 90 0 90 0 90-0 90 0');
-    box-shadow: 3px 4px 10px #0006;
-    z-index: 999;
-  }
   
-  /* 3 images */
-  img:nth-last-child(3):first-child {
-    offset-distance: 17%;
-  }
-  img:nth-last-child(2):nth-child(2) {
-    offset-distance: 49%;
-  }
-  img:last-child:nth-child(3) {
-    offset-distance: 81%;
-  }
-  
-  /* 4 images */
-  img:nth-last-child(4):first-child {
-    offset-distance: 10%;
-  }
-  img:nth-last-child(3):nth-child(2) {
-    offset-distance: 35%;
-  }
-  img:nth-last-child(2):nth-child(3) {
-    offset-distance: 65%;
-  }
-  img:last-child:nth-child(4) {
-    offset-distance: 90%;
-  }
-  
-  /* 5 images */
-  img:nth-last-child(5):first-child {
-    offset-distance: 0%;
-  }
-  img:nth-last-child(4):nth-child(2) {
-    offset-distance: 25%;
-  }
-  img:nth-last-child(3):nth-child(3) {
-    offset-distance: 51%;
-  }
-  img:nth-last-child(2):nth-child(4) {
-    offset-distance: 75%;
-  }
-  img:last-child:nth-child(5) {
-    offset-distance: 100%;
-  }
