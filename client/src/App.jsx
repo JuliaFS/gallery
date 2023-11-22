@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
-import * as authService from './services/authService';
 import { AuthProvider } from './contexts/AuthContext';
 
 import { Path } from './constants/constants';
@@ -17,58 +16,8 @@ import Logout from './components/Logout/Logout';
 
 
 export default function App() {
-  const navigate = useNavigate();
-  const [auth, setAuth] = useState(() => {
-    localStorage.removeItem('accessToken');
-
-    return {};
-  });
-
-  const loginSubmitHandler = async (values) => {
-    //console.log(values);
-    try{
-      const result = await authService.login(values.email, values.password);
-      console.log('result login: ')
-      console.log(result)
-      setAuth(result);
-      localStorage.setItem('accessToken', result.accessToken);
-      navigate(Path.Gallery);
-    } catch(err){
-      console.log(err);
-    }
-  };
-
-  const registerSubmitHandler = async (values) => {
-    //console.log(values['confirm-password']);
-    try{
-      const result = await authService.register(values.email, values.password, values['confirm-password']);
-      setAuth(result);
-      //console.log(result)
-      localStorage.setItem('accessToken', result.accessToken);
-       navigate(Path.Gallery);
-    } catch(err){
-      console.log(err);
-    }
-  };
-
-  const logoutHandler = () => {
-    setAuth({});
-    localStorage.removeItem('accessToken');
-    console.log('setAuth: ' + setAuth)
-    navigate(Path.Home);
-  }
-
-  const values = {
-    loginSubmitHandler,
-    registerSubmitHandler,
-    logoutHandler,
-    //username: auth.username,
-    email: auth.email,
-    isAuthenticated: !!auth.accessToken //double nogation, ako ima username, obrashtame v truti stoinost ili folsi
-  };
-
   return (
-    <AuthProvider value={values}>
+    <AuthProvider>
       <div>
         <Header />
 

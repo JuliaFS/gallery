@@ -11,7 +11,11 @@ export default function PicturesList(){
     console.log(pictures)
     useEffect(() => {
         pictureService.getAll()
-        .then(result => setPictures(result));
+        .then(result => setPictures(result))
+        .catch(err => {
+            //TO DO
+            console.log(err);
+        });
     }, []);
     console.log(pictures)
 
