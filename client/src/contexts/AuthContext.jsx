@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import * as authService from '../services/authService';
 import usePersistedState from "../hooks/usePersistedState";
+import { Path } from "../constants/constants";
 
 const AuthContext = createContext();
 
@@ -51,6 +52,7 @@ export const AuthProvider = ({
       logoutHandler,
       //username: auth.username,
       email: auth.email,
+      userId: auth._id,
       isAuthenticated: !!auth.accessToken //double nogation, ako ima username, obrashtame v truti stoinost ili folsi
     };
 

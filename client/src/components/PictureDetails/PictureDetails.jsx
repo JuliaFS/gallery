@@ -5,25 +5,14 @@ import { Link } from "react-router-dom";
 import * as pictureService from '../../services/pictureService';
 import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/AuthContext";
-
-const reducer = (state, action) => {
-    switch(action?.type){
-        case 'GET_ALL_COMMENTS':
-            return [...action.payload];
-        case 'ADD_COMMENT':
-            return [...state, action.payload];
-        default: 
-        return state;
-    }
-}
+import reducer from './commentReducer';
+import useForm from "../../hooks/useForm";
 
 export default function PictureDetails() {
-    const { email } = useContext(AuthContext);
+    const { email, userId } = useContext(AuthContext);
     const [picture, setPicture] = useState({});
     //const [comments, setComments] = useState([]);
     const [comments, dispatch] = useReducer(reducer, []);
-
-
     const { pictureId } = useParams();
 
     useEffect(() => {
@@ -39,23 +28,25 @@ export default function PictureDetails() {
             });
     }, [pictureId]);
 
-    const addCommentHandler = async (e) => {
-        e.preventDefault();
-
-        //uncontrolled form
-        const formData = new FormData(e.currentTarget);
-
+    const addCommentHandler = async (values) => {
         const newComment = await commentService.create(
             pictureId,
-            formData.get('comment')
+            values.comment
         );
         newComment.owner = { email };
+
         //setComments(state => [...state, {...newComment, author: {email}}]);
         dispatch({
             type: 'ADD_COMMENT',
             payload: newComment
         });
     }
+
+    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+        comment: ''
+    });
+
+    const isOwner = userId === picture._ownerId;
 
     return (
         <section id="picture-details">
@@ -83,16 +74,23 @@ export default function PictureDetails() {
                         <p className="no-comment">No comments.</p>
                     }
                 </div>
-
-                <div className="buttons">
+                
+                {isOwner && (
+                    <div className="buttons">
                     <Link to="" className="button">Edit</Link>
                     <button className="button">Delete</button>
                 </div>
+                )}
             </div>
             <article className="create-comment">
                 <label>Add new comment:</label>
-                <form className="form" onSubmit={addCommentHandler}>
-                    <textarea name="comment" placeholder="Comment......" ></textarea>
+                <form className="form" onSubmit={onSubmit}>
+                    <textarea 
+                        name="comment" 
+                        value={values.comment} 
+                        onChange={onChange}
+                        placeholder="Comment......" >
+                    </textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
             </article>
