@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useReducer } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -6,11 +6,24 @@ import * as pictureService from '../../services/pictureService';
 import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/AuthContext";
 
+const reducer = (state, action) => {
+    switch(action?.type){
+        case 'GET_ALL_COMMENTS':
+            return [...action.payload];
+        case 'ADD_COMMENT':
+            return [...state, action.payload];
+        default: 
+        return state;
+    }
+}
 
 export default function PictureDetails() {
     const { email } = useContext(AuthContext);
     const [picture, setPicture] = useState({});
-    const [comments, setComments] = useState([]);
+    //const [comments, setComments] = useState([]);
+    const [comments, dispatch] = useReducer(reducer, []);
+
+
     const { pictureId } = useParams();
 
     useEffect(() => {
@@ -18,21 +31,30 @@ export default function PictureDetails() {
             .then(setPicture);
 
         commentService.getAll(pictureId)
-            .then(setComments);
+            .then((result) => {
+                dispatch({
+                    type: 'GET_ALL_COMMENTS',
+                    payload: result
+                })
+            });
     }, [pictureId]);
 
     const addCommentHandler = async (e) => {
         e.preventDefault();
 
+        //uncontrolled form
         const formData = new FormData(e.currentTarget);
 
         const newComment = await commentService.create(
             pictureId,
             formData.get('comment')
         );
-
-        setComments(state => [...state, {...newComment, author: {email}}]);
-        console.log('comments: ' + comments);
+        newComment.owner = { email };
+        //setComments(state => [...state, {...newComment, author: {email}}]);
+        dispatch({
+            type: 'ADD_COMMENT',
+            payload: newComment
+        });
     }
 
     return (
