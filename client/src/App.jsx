@@ -13,6 +13,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import PictureDetails from './components/PictureDetails/PictureDetails';
 import Logout from './components/Logout/Logout';
+import EditPicture from './components/PictureEdit/EditPicture';
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
           <Route path={Path.Login} element={<Login />} />
           <Route path={Path.Register} element={<Register />} />
           <Route path={Path.Details} element={<PictureDetails />} />
+          <Route path={Path.PictureEdit} element={<EditPicture />} />
           <Route path={Path.Logout} element={<Logout />} />
         </Routes>
       </div>

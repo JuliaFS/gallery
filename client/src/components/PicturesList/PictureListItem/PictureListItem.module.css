@@ -1,0 +1,61 @@
+.gallery-box{
+    border: 1px solid white;
+    width: 400px;
+    height: 450px;
+    display:inline-block;
+    text-align: center;
+    margin: 2%;
+    box-shadow: 0px 0px 18px 0px rgb(183, 169, 145), -7px -7px 10px #6f71740f;
+    background: linear-gradient(90deg, rgb(200, 187, 165), rgba(152, 137, 137, 0.346));
+}
+
+.gallery-box legend {
+    position: relative;
+    width: 100%;
+    display: block;
+    background: rgb(183, 169, 145);
+    padding: 25px 15px;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+  
+    &:after {
+      content: "";
+      background-image: url(https://simpleicon.com/wp-content/uploads/magic_wand.png);
+      background-size: 70px 70px;
+      background-repeat: no-repeat;
+      background-position: 95%;
+      opacity: 0.06;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+    }
+  }
+
+.gallery-box img{
+    height: 50%;
+    flex: content;
+    margin-top: 10%;
+}
+
+.gallery-box a{
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    width: 60%;
+    margin-top: 10%;
+    border-bottom: 2px solid white;
+    padding: 10px;
+
+
+    &:hover {
+        color: rgb(183, 169, 145);
+        background-color: white;
+        padding: 10px;
+    }
+}

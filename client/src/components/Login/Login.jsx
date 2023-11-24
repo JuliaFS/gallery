@@ -1,12 +1,15 @@
-import useForm from '../../hooks/useForm'
+
 import { Link } from 'react-router-dom';
 
 //import { useAuthContext } from "../../contexts/AuthContext";
 //import { useForm } from "../../hooks/useForm";
+import useForm from '../../hooks/useForm'
+
 import { Path } from '../../constants/constants';
 import styles from './Login.module.css';
 import { useContext } from 'react';
 import AuthContext from '../../contexts/AuthContext';
+
 
 const LoginFormKeys = {
     Email: 'email',
@@ -25,25 +28,23 @@ export default function Login({
     return (
         <section className={styles["login-page"]}>
             <form method="POST" onSubmit={onSubmit}>
-                <h1>Login</h1>
-                <label htmlFor="email">Email:</label>
+                <legend>Login</legend>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email..."
+                        name={LoginFormKeys.Email}
+                        onChange={onChange}
+                        value={values[LoginFormKeys.Email]}
+                    />
                 <input
-            type="email"
-            id="email"
-            placeholder="Sokka@gmail.com"
-            name={LoginFormKeys.Email}
-            onChange={onChange}
-            value={values[LoginFormKeys.Email]}
-        />
-
-                <label htmlFor="login-password">Password:</label>
-                <input
-            type="password"
-            id="login-password"
-            name={LoginFormKeys.Password}
-            onChange={onChange}
-            value={values[LoginFormKeys.Password]}
-        />
+                    type="password"
+                    id="login-password"
+                    placeholder="Enter password..."
+                    name={LoginFormKeys.Password}
+                    onChange={onChange}
+                    value={values[LoginFormKeys.Password]}
+                />
                 <input type="submit" value="Login" />
                 <p>
                     <span>If you don't have profile click <Link to={Path.Register}>here</Link></span>

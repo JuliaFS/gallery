@@ -2,8 +2,8 @@ import { useEffect, useState} from 'react';
 
 import * as pictureService from '../../services/pictureService';
 
-import './picturesList.css';
 import PictureListItem from './PictureListItem/PictureListItem';
+import styles from './PicturesList.module.css';
 
 export default function PicturesList(){
 
@@ -20,14 +20,17 @@ export default function PicturesList(){
     console.log(pictures)
 
     return(
-        <section className="gallery">
+        <section className={styles["gallery"]}>
            <h1>Pictures gallery</h1>
-           {pictures.map(picture => (
-                <PictureListItem key={picture._id} {...picture} />
-           ))}
+           <div className={styles["container"]}>
+                {pictures.map(picture => (
+                        <PictureListItem key={picture._id} {...picture} />
+                ))}
+           </div>
            {pictures.length === 0 && (
                 <h3>No pictures yet!</h3>
             )}
+
         </section>   
     );
 }

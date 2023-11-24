@@ -6,6 +6,8 @@ const Path = {
     Gallery: "/gallery",
     CreatePicture: "/create-picture",
     Details: "/pictures/:pictureId",
+    PictureEdit: "/pictures/:pictureId/edit",
+    PictureDelete: "/pictures/:pictureId/delete",
     Error404Path: "/404",
 }
 

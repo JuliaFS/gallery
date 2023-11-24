@@ -5,7 +5,7 @@ import AuthContext from '../../contexts/AuthContext';
 import useForm from '../../hooks/useForm';
 
 import { Path } from '../../constants/constants';
-import './register.css';
+import styles from './Register.module.css';
 
 
 const RegisterFormKeys = {
@@ -23,39 +23,35 @@ export default function Register() {
         [RegisterFormKeys.ConfirmPassword]: ''
     })
     return (
-        <section id="register-page">
+        <section className={styles["register-page"]}>
             <form  method="post" onSubmit={onSubmit}>
-                <h1>Register</h1>
-                <label htmlFor="email">Email:</label>
+                <legend>Register</legend>
                 <input
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="maria@email.com"
+                    placeholder="Enter your email..."
                     onChange={onChange}
                     value={values[RegisterFormKeys.Email]}
                 />
-
-                <label htmlFor="pass">Password:</label>
                 <input
                     type="password"
                     name="password"
                     id="register-password"
-                    placeholder="Enter password"
+                    placeholder="Enter your password..."
                     onChange={onChange}
                     value={values[RegisterFormKeys.Password]}
                 />
-                <label htmlFor="confirm-password">Confirm Password:</label>
                 <input
                     type="password"
                     name="confirm-password"
                     id="confirm-password"
-                    placeholder="Confirm password"
+                    placeholder="Confirm your password..."
                     onChange={onChange}
                     value={values[RegisterFormKeys.ConfirmPassword]}
                 />
                 <input type="submit" value="Register" />
-                <p className="field">
+                <p>
                     <span>If you already have profile click <Link to={Path.Login}>here</Link></span>
                 </p>
             </form>

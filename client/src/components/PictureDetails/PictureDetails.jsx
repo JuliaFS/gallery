@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, useReducer } from "react";
+import { useEffect, useState, useContext, useReducer, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -7,6 +7,8 @@ import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/AuthContext";
 import reducer from './commentReducer';
 import useForm from "../../hooks/useForm";
+import { Path } from "../../constants/constants";
+import { pathToUrl } from "../../utils/pathUtils";
 
 export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);
@@ -42,9 +44,12 @@ export default function PictureDetails() {
         });
     }
 
-    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
-        comment: ''
-    });
+    //TO DO temp solution
+    const initialValues = useMemo(() => ({
+        comment: '',
+    }), []);
+
+    const { values, onChange, onSubmit } = useForm(addCommentHandler, initialValues);
 
     const isOwner = userId === picture._ownerId;
 
@@ -77,8 +82,8 @@ export default function PictureDetails() {
                 
                 {isOwner && (
                     <div className="buttons">
-                    <Link to="" className="button">Edit</Link>
-                    <button className="button">Delete</button>
+                    <Link to={pathToUrl(Path.PictureEdit, { pictureId })} className="button">Edit</Link>
+                    <Link to={pathToUrl(Path.PictureDelete,{ pictureId})} className="button">Delete</Link>
                 </div>
                 )}
             </div>
