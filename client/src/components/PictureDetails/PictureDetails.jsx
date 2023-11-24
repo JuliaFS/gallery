@@ -10,6 +10,8 @@ import useForm from "../../hooks/useForm";
 import { Path } from "../../constants/constants";
 import { pathToUrl } from "../../utils/pathUtils";
 
+import styles from "./PictureDetails.module.css";
+
 export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);
     const [picture, setPicture] = useState({});
@@ -54,51 +56,53 @@ export default function PictureDetails() {
     const isOwner = userId === picture._ownerId;
 
     return (
-        <section id="picture-details">
-            <h1>Picture Details</h1>
-            <div className="info-section">
-                <div className="game-header">
-                    <img className="game-img" src={picture.imageUrl} alt={picture.title} />
-                    <h1>{picture.title}</h1>
-                    <span className="levels">Painter: {picture.painter} </span>
-                    <p className="type">Category: {picture.category}</p>
+        <section className={styles["picture-details"]}>
+            <h1>{picture.title}</h1>
+            <div className={styles["info-section"]}>
+                <div className={styles["info-details"]}>
+                    <div>
+                        <img src={picture.imageUrl} alt={picture.title} />
+                    </div>
+                    <div>
+                        <p>Painter: {picture.painter} </p>
+                        <p>Category: {picture.category}</p>
+                        <p>Description: {picture.description}</p>
+                    </div>
                 </div>
-
-                <p className="text">{picture.description}</p>
-
-                <div className="details-comments">
-                    <h2>Comments:</h2>
-                    <ul>
-                        { comments.map(({_id, text, owner: {email}}) => (
-                            <li className="comment" key={_id}>
-                            <p>{email}: {text}</p>
-                        </li>
-                        ))}
-                    </ul>
-                    {comments.length === 0 && 
-                        <p className="no-comment">No comments.</p>
-                    }
-                </div>
-                
                 {isOwner && (
                     <div className="buttons">
-                    <Link to={pathToUrl(Path.PictureEdit, { pictureId })} className="button">Edit</Link>
-                    <Link to={pathToUrl(Path.PictureDelete,{ pictureId})} className="button">Delete</Link>
-                </div>
+                        <Link to={pathToUrl(Path.PictureEdit, { pictureId })} className="button">Edit</Link>
+                        <Link to={pathToUrl(Path.PictureDelete, { pictureId })} className="button">Delete</Link>
+                    </div>
                 )}
             </div>
-            <article className="create-comment">
+
+            <article className={styles["create-comment"]}>
                 <label>Add new comment:</label>
                 <form className="form" onSubmit={onSubmit}>
-                    <textarea 
-                        name="comment" 
-                        value={values.comment} 
+                    <textarea
+                        name="comment"
+                        value={values.comment}
                         onChange={onChange}
                         placeholder="Comment......" >
                     </textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
+
+                <div className={styles["details-comments"]}>
+                    <h2>Comments:</h2>
+                    <ul>
+                        {comments.map(({ _id, text, owner: { email } }) => (
+                            <li key={_id}>{email}: {text}</li>
+                        ))}
+                    </ul>
+                    {comments.length === 0 &&
+                        <p className="no-comment">No comments.</p>
+                    }
+                </div>
+
             </article>
+
         </section>
     );
 }

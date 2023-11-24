@@ -8,9 +8,9 @@
   * {
     box-sizing: border-box; 
   }
-header {
+/*header {
     background-color: rgb(183, 169, 145);
-} 
+} */
   .curve {
     color: rgb(160, 146, 146);
     position: relative;
@@ -24,7 +24,8 @@ header {
     &::before {
       content: '';
       display: block;
-      background-color: rgb(183, 169, 145);
+      background-image: url("/images/ptiche.jpg");
+      /*background-color: rgb(183, 169, 145);*/
       /*background: radial-gradient(ellipse at center, rgba(124, 115, 115, 0.1) 25%,rgba(183, 169, 145) 100%);*/
       position: absolute;
       left: 50%;

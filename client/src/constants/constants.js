@@ -5,9 +5,9 @@ const Path = {
     Logout: "/logout",
     Gallery: "/gallery",
     CreatePicture: "/create-picture",
-    Details: "/pictures/:pictureId",
-    PictureEdit: "/pictures/:pictureId/edit",
-    PictureDelete: "/pictures/:pictureId/delete",
+    Details: "/gallery/:pictureId",
+    PictureEdit: "/gallery/:pictureId/edit",
+    PictureDelete: "/gallery/:pictureId/delete",
     Error404Path: "/404",
 }
 

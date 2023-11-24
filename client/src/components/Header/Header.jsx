@@ -18,6 +18,9 @@ export default function Header(){
             </div>
             <nav className="more">
                 <div>
+                    <Link to={Path.Home}>Home</Link>
+                </div>
+                <div>
                     <Link to={Path.Gallery}>Gallery</Link>
                 </div>
                 {isAuthenticated && (
