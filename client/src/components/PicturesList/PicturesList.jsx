@@ -8,7 +8,7 @@ import styles from './PicturesList.module.css';
 export default function PicturesList(){
 
     const [pictures, setPictures] = useState([]);
-    console.log(pictures)
+
     useEffect(() => {
         pictureService.getAll()
         .then(result => setPictures(result))
@@ -17,7 +17,6 @@ export default function PicturesList(){
             console.log(err);
         });
     }, []);
-    console.log(pictures)
 
     return(
         <section className={styles["gallery"]}>
@@ -27,6 +26,7 @@ export default function PicturesList(){
                         <PictureListItem key={picture._id} {...picture} />
                 ))}
            </div>
+
            {pictures.length === 0 && (
                 <h3>No pictures yet!</h3>
             )}

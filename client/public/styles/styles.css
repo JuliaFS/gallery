@@ -2,5 +2,10 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background: linear-gradient(90deg, rgb(234, 220, 195), rgba(152, 137, 137, 0.346));
     text-align: center; 
-    
 }
+
+body>div{
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+

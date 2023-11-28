@@ -55,6 +55,15 @@ export default function PictureDetails() {
 
     const isOwner = userId === picture._ownerId;
 
+    const checkIsAuthorized = localStorage.getItem('auth');
+    if(!userId){
+        console.log('No authorized: ' + userId);
+    }
+
+    // if(Math.random() < 0.5){
+    //     throw new Error('Picture details error');
+    // }
+
     return (
         <section className={styles["picture-details"]}>
             <h1>{picture.title}</h1>
@@ -78,8 +87,9 @@ export default function PictureDetails() {
             </div>
 
             <article className={styles["create-comment"]}>
-                <label>Add new comment:</label>
-                <form className="form" onSubmit={onSubmit}>
+                <legend>Add new comment:</legend>
+                {userId
+                ? <form className="form" onSubmit={onSubmit}>
                     <textarea
                         name="comment"
                         value={values.comment}
@@ -88,6 +98,8 @@ export default function PictureDetails() {
                     </textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
+                : <p>To can comments you have to login <Link to={Path.Login}>Login</Link> or <Link to={Path.Register}>Register</Link>first!!!</p>
+                }           
 
                 <div className={styles["details-comments"]}>
                     <h2>Comments:</h2>
@@ -97,7 +109,7 @@ export default function PictureDetails() {
                         ))}
                     </ul>
                     {comments.length === 0 &&
-                        <p className="no-comment">No comments.</p>
+                        <p className={styles["no-comment"]}>No comments.</p>
                     }
                 </div>
 

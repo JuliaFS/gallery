@@ -1,6 +1,9 @@
+import { useParams } from 'react-router-dom';
 import styles from './Home.module.css';
 
 export default function Home() {
+    const testParams = useParams();
+    console.log(testParams)
     return (
         <div>
             <ul>

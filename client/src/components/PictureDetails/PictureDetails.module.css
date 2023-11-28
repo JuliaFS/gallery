@@ -1,6 +1,6 @@
 .picture-details{
     display: inline-block;
-    height: 800px;
+    height: 600px;
     position: relative;
     border: 1px solid white;
     padding: 0;
@@ -51,28 +51,112 @@
 
 .create-comment{
     border: 1px solid green;
-    width: 80%;
+    width: 100%;
     position: relative;
+    text-align: left;
+}
+.create-comment>form{
+    display: block;
 }
 
+.create-comment>form>input[type="submit"]{
+    color: rgb(183, 169, 145);
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10%;
+    margin-top: -50px;
+    margin-bottom: 0;
+    position: relative;
+    display: inline-block;
+    
+}
+
+.create-comment>legend{
+        position: relative;
+        padding: 25px 15px;
+        font-size: 1.1em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: rgb(183, 169, 145);
+      
+        &:after {
+          content: "";
+          background-image: url(https://simpleicon.com/wp-content/uploads/meeting.png);
+          background-size: 100px 100px;
+          background-repeat: no-repeat;
+          background-position: 20%;
+          opacity: 0.06;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          position: absolute;
+        }
+}
+.create-comment>form textarea{
+    width: 30%;
+    height: 70px;
+    display: inline-block;
+    margin-left: 10%;
+}
 .details-comments{
     border: 1px solid blue;
-    height: 100%;
-    margin: auto;
     position: relative;
+    padding-top: 20px;
+}
+
+.details-comments h2{
+        font-size: 1.6em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: white;
+        margin: 0;
+
 }
 .details-comments>ul{
-   border: 1px solid yellow;
-   list-style: none;
+    display: block;
    height: 100%;
-   padding: 0;
+   position: relative;
+   text-align: left;
+   padding:0;
    margin: 0;
 
 }
 .details-comments>ul li{
-    border: 1px solid red;
-    display: inline;
+    display: block;
     position: relative;
-    vertical-align: middle;
+    padding: 18px;
+    text-decoration: underline;
+
+    &:before {
+        content: "";
+        background-image: url(https://simpleicon.com/wp-content/uploads/chat_18.png);
+        background-size: 30px 30px;
+        background-repeat: no-repeat;
+        background-position: -7%;
+        background-color: white;
+        opacity: 0.06;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+      }
 }
+
+.no-comment{
+    background-color: white;
+    color:rgb(183, 169, 145);
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: dotted;
+    text-transform: uppercase;
+    padding: 20px;
+    margin-top: 0;
+}
+
+
   

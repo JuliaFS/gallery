@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import * as pictureService from '../../services/pictureService';
 import { Path } from '../../constants/constants';
 
-import './create.css';
+import styles from './CreatePicture.module.css';
 
 const formInitialState = {
     title: '',
@@ -20,12 +20,18 @@ export default function CreatePicture() {
     const [formValues, setFormValues] = useState(formInitialState);
 
     const changeHandler = (e) => {
-        console.log("e target name: " + e.target.name);
+        let isEmpty = false;
+        if(e.target.value !== ""){
+            setFormValues(state => ({
+                ...state,
+                [e.target.name]: e.target.value
+            }
+            ));
+        } else {
+            isEmpty = true;
+            return;
+        }
         
-        setFormValues(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
     };
 
     const resetFormHandler = () => {
@@ -48,7 +54,7 @@ export default function CreatePicture() {
     - input type submit predotvratqva defaultnoto prezarejdane na stranicata
 */}
     return (
-        <section id="create-page" className="auth">
+        <section className={styles["create-page"]}>
             <form method="post" id="create" >
                     <h1>Create New Paint</h1>
                     <label htmlFor="title">Legendary title:</label>

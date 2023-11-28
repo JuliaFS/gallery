@@ -7,6 +7,7 @@ import { Path } from '../../constants/constants';
 
 // import './create.css';
 import useForm from '../../hooks/useForm';
+import styles from './EditPicture.module.css';
 
 // const formInitialState = {
 //     title: '',
@@ -37,7 +38,6 @@ export default function EditPicture() {
     const editPictureSubmitHandler = async (values) => {
         try {
             await pictureService.edit(pictureId, values);
-
             navigate(Path.Gallery);
         } catch (err) {
             //add error notification
@@ -45,17 +45,16 @@ export default function EditPicture() {
         }
     };
 
-    //const { values, onChange, onSubmit } = useForm(editPictureSubmitHandler, picture);
+    const { values, onChange, onSubmit } = useForm(editPictureSubmitHandler, picture);
 
 {/* -lekciq forms 1:02 controlled forms
     - add onblur for validation for better UI
     - input type submit predotvratqva defaultnoto prezarejdane na stranicata
 */}
     return (
-        <section id="create-page" className="auth">
-            <form id="create" onSubmit={onSubmit} >
-                    <h1>Create New Paint</h1>
-                    <label htmlFor="title">Legendary title:</label>
+        <section className={styles["create-page"]}>
+            <form method='PUT' onSubmit={onSubmit} >
+                    <legend>Create New Paint</legend>
                     <input  type="text" 
                             id="title" 
                             name="title" 
@@ -64,10 +63,9 @@ export default function EditPicture() {
                             onChange={onChange}
                             placeholder="Enter picture title..." 
                     />
-                    <label htmlFor="category">Category:</label>
                     <input  type="text"
                             id="category" 
-                            name="category" 
+                            name="Enter category..." 
                             value={values.category}
                             onChange={onChange}
                             placeholder="Enter game category..." 

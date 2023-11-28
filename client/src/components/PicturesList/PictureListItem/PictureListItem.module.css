@@ -1,6 +1,6 @@
 .gallery-box{
     border: 1px solid white;
-    width: 400px;
+    width: 300px;
     height: 450px;
     display:inline-block;
     text-align: center;
@@ -36,8 +36,9 @@
   }
 
 .gallery-box img{
-    height: 50%;
-    flex: content;
+    height: 40%;
+    position: relative;
+    display: inline-block;
     margin-top: 10%;
 }
 
