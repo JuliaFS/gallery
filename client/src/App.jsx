@@ -15,6 +15,7 @@ import PictureDetails from './components/PictureDetails/PictureDetails';
 import Logout from './components/Logout/Logout';
 import EditPicture from './components/PictureEdit/EditPicture';
 import ErrorBoundary from './components/404/ErrorBoundary';
+import AuthGuard from './components/quards/AuthGuard';
 
 export default function App() {
   return (
@@ -26,12 +27,17 @@ export default function App() {
           <Routes>
             <Route path={Path.Home} element={<Home />} />
             <Route path={Path.Gallery} element={<PicturesList />} />
-            <Route path={Path.CreatePicture} element={<CreatePicture />} />
+            {/*<Route path={Path.CreatePicture} element={<CreatePicture />} />*/}
             <Route path={Path.Login} element={<Login />} />
             <Route path={Path.Register} element={<Register />} />
             <Route path={Path.Details} element={<PictureDetails />} />
-            <Route path={Path.PictureEdit} element={<EditPicture />} />
-            <Route path={Path.Logout} element={<Logout />} />
+            
+
+            <Route element={<AuthGuard />}>
+              <Route path={Path.CreatePicture} element={<CreatePicture />} />
+              <Route path={Path.PictureEdit} element={<EditPicture />} />
+              <Route path={Path.Logout} element={<Logout />} />
+            </Route>
           </Routes>
         </div>
       </AuthProvider>

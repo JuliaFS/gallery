@@ -15,6 +15,17 @@ export const getOne = async (pictureId) => {
     return result;
 }
 
+export const getLatest = async () => {
+    const query = new URLSearchParams({
+        //sortBy: `_createdOn desc`,
+        offset: 0,
+        pageSize: 3
+    })
+    const result = await request.get(`${baseUrl}?${query}`);
+
+    return result;
+}
+
 
 export const create = async (pictureData) => {
     const result = await request.post(baseUrl, pictureData);
@@ -31,4 +42,6 @@ export const edit = async (pictureId, pictureData) => {
 
     return result;
 };
+
+export const remove = async (pictureId) => request.remove(`${baseUrl}/${pictureId}`);
 

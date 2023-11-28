@@ -1,11 +1,28 @@
-import { useParams } from 'react-router-dom';
-import styles from './Home.module.css';
+import { useEffect, useState } from 'react';
 
-export default function Home() {
-    const testParams = useParams();
-    console.log(testParams)
+import * as pictureService from '../../services/pictureService';
+import styles from './Home.module.css';
+import LatestPicture from './LatestPicture';
+
+export default function Home({
+    _id,
+    accessToken,
+    email
+}) {
+    const[ latestPicture, setLatestPicture ] = useState([]);
+
+    useEffect(() =>{
+        pictureService.getLatest()
+        .then(result => setLatestPicture(result));
+    }, []);
+
     return (
         <div>
+            <section>
+                <h1>Latest pictures</h1>
+                {latestPicture.map(picture => <LatestPicture {...picture} /> )}
+                {!latestPicture && <p>No added picture in gallery yet!</p>}
+            </section>
             <ul>
                 <li><a><img src='/images/lilium-72dpi.jpg'/></a></li>
                 <li><a><img src='/images/chereshka-72dpi.jpg'/></a></li>

@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, useReducer, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import * as pictureService from '../../services/pictureService';
@@ -18,6 +18,7 @@ export default function PictureDetails() {
     //const [comments, setComments] = useState([]);
     const [comments, dispatch] = useReducer(reducer, []);
     const { pictureId } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         pictureService.getOne(pictureId)
@@ -46,12 +47,24 @@ export default function PictureDetails() {
         });
     }
 
-    //TO DO temp solution
-    const initialValues = useMemo(() => ({
-        comment: '',
-    }), []);
+    const deleteButtonClickHandler = async () => {
+        const isConfirmed = confirm('Are you sure you want to delete this picture?');
 
-    const { values, onChange, onSubmit } = useForm(addCommentHandler, initialValues);
+        if(isConfirmed){
+            await pictureService.remove(pictureId);
+
+            navigate(Path.Gallery);
+        }
+    }
+
+    //TO DO temp solution
+    // const initialValues = useMemo(() => ({
+    //     comment: '',
+    // }), []);
+
+    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+        comment: '',
+    });
 
     const isOwner = userId === picture._ownerId;
 
@@ -81,7 +94,8 @@ export default function PictureDetails() {
                 {isOwner && (
                     <div className="buttons">
                         <Link to={pathToUrl(Path.PictureEdit, { pictureId })} className="button">Edit</Link>
-                        <Link to={pathToUrl(Path.PictureDelete, { pictureId })} className="button">Delete</Link>
+                        {/*<Link to={pathToUrl(Path.PictureDelete, { pictureId })} className="button">Delete</Link>*/}
+                        <button className="button" onClick={deleteButtonClickHandler}>Delete</button>
                     </div>
                 )}
             </div>
