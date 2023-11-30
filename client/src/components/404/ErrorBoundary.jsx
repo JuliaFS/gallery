@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import styles from './ErrorBoundary.module.css';
 
 export default class ErrorBoundary extends Component{
     constructor(){
@@ -24,7 +25,7 @@ export default class ErrorBoundary extends Component{
 
     render(){
         if(this.state.hasError){
-            return <h1>404</h1>
+            return <div className={styles["classError"]}><h1>Something went wrong...</h1></div>;
         }
         return this.props.children;
     }

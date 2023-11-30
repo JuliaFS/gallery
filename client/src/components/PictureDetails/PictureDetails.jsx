@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext, useReducer, useMemo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 import * as pictureService from '../../services/pictureService';
 import * as commentService from '../../services/commentService';
@@ -16,6 +15,7 @@ export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);
     const [picture, setPicture] = useState({});
     //const [comments, setComments] = useState([]);
+
     const [comments, dispatch] = useReducer(reducer, []);
     const { pictureId } = useParams();
     const navigate = useNavigate();
@@ -50,7 +50,7 @@ export default function PictureDetails() {
     const deleteButtonClickHandler = async () => {
         const isConfirmed = confirm('Are you sure you want to delete this picture?');
 
-        if(isConfirmed){
+        if (isConfirmed) {
             await pictureService.remove(pictureId);
 
             navigate(Path.Gallery);
@@ -69,7 +69,7 @@ export default function PictureDetails() {
     const isOwner = userId === picture._ownerId;
 
     const checkIsAuthorized = localStorage.getItem('auth');
-    if(!userId){
+    if (!userId) {
         console.log('No authorized: ' + userId);
     }
 
@@ -100,20 +100,21 @@ export default function PictureDetails() {
                 )}
             </div>
 
+
             <article className={styles["create-comment"]}>
                 <legend>Add new comment:</legend>
                 {userId
-                ? <form className="form" onSubmit={onSubmit}>
-                    <textarea
-                        name="comment"
-                        value={values.comment}
-                        onChange={onChange}
-                        placeholder="Comment......" >
-                    </textarea>
-                    <input className="btn submit" type="submit" value="Add Comment" />
-                </form>
-                : <p>To can comments you have to login <Link to={Path.Login}>Login</Link> or <Link to={Path.Register}>Register</Link>first!!!</p>
-                }           
+                    ? <form className="form" onSubmit={onSubmit}>
+                        <textarea
+                            name="comment"
+                            value={values.comment}
+                            onChange={onChange}
+                            placeholder="Comment......" >
+                        </textarea>
+                        <input className="btn submit" type="submit" value="Add Comment" />
+                    </form>
+                    : <p>To can comments you have to login <Link to={Path.Login}>Login</Link> or <Link to={Path.Register}>Register</Link>first!!!</p>
+                }
 
                 <div className={styles["details-comments"]}>
                     <h2>Comments:</h2>

@@ -172,6 +172,9 @@
     text-transform: uppercase;
     padding: 2%;
     margin-left: 5%;
+    margin-bottom: 7%;
+    margin-top: 5%;
+    border: 1px solid antiquewhite;
 
     &:hover {
         color: red;
@@ -181,7 +184,7 @@
     }
 }
 
-.picture-details .buttons a{
+.picture-details .buttons>a{
     width: 25%;
     color: rgb(183, 169, 145);
     font-size: 1.2em;
@@ -190,6 +193,8 @@
     display: inline-block;
     padding: 2%;
     text-decoration: none;
+    border: 1px solid black;
+    border: 1px solid antiquewhite;
 
     &:hover {
         color: red;

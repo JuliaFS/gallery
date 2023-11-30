@@ -1,0 +1,10 @@
+.classError{
+    text-align: center;
+    margin-top: 10%;
+}
+
+.classError h1{
+    color: white;
+    background-color: antiquewhite;
+    padding: 4%;
+}
