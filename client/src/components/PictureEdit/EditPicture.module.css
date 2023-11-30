@@ -15,7 +15,7 @@
     width: 100%;
     box-shadow: bisque;
     /*border-radius: 150vw;*/
-    text-align: center;
+    text-align: left;
     border: 1px solid white;
     box-shadow: 0px 5px 15px 2px rgb(183, 169, 145);
 
@@ -47,9 +47,9 @@
     }
   }
 
-.create-page input{
+.create-page input, textarea{
     width: 80%;
-    margin: 10%;
+    margin-left: 10%;
     padding: 10px 5px 10px 40px;
     display: block;
     border: 1px solid #ededed;
@@ -64,13 +64,31 @@
     }
 }
 
-.create-page button{
+.create-page>form>label{
+    position: relative;
+    display: block;
+    margin-left: 10%;
+    margin-top: 5%;
+    padding-bottom: 2%;
+    color: white;
+}
+
+.create-page>form>button {
     width: 60%;
-    margin-left: 20%;
     color: rgb(183, 169, 145);
     font-size: 1.2em;
     font-weight: bold;
     text-transform: uppercase;
-    display: inline-block;
+    margin: 10% 10% 10% 20%;
+    padding: 2%;
+
+    &:hover {
+        color: red;
+        padding: 10px 5px 10px 10px;
+        outline: 0;
+        border-color: #ff7052;
+    }
 }
+
+
 

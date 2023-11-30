@@ -92,10 +92,10 @@ export default function PictureDetails() {
                     </div>
                 </div>
                 {isOwner && (
-                    <div className="buttons">
+                    <div className={styles["buttons"]}>
                         <Link to={pathToUrl(Path.PictureEdit, { pictureId })} className="button">Edit</Link>
                         {/*<Link to={pathToUrl(Path.PictureDelete, { pictureId })} className="button">Delete</Link>*/}
-                        <button className="button" onClick={deleteButtonClickHandler}>Delete</button>
+                        <button onClick={deleteButtonClickHandler}>Delete</button>
                     </div>
                 )}
             </div>
