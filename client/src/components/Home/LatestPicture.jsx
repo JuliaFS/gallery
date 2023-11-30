@@ -6,7 +6,10 @@ export default function LatestPicture({
     imageUrl,
     title,
     _id
-}){
+})  
+{
+    console.log("test");
+    console.log('_id: ' + _id);
     return(
         <div>
             <h3>{title}</h3>

@@ -16,11 +16,13 @@ export const getOne = async (pictureId) => {
 }
 
 export const getLatest = async () => {
-    const query = new URLSearchParams({
-        //sortBy: `_createdOn desc`,
+    const query = {
+        sortBy: `_createdOn desc`,
         offset: 0,
         pageSize: 3
-    })
+    }
+
+    console.log(`${baseUrl}?${query}`);
     const result = await request.get(`${baseUrl}?${query}`);
 
     return result;
