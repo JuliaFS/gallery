@@ -36,6 +36,7 @@ export default function Login({
                         name={LoginFormKeys.Email}
                         onChange={onChange}
                         value={values[LoginFormKeys.Email]}
+                        required
                     />
                 <input
                     type="password"
@@ -44,6 +45,7 @@ export default function Login({
                     name={LoginFormKeys.Password}
                     onChange={onChange}
                     value={values[LoginFormKeys.Password]}
+                    required
                 />
                 <input type="submit" value="Login" />
                 <p>

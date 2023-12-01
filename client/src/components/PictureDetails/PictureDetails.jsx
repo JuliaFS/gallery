@@ -104,16 +104,16 @@ export default function PictureDetails() {
             <article className={styles["create-comment"]}>
                 <legend>Add new comment:</legend>
                 {userId
-                    ? <form className="form" onSubmit={onSubmit}>
+                    ? <form onSubmit={onSubmit}>
                         <textarea
                             name="comment"
                             value={values.comment}
                             onChange={onChange}
                             placeholder="Comment......" >
                         </textarea>
-                        <input className="btn submit" type="submit" value="Add Comment" />
+                        <input type="submit" value="Add Comment" />
                     </form>
-                    : <p>To can comments you have to login <Link to={Path.Login}>Login</Link> or <Link to={Path.Register}>Register</Link>first!!!</p>
+                    : <p className={styles["comments-link"]}>To can comments you have to login <Link to={Path.Login}>Login</Link> or <Link to={Path.Register}>Register</Link>first!!!</p>
                 }
 
                 <div className={styles["details-comments"]}>
@@ -124,7 +124,7 @@ export default function PictureDetails() {
                         ))}
                     </ul>
                     {comments.length === 0 &&
-                        <p className={styles["no-comment"]}>No comments.</p>
+                        <p className={styles["no-comment"]}>No comments yet.</p>
                     }
                 </div>
 

@@ -9,9 +9,6 @@ export const getAll = async (pictureId) => {
     });
 
     const result = await request.get(`${baseUrl}?${query}`);
-
-    // TODO: temp solution until migration to collections service 
-    //return result.filter(comment => comment.pictureId === pictureId);
     return result;
 };
 
