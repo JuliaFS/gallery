@@ -13,6 +13,8 @@ const formInitialState = {
     painter: '',
     imageUrl: '',
     description: '',
+    likes: 0,
+    liked: []
 };
 
 export default function CreatePicture() {

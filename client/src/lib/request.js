@@ -9,14 +9,12 @@ const buildOptions = (data) => {
     }
 
     const token = localStorage.getItem('accessToken');
-
     if(token){
         options.headers = {
             ...options.headers,
             'X-Authorization': token
         }
     }
-    
     return options;
 };
 
@@ -31,6 +29,8 @@ const request = async (method, url, data) => {
     }
 
     const result = await response.json();
+
+    console.log('in request: ' + result)
 
     if(!response.ok){
         //to do add some error message

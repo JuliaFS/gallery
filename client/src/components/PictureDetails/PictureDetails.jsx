@@ -10,6 +10,7 @@ import { Path } from "../../constants/constants";
 import { pathToUrl } from "../../utils/pathUtils";
 
 import styles from "./PictureDetails.module.css";
+import Likes from "./Likes";
 
 export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);
@@ -68,10 +69,10 @@ export default function PictureDetails() {
 
     const isOwner = userId === picture._ownerId;
 
-    const checkIsAuthorized = localStorage.getItem('auth');
-    if (!userId) {
-        console.log('No authorized: ' + userId);
-    }
+    // const checkIsAuthorized = localStorage.getItem('auth');
+    // if (!userId) {
+    //     console.log('No authorized: ' + userId);
+    // }
 
     // if(Math.random() < 0.5){
     //     throw new Error('Picture details error');
@@ -99,7 +100,11 @@ export default function PictureDetails() {
                     </div>
                 )}
             </div>
-
+            {(!isOwner && userId) && 
+                <div>
+                   <Likes {...picture}/>
+                </div>
+            }
 
             <article className={styles["create-comment"]}>
                 <legend>Add new comment:</legend>
