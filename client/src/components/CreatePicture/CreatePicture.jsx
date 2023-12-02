@@ -12,9 +12,7 @@ const formInitialState = {
     category: '',
     painter: '',
     imageUrl: '',
-    description: '',
-    likes: 0,
-    liked: []
+    description: ''
 };
 
 export default function CreatePicture() {

@@ -30,8 +30,6 @@ const request = async (method, url, data) => {
 
     const result = await response.json();
 
-    console.log('in request: ' + result)
-
     if(!response.ok){
         //to do add some error message
         throw result;

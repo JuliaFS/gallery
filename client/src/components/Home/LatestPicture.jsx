@@ -8,8 +8,7 @@ export default function LatestPicture({
     _id
 })  
 {
-    console.log("test");
-    console.log('_id: ' + _id);
+   
     return(
         <div>
             <h3>{title}</h3>
