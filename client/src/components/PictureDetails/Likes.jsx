@@ -3,68 +3,49 @@ import { useParams } from 'react-router-dom';
 import AuthContext from "../../contexts/AuthContext";
 import * as likesService from '../../services/likesService';
 
-const formInitialState = {
-    likes: 0,
-    liked: []
-}; 
+
 export default function Likes(props){
 
-    // const { email, userId } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
     const { pictureId } = useParams();
-    let isLiked = true;
-    
-    const [likesInfo, setLikesInfo] = useState({});
-    
-    // //console.log(props.liked)
-
-    // useEffect(() => {
-    //     likesService.getLikeCount(pictureId)
-    //     .then((result) => {
-    //         if(result.code !== 404){
-    //             setLikesInfo(result)
-    //         }
-    //     })
-    // }, [pictureId]);
-    // //Da se premesti vav onclick funkciqta
-    // if(likesState.liked.includes(userId)){
-    //     isLiked = true;
-    // } else {
-    //     likesState.liked.push(userId);
-    //     likesState.likes  = Number(likesState.likes) + 1;
-    //     isLiked = false;
-    // }
-
-    // console.log('likesState.likes = ' + likesState.likes);
+    const [likesCount, setLikesCount] = useState(0);
+    let isLiked = false;
 
 const onClickButtonLikes = async () => {
-    console.log('inside onClickButtonLikes')
+    let likes = await likesService.getLikes(pictureId);
+    //console.log('likes before filter' + likes);
 
-    let likes = await likesService.getLikes();
-    likes.filter()
-    //     //Da se premesti vav onclick funkciqta
-    // if(likesState.liked.includes(userId)){
-    //     isLiked = true;
-    // } else {
-    //     likesState.liked.push(userId);
-    //     likesState.likes  = Number(likesState.likes) + 1;
-    //     isLiked = false;
-    // }
+    likes = likes.filter(pictureLikes => pictureLikes.pictureId === pictureId);
+    console.log(likes);
+    //console.log('likes after filter' + likes);
 
-    //     try {
-    //         const result = await likesService.createLike(pictureId, likesState);
-    //         setLikesState(result.likes);
-    //         //navigate(pathToUrl(Path.Details, {pictureId: pictureId}));
-    //     } catch (err) {
-    //         //add error notification
-    //         console.log(err);
-    //     }   
+    isLiked = likes.find(liked => liked.data.userId === userId);
+    console.log(isLiked)
+    //let data = Object.values(likes);
+    //console.log(data)
+
+    // isLiked = data.find(user =>  console.log(user));//user.userId === userId);
+    // console.log(isLiked);
+
+
+    if(!isLiked){
+        likes.find(liked => setLikesCount(liked.data.likes));
+        try {
+            const result = await likesService.createLike(pictureId, {userId, likes });
+        } catch (err) {
+            //add error notification
+            console.log(err);
+        }  
+    } else {
+        setLikesCount(likes.length);
+        ///TO DO
+    }
 }
 
     return (
-        <div>{ isLiked &&
-            <button onClick={onClickButtonLikes}>Likes</button> }
-            <span>Likes: {likesInfo.likes} </span>
-        </div>
-        
+        <>
+            <div>{ !isLiked && userId && <button onClick={onClickButtonLikes}>Likes</button> }</div>
+            <span>Likes: {likesCount} </span>
+        </>
     );
 }

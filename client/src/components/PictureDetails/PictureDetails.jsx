@@ -68,6 +68,7 @@ export default function PictureDetails() {
     });
 
     const isOwner = userId === picture._ownerId;
+    //console.log(picture._ownerId)
 
     // const checkIsAuthorized = localStorage.getItem('auth');
     // if (!userId) {
