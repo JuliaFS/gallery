@@ -8,6 +8,7 @@ export const login = async (email, password) => {
         password
     });
 
+    console.log('result: ' + result + 'in login ');
     return result;
 }
 
