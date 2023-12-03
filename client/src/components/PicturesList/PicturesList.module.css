@@ -30,5 +30,11 @@
     }
   }
 
-.container {
+.gallery>h3{
+    color:  rgb(200, 187, 165);
+    margin-top: 8%;
+    text-transform: uppercase;
+    display: inline-block;
+    padding-bottom: 1%;
+    border-bottom: 3px solid antiquewhite;
 }

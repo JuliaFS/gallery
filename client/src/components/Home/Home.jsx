@@ -17,12 +17,10 @@ export default function Home({
     }, []);
     
     return (
-        <div>
-            <section>
-                <h1>Latest pictures</h1>
+        <section className={styles["latest-pictures"]}>
+            <h1>Latest pictures</h1>
                 {latestPicture.map(picture => <LatestPicture key={picture._id} {...picture} /> )}
-                {!latestPicture && <p>No added picture in gallery yet!</p>}
-            </section>
-      </div>
+                {latestPicture.length === 0 && <p>No added picture in gallery yet!</p>}
+        </section>
     );
 }

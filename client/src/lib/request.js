@@ -1,3 +1,5 @@
+//import Modal from "../components/404/ModalErrors";
+
 const buildOptions = (data) => {
     const options = {};
 
@@ -32,6 +34,8 @@ const request = async (method, url, data) => {
 
     if(!response.ok){
         //to do add some error message
+        //console.log(result.message);
+        //<Modal />
         throw result;
     }
 

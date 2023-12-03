@@ -12,6 +12,11 @@ export default function Likes (props){
     let isLiked = false;
     let [likes, setLikes] = useState([]);
 
+    useEffect(() =>{
+        likesService.getLikes()
+        .then(result => setLikes(result));
+    }, []);
+
     // useEffect((pictureId) => {
     //     likesService.getLikes()
     //     .then(result => {
@@ -54,7 +59,7 @@ export default function Likes (props){
 const onClickButtonLikes = async () => {
 
     
-    let likes = await likesService.getLikes(pictureId);
+    //let likes = await likesService.getLikes(pictureId);
     //console.log('likes before filter' + likes);
 
     likes = likes.filter(pictureLikes => pictureLikes.pictureId === pictureId);

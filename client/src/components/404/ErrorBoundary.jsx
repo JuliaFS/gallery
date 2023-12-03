@@ -20,7 +20,8 @@ export default class ErrorBoundary extends Component{
     //life
     componentDidCatch(error, errorInfo){
         console.log('componentDidCatch');
-        //TO DO - mojem da zapishem greshkata
+        console.error('An error occurred:', error, errorInfo);
+        return <h1>{error.message}!</h1>;
     }
 
     render(){

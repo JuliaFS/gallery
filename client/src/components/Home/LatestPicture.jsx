@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Path } from "../../constants/constants";
 import { pathToUrl } from "../../utils/pathUtils";
+import styles from  "./Home.module.css";
 
 export default function LatestPicture({
     imageUrl,
@@ -10,7 +11,7 @@ export default function LatestPicture({
 {
    
     return(
-        <div>
+        <div className="latest-image">
             <h3>{title}</h3>
             <img src={imageUrl}></img>
             <div>

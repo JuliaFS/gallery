@@ -10,33 +10,36 @@ const AuthContext = createContext();
 export const AuthProvider = ({
     children, 
 }) => {
+    const [errorMsg, setErrorMsg] = useState({});
     const navigate = useNavigate();
     const [auth, setAuth] = usePersistedState('auth', {});
+
+
   
     const loginSubmitHandler = async (values) => {
-      //console.log(values);
       try{
         const result = await authService.login(values.email, values.password);
         setAuth(result);
         localStorage.setItem('accessToken', result.accessToken);
         navigate(Path.Gallery);
-      } catch(err){
-        //TO DO
-        console.log(err);
+      } catch(error){
+        setErrorMsg(error);
+        //navigate(Path.Login);
+        //throw new Error('User does not exist!');
+        //alert(err.message);
       }
     };
   
     const registerSubmitHandler = async (values) => {
-      //console.log(values['confirm-password']);
       try{
         const result = await authService.register(values.email, values.password, values['confirm-password']);
         setAuth(result);
-        //console.log(result)
         localStorage.setItem('accessToken', result.accessToken);
          navigate(Path.Gallery);
       } catch(err){
-        //TO DO
+        setErrorMsg(err);
         console.log(err);
+        //navigate(Path.Error404Path);
       }
     };
   
@@ -53,7 +56,9 @@ export const AuthProvider = ({
       //username: auth.username,
       email: auth.email,
       userId: auth._id,
-      isAuthenticated: !!auth.accessToken //double nogation, ako ima username, obrashtame v truti stoinost ili folsi
+      error: errorMsg,
+      isAuthenticated: !!auth.accessToken //double nogation, ako ima username, obrashtame v truti stoinost ili folsi,
+     
     };
 
     return (
