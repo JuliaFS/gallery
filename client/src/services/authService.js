@@ -3,13 +3,15 @@ import * as request from "../lib/request";
 const baseUrl = 'http://localhost:3030/users';
 
 export const login = async (email, password) => {
+    try{
     const result = await request.post(`${baseUrl}/login`, {
         email,
         password
     });
-
-    console.log('result: ' + result + 'in login ');
     return result;
+    } catch(err){
+        console.log(err.message);
+    }
 }
 
 export const register = async (email, password, confirmPassword) => {
