@@ -92,3 +92,12 @@
         border-color: rgb(183, 169, 145);
     }
 }
+
+.error-msg{
+    color: white;
+}
+
+.no-error{
+    display: none;
+    overflow: hidden;
+}

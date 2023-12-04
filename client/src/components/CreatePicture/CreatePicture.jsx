@@ -11,6 +11,7 @@ const formInitialState = {
     title: '',
     category: '',
     painter: '',
+    painterAge: 0,
     imageUrl: '',
     description: ''
 };
@@ -57,7 +58,7 @@ export default function CreatePicture() {
         <section className={styles["create-page"]}>
             <form method="post" id="create" >
                     <h1>Create New Paint</h1>
-                    <label htmlFor="title">Legendary title:</label>
+                    <label htmlFor="title">Picture title:</label>
                     <input  type="text" 
                             id="title" 
                             name="title" 
@@ -66,23 +67,31 @@ export default function CreatePicture() {
                             onChange={changeHandler}
                             placeholder="Enter picture title..." 
                     />
-                    <label htmlFor="category">Category:</label>
+                    <label htmlFor="category">Picture category:</label>
                     <input  type="text"
                             id="category" 
                             name="category" 
                             value={formValues.category}
                             onChange={changeHandler}
-                            placeholder="Enter game category..." 
+                            placeholder="Enter picture category..." 
                     />
-                    <label htmlFor="painter">Painter:</label>
+                    <label htmlFor="painter">Painter name:</label>
                     <input  type="text" 
                             id="painter" 
                             name="painter" 
                             value={formValues.painter}
                             onChange={changeHandler}
-                            placeholder="Enter painter..." 
+                            placeholder="Enter painter name..." 
                     />
-                    <label htmlFor="imageUrl">Picture:</label>
+                    <label htmlFor="painterAge">Painter age:</label>
+                     <input  type="number" 
+                            id="painterAge" 
+                            name="painterAge" 
+                            value={formValues.painter}
+                            onChange={changeHandler}
+                            placeholder="Enter painter age..." 
+                    />
+                    <label htmlFor="imageUrl">Picture URL:</label>
                     <input  type="text" 
                             id="imageUrl" 
                             name="imageUrl" 
@@ -90,7 +99,7 @@ export default function CreatePicture() {
                             onChange={changeHandler}
                             placeholder="Upload a photo..." 
                     />
-                   <label htmlFor="description">Description:</label>
+                   <label htmlFor="description">Picture description:</label>
                     <textarea   name="description"
                                 value={formValues.description}
                                 onChange={changeHandler} >

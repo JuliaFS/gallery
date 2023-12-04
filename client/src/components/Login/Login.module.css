@@ -97,6 +97,7 @@
 
 .no-error{
     display: none;
+    overflow: hidden;
 }
 
 

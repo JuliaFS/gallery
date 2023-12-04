@@ -19,25 +19,12 @@ const LoginFormKeys = {
 };
 
 export default function Login() {
-    const { loginSubmitHandler } = useContext(AuthContext);
-    const { error } = useContext(AuthContext);
-    // const [formErrors, setFormErrors] = useState({});
-    //let checkForError = Object.values(error);
-    const initialValues = {email: '', password: ''};
-    console.log("this sis error");
-    console.log(error )
-
-    const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isBlur, setIsBlur] = useState(false);
     const [isError, setIsError] = useState(false);
- 
-    // useEffect(() => {
-    //     if(Object.keys(error).length !== 0){
-    //         setIsError(true);
-    //     } 
-    // }, [error]);
     
+    const { loginSubmitHandler } = useContext(AuthContext);
+    const { error } = useContext(AuthContext);
    
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
         [LoginFormKeys.Email]: '',
@@ -61,7 +48,6 @@ export default function Login() {
         }else if(value.password.length > 15){
             errors.password = 'Password can not exceed more than 15 characters';
         }
-
         return errors;
     }
 
@@ -79,7 +65,7 @@ export default function Login() {
         <section className={styles["login-page"]}>
             {/*<pre>{JSON.stringify(values, undefined, 2)}</pre>*/}
             {/*{error && <p>{error.message}</p>}*/}
-            {Object.keys(error)  
+            {isError  
                 ? <p className={styles["error-msg"]}>{error.message}</p> 
                 : <p className={styles["no-error"]}>{''}</p>
             }

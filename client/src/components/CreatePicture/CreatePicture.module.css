@@ -80,13 +80,14 @@
     margin-top: 5%;
     padding-bottom: 2%;
     color: white;
+    font-weight: bold;
 }
 
 .create-page input, .create-page textarea{
     width: 80%;
     padding: 10px 5px 10px 40px;
     display: block;
-    border: 1px solid #ededed;
+    border: 1px solid rgb(183, 169, 145);
     margin-left: 10%;
     border-radius: 4px;
     transition: 0.2s ease-out;
@@ -104,6 +105,8 @@
     width: 35%;
     padding: 2.7% 1.2% 1.2% 1.2%;
     color: rgb(183, 169, 145);
+    border: 1px solid rgb(183, 169, 145);
+    border-radius: 4px;
     font-size: 1.2em;
     font-weight: bold;
     text-transform: uppercase;

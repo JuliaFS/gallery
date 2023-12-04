@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import AuthContext from '../../contexts/AuthContext';
@@ -15,13 +15,64 @@ const RegisterFormKeys = {
 };
 
 export default function Register() {
-    const { registerSubmitHandler } = useContext(AuthContext);
+    const [formErrors, setFormErrors] = useState({});
+    const [isBlur, setIsBlur] = useState(false);
+    const [isError, setIsError] = useState(false);
+
+    const { registerSubmitHandler, error } = useContext(AuthContext);
+ 
+    useEffect(() => {
+        if(Object.keys(error).length !== 0){
+            setIsError(true);
+        } else {
+            setIsError(false);
+        }
+    }, [error]);
 
     const { values, onChange, onSubmit} = useForm(registerSubmitHandler, {
         [RegisterFormKeys.Email]: '',
         [RegisterFormKeys.Password]: '',
         [RegisterFormKeys.ConfirmPassword]: ''
     })
+
+    const validate = (value) => {
+        const errors = {};
+        const curPassword = value.password;
+        //console.log('validate: ' + value);
+       // const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        if(!value.email){
+            errors.email = 'Email is required!';
+        } else if(!regex.test(value.email)){
+            errors.email = 'This is not a valid email format';
+        }
+        if(!value.password){
+            errors.password = 'Password is required!';
+        } else if(value.password.length < 4){
+            errors.password = 'Password must be at least 4 character long';
+        }else if(value.password.length > 15){
+            errors.password = 'Password can not exceed more than 15 characters';
+        }
+        if(!value["confirm-password"]){
+            errors["confirm-password"] = 'Confirming password is required';
+        } else if (curPassword !== value["confirm-password"]){
+            errors["confirm-password"] = 'Password do not match';
+        }
+        // } else if(value["confirm-password"].length < 4){
+        //     errors["confirm-password"]= 'Password must be at least 4 character long';
+        // }else if(value["confirm-password"].length > 15){
+        //     errors["confirm-password"] = 'Password can not exceed more than 15 characters';
+        //}
+        return errors;
+    }
+
+    const validateInput = (e) =>{
+        //console.log(values)
+        setFormErrors(validate(values));
+        setIsBlur(true);
+         
+    }
+
     return (
         <section className={styles["register-page"]}>
             <form  method="post" onSubmit={onSubmit}>
@@ -31,29 +82,31 @@ export default function Register() {
                     id="email"
                     name="email"
                     placeholder="Enter your email..."
-                    
                     onChange={onChange}
+                    onBlur={validateInput}
                     value={values[RegisterFormKeys.Email]}
-                    required
                 />
+                <p className={styles["error-msg"]}>{formErrors[RegisterFormKeys.Email]}</p>
                 <input
                     type="password"
                     name="password"
                     id="register-password"
                     placeholder="Enter your password..."
                     onChange={onChange}
+                    onBlur={validateInput}
                     value={values[RegisterFormKeys.Password]}
-                    required
                 />
+                <p className={styles["error-msg"]}>{formErrors[RegisterFormKeys.Password]}</p>
                 <input
                     type="password"
                     name="confirm-password"
                     id="confirm-password"
                     placeholder="Confirm your password..."
                     onChange={onChange}
+                    onBlur={validateInput}
                     value={values[RegisterFormKeys.ConfirmPassword]}
-                    required
                 />
+                <p className={styles["error-msg"]}>{formErrors[RegisterFormKeys.ConfirmPassword]}</p>
                 <input type="submit" value="Register" />
                 <p>
                     <span>If you already have profile click <Link to={Path.Login}>here</Link></span>
