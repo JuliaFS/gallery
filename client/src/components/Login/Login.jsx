@@ -55,6 +55,7 @@ export default function Login() {
         //console.log(values)
         setFormErrors(validate(values));
         setIsBlur(true);
+
          
     }
 
@@ -65,9 +66,9 @@ export default function Login() {
         <section className={styles["login-page"]}>
             {/*<pre>{JSON.stringify(values, undefined, 2)}</pre>*/}
             {/*{error && <p>{error.message}</p>}*/}
-            {isError  
+            {Object.keys(isError) > 0   
                 ? <p className={styles["error-msg"]}>{error.message}</p> 
-                : <p className={styles["no-error"]}>{''}</p>
+                : ""
             }
             <form method="POST" onSubmit={onSubmit}>
                 <legend>Login</legend>

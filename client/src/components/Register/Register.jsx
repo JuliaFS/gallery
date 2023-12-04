@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import AuthContext from '../../contexts/AuthContext';
 import useForm from '../../hooks/useForm';
+import validate from './validateRegister';
 
 import { Path } from '../../constants/constants';
 import styles from './Register.module.css';
@@ -19,7 +20,8 @@ export default function Register() {
     const [isBlur, setIsBlur] = useState(false);
     const [isError, setIsError] = useState(false);
 
-    const { registerSubmitHandler, error } = useContext(AuthContext);
+    const { registerSubmitHandler} = useContext(AuthContext);
+    const { error } = useContext(AuthContext);
  
     useEffect(() => {
         if(Object.keys(error).length !== 0){
@@ -28,12 +30,6 @@ export default function Register() {
             setIsError(false);
         }
     }, [error]);
-
-    const { values, onChange, onSubmit} = useForm(registerSubmitHandler, {
-        [RegisterFormKeys.Email]: '',
-        [RegisterFormKeys.Password]: '',
-        [RegisterFormKeys.ConfirmPassword]: ''
-    })
 
     const validate = (value) => {
         const errors = {};
@@ -66,16 +62,26 @@ export default function Register() {
         return errors;
     }
 
+    const { values, onChange, onSubmit} = useForm(registerSubmitHandler, {
+        [RegisterFormKeys.Email]: '',
+        [RegisterFormKeys.Password]: '',
+        [RegisterFormKeys.ConfirmPassword]: ''
+    })
+
+
     const validateInput = (e) =>{
         //console.log(values)
         setFormErrors(validate(values));
         setIsBlur(true);
          
     }
-
     return (
         <section className={styles["register-page"]}>
-            <form  method="post" onSubmit={onSubmit}>
+            {isError  
+                ? <p className={styles["error-msg"]}>{error.message}</p> 
+                : ''
+            }
+            <form  method="POST" onSubmit={onSubmit}>
                 <legend>Register</legend>
                 <input
                     type="email"
@@ -83,8 +89,8 @@ export default function Register() {
                     name="email"
                     placeholder="Enter your email..."
                     onChange={onChange}
-                    onBlur={validateInput}
                     value={values[RegisterFormKeys.Email]}
+                    onBlur={validateInput}
                 />
                 <p className={styles["error-msg"]}>{formErrors[RegisterFormKeys.Email]}</p>
                 <input
@@ -93,8 +99,8 @@ export default function Register() {
                     id="register-password"
                     placeholder="Enter your password..."
                     onChange={onChange}
-                    onBlur={validateInput}
                     value={values[RegisterFormKeys.Password]}
+                    onBlur={validateInput}
                 />
                 <p className={styles["error-msg"]}>{formErrors[RegisterFormKeys.Password]}</p>
                 <input
@@ -103,8 +109,8 @@ export default function Register() {
                     id="confirm-password"
                     placeholder="Confirm your password..."
                     onChange={onChange}
-                    onBlur={validateInput}
                     value={values[RegisterFormKeys.ConfirmPassword]}
+                    onBlur={validateInput}
                 />
                 <p className={styles["error-msg"]}>{formErrors[RegisterFormKeys.ConfirmPassword]}</p>
                 <input type="submit" value="Register" />

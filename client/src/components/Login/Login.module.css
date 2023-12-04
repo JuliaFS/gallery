@@ -92,7 +92,7 @@
     }
 }
 .error-msg{
-    color: white;
+    color: red;
 }
 
 .no-error{
