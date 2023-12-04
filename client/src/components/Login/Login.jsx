@@ -20,12 +20,23 @@ const LoginFormKeys = {
 
 export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
-    //const { error } = useContext(AuthContext);
+    const { error } = useContext(AuthContext);
     // const [formErrors, setFormErrors] = useState({});
     //let checkForError = Object.values(error);
+    const initialValues = {email: '', password: ''};
+    console.log("this sis error");
+    console.log(error )
 
-
-    const [err, setErr] = useState("");
+    const [formValues, setFormValues] = useState(initialValues);
+    const [formErrors, setFormErrors] = useState({});
+    const [isBlur, setIsBlur] = useState(false);
+    const [isError, setIsError] = useState(false);
+ 
+    // useEffect(() => {
+    //     if(Object.keys(error).length !== 0){
+    //         setIsError(true);
+    //     } 
+    // }, [error]);
     
    
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
@@ -33,27 +44,32 @@ export default function Login() {
         [LoginFormKeys.Password]: ''
     });
 
-    const validateInput = (e) =>{
-        //const error = {};
-        //const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-        switch(e.target.name){
-            case "email": {
-                const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-                const  isCorrectEmail = regex.test(e.target.value);
-                    if(!isCorrectEmail){
-                        setErr('Pls check and enter correct email.');
-                    }
-                    break;
-                }
-            case "password": {
-                if(e.target.value.length < 4 && e.target.value.length > 12){
-                    setErr('Pls check passwords length');
-                }
-                break;
-            }
-            default: setErr('Something wrong, pls check info carefully...')
+    const validate = (value) => {
+        const errors = {};
+        //console.log('validate: ' + value);
+       // const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        if(!value.email){
+            errors.email = 'Email is required!';
+        } else if(!regex.test(value.email)){
+            errors.email = 'This is not a valid email format';
         }
-        //return errorMsg;
+        if(!value.password){
+            errors.password = 'Password is required!';
+        } else if(value.password.length < 4){
+            errors.password = 'Password must be at least 4 character long';
+        }else if(value.password.length > 15){
+            errors.password = 'Password can not exceed more than 15 characters';
+        }
+
+        return errors;
+    }
+
+    const validateInput = (e) =>{
+        //console.log(values)
+        setFormErrors(validate(values));
+        setIsBlur(true);
+         
     }
 
 
@@ -61,6 +77,12 @@ export default function Login() {
     //console.log('props in login' + props);
     return (
         <section className={styles["login-page"]}>
+            {/*<pre>{JSON.stringify(values, undefined, 2)}</pre>*/}
+            {/*{error && <p>{error.message}</p>}*/}
+            {Object.keys(error)  
+                ? <p className={styles["error-msg"]}>{error.message}</p> 
+                : <p className={styles["no-error"]}>{''}</p>
+            }
             <form method="POST" onSubmit={onSubmit}>
                 <legend>Login</legend>
                     <input
@@ -71,9 +93,8 @@ export default function Login() {
                         onChange={onChange}
                         value={values[LoginFormKeys.Email]}
                         onBlur={validateInput}
-                        required
                     />
-                    <p className="error">{err}</p>
+                    <p className={styles["error-msg"]}>{formErrors.email}</p>
                 <input
                     type="password"
                     id="login-password"
@@ -81,9 +102,9 @@ export default function Login() {
                     name={LoginFormKeys.Password}
                     onChange={onChange}
                     value={values[LoginFormKeys.Password]}
-                    required
+                    onBlur={validateInput}
                 />
-                <p className="error">{err}</p>
+                <p className={styles["error-msg"]}>{formErrors.password}</p>
                 <input type="submit" value="Login" />
                 <p>
                     <span>If you don't have profile click <Link to={Path.Register}>here</Link></span>

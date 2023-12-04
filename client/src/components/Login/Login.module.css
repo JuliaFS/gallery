@@ -91,7 +91,13 @@
         border-color: #ff7052;
     }
 }
+.error-msg{
+    color: white;
+}
 
+.no-error{
+    display: none;
+}
 
 
 
