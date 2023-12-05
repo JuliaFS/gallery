@@ -15,8 +15,9 @@ import PictureDetails from './components/PictureDetails/PictureDetails';
 import Logout from './components/Logout/Logout';
 import EditPicture from './components/PictureEdit/EditPicture';
 import Footer from './components/Footer/Footer';
-import ErrorBoundary from './components/404/ErrorBoundary';
+import ErrorBoundary from './components/404/Error boundary/ErrorBoundary';
 import AuthGuard from './components/quards/AuthGuard';
+import PageNotFound from './components/404/PageNotFound/PageNotFound';
 
 export default function App() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
               <Route path={Path.PictureEdit} element={<EditPicture />} />
               <Route path={Path.Logout} element={<Logout />} />
             </Route>
+            <Route path={Path.Error404Path} element={<PageNotFound />} />
           </Routes>
           <Footer />
         </div>

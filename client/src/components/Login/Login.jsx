@@ -10,7 +10,7 @@ import { Path } from '../../constants/constants';
 import styles from './Login.module.css';
 import { useContext } from 'react';
 import AuthContext from '../../contexts/AuthContext';
-import Modal from "../404/ModalErrors";
+import Modal from "../404/ModalErrors/ModalErrors";
 
 
 const LoginFormKeys = {

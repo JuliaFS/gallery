@@ -8,7 +8,7 @@ const Path = {
     Details: "/gallery/:pictureId",
     PictureEdit: "/gallery/:pictureId/edit",
     PictureDelete: "/gallery/:pictureId/delete",
-    Error404Path: "/404",
+    Error404Path: "*",
 }
 
 const Notifications ={

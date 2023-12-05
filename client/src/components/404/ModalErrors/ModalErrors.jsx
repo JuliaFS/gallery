@@ -1,6 +1,6 @@
 import styles from './ModalErrors.module.css';
 import { useNavigate } from 'react-router-dom';
-import { Path, Notifications } from '../../constants/constants';
+import { Path, Notifications } from '../../../constants/constants';
 import { useState } from 'react';
 
 export default function Modal(error){

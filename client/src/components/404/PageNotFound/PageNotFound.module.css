@@ -1,0 +1,29 @@
+.page-404{
+    position: relative;
+    display: inline-block;
+    color: rgb(183, 169, 145);
+}
+
+.page-404 h1{
+    color: rgb(183, 169, 145);
+}
+
+.page-404 p {
+    font-weight: bold;
+}
+.page-404 a{
+    display: inline-block;
+    border-right: 1px solid white;
+    text-decoration: none;
+    padding: 2.6%;
+    margin-bottom: 7%;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgb(183, 169, 145);
+
+    &:hover{
+        background-color: antiquewhite;
+    }
+}
+

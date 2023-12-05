@@ -7,7 +7,7 @@ import { Path, Notifications } from '../../constants/constants';
 import validate from '../common/validateCreateForm';
 
 import styles from './CreatePicture.module.css';
-import Modal from '../404/ModalErrors';
+import Modal from '../404/ModalErrors/ModalErrors';
 import { useEffect } from 'react';
 
 const formInitialState = {
