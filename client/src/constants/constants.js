@@ -11,7 +11,8 @@ const Path = {
     Error404Path: "/404",
 }
 
-// const notifications ={
+const Notifications ={
+        CreateError: "You have to fill all fields!",
 //     name: "Please provide your name.",
 //     userExists: "User already exists.",
 //     emailExists: "This email already exists.",
@@ -50,9 +51,9 @@ const Path = {
 
 //     invalidInput: "Invalid input!",
 //     notReceivedData: "Authentication data not received."
-// }
+}
 
 export {
     Path,
-    //notifications
+    Notifications
 }

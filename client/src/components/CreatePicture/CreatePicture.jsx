@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 
 
 import * as pictureService from '../../services/pictureService';
-import { Path } from '../../constants/constants';
+import { Path, Notifications } from '../../constants/constants';
 
 import styles from './CreatePicture.module.css';
+import Modal from '../404/ModalErrors';
 
 const formInitialState = {
     title: '',
@@ -20,6 +21,7 @@ export default function CreatePicture() {
     const navigate = useNavigate();
     const [formValues, setFormValues] = useState(formInitialState);
     const [formErrors, setFormErrors] = useState({});
+    const [isClicked, setIsClicked] = useState(false);
 
     const changeHandler = (e) => {
         let isEmpty = false;
@@ -41,16 +43,18 @@ export default function CreatePicture() {
     };
 
     const submitHandler = async () => {
+
         console.log(formValues)
-        // if ( formValues.title === '' ||
-        //      formValues.category === '' ||
-        //      formValues.painter === '' ||
-        //      formValues.imageUrl === '' ||
-        //      formValues.description === '') {
-        //         console.log('inreturn')
-        //          navigate(Path.Gallery);
-        //          return;
-        // }
+        if ( formValues.title === '' ||
+             formValues.category === '' ||
+             formValues.painter === '' ||
+             formValues.imageUrl === '' ||
+             formValues.description === '') {
+                console.log('in return in CreatePicture')
+                setFormErrors(Notifications.CreateError);
+                setIsClicked(true);
+                 return;
+        }
 
         try {
             const response = await pictureService.create(formValues);
@@ -75,6 +79,9 @@ export default function CreatePicture() {
 */}
     return (
         <section className={styles["create-page"]}>
+            { isClicked &&
+                 <Modal {...formErrors}/>
+            }
             <form method="POST">
                     <h1>Create New Paint</h1>
                     <label htmlFor="title">Picture title:</label>
@@ -108,7 +115,7 @@ export default function CreatePicture() {
                      <input  type="number" 
                             id="painterAge" 
                             name="painterAge" 
-                            value={formValues.painter}
+                            value={formValues.painterAge}
                             onChange={changeHandler}
                             onBlur={validateInput}
                             placeholder="Enter painter age..." 
