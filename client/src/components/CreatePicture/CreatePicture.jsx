@@ -47,7 +47,6 @@ export default function CreatePicture() {
     };
 
     const submitHandler = async () => {
-        e.preventDefault();
         console.log(formValues)
         // if ( formValues.title === '' ||
         //      formValues.category === '' ||
@@ -84,7 +83,7 @@ export default function CreatePicture() {
 */}
     return (
         <section className={styles["create-page"]}>
-            <form method="POST" onSubmit={submitHandler}>
+            <form method="POST">
                     <h1>Create New Paint</h1>
                     <label htmlFor="title">Picture title:</label>
                     <input  type="text" 
@@ -147,7 +146,7 @@ export default function CreatePicture() {
                                 placeholder="Enter picture description here..."
                     ></textarea>
                     <p className={styles["error-msg"]}>{formErrors.description}</p>
-                <button type="submit">Create picture</button>
+                <button type="submit" onSubmit={submitHandler}>Create picture</button>
                 <button type="button" onClick={resetFormHandler}>Reset</button>
             </form>
         </section>
