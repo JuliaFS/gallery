@@ -24,9 +24,9 @@ export const AuthProvider = ({
         navigate(Path.Gallery);
       } catch(error){
         setErrorMsg(error);
-        //navigate(Path.Login);
+        navigate(Path.Login);
         //throw new Error('User does not exist!');
-        alert(error.message);
+        //alert(error.message);
       }
     };
   
