@@ -38,7 +38,7 @@ export const AuthProvider = ({
          navigate(Path.Gallery);
       } catch(err){
         setErrorMsg(err);
-        console.log(err.message);
+        console.log(err);
         //navigate(Path.Error404Path);
       }
     };

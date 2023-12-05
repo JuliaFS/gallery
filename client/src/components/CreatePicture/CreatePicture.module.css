@@ -77,8 +77,8 @@
     position: relative;
     display: block;
     margin-left: 10%;
-    margin-top: 2%;
-    padding-bottom: 1%;
+    margin-top: 5%;
+    padding-bottom: 2%;
     color: white;
     font-weight: bold;
 }
@@ -100,18 +100,6 @@
     }
 }
 
-.create-page>form>.age-input{
-    width: 14%;
-    padding-left: 5px;
-    overflow: hidden;
-
-    &:focus {
-        padding: 10px 5px 10px 10px;
-        outline: 0;
-        border-color: #ff7052;
-    }
-}
-
 .create-page button{
     display: inline-block;
     width: 35%;
@@ -122,7 +110,7 @@
     font-size: 1.2em;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 1%;
+    margin-top: 5%;
     margin-left: 3%;
     cursor:pointer;
 }
@@ -135,22 +123,8 @@
     position: relative;
     display: block;
     margin-left: 10%;
-    margin-top: 1%;
+    margin-top: 5%;
     padding-bottom: 2%;
     color: white;
 }
-
-.error-msg{
-    padding: 1%;
-    color: red;
-    font-weight: bold;
-    margin-left: 10%;
-}
-
-.no-error{
-    display: none;
-    overflow: hidden;
-}
-
-
 

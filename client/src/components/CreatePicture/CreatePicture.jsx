@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 import * as pictureService from '../../services/pictureService';
 import { Path } from '../../constants/constants';
-import validate from './validateCreatePicture';
-import Modal from '../404/ModalErrors';
 
 import styles from './CreatePicture.module.css';
 
@@ -13,7 +11,7 @@ const formInitialState = {
     title: '',
     category: '',
     painter: '',
-    painterAge: 1,
+    painterAge: 0,
     imageUrl: '',
     description: ''
 };
@@ -23,23 +21,19 @@ export default function CreatePicture() {
     const [formValues, setFormValues] = useState(formInitialState);
     const [formErrors, setFormErrors] = useState({});
 
-    const [isSubmitrd, setIsSubmited] = useState(false);
-    //const [isError, setIsError] = useState(false);
-
-    // useEffect(() => {
-    //     if(Object.keys(error).length !== 0){
-    //         setIsError(true);
-    //     } else {
-    //         setIsError(false);
-    //     }
-    // }, [error]);
-
-
     const changeHandler = (e) => {
+        let isEmpty = false;
+        if(e.target.value !== ""){
             setFormValues(state => ({
                 ...state,
                 [e.target.name]: e.target.value
-            }))
+            }
+            ));
+        } else {
+            isEmpty = true;
+            return;
+        }
+        
     };
 
     const resetFormHandler = () => {
@@ -62,18 +56,16 @@ export default function CreatePicture() {
             const response = await pictureService.create(formValues);
             resetFormHandler();
             navigate(Path.Gallery);
-        } catch (error) {
-            <Modal {...error}/>
-            //setIsError(true);
-            console.log(error);
+        } catch (err) {
+            //add error notification
+            console.log(err);
         }
     };
 
     const validateInput = (e) =>{
-        e.preventDefault();
         //console.log(values)
-        setFormErrors(validate(formValues));
-        //setIsSubmited(true);
+        setFormErrors(validate(values));
+        setIsBlur(true);
          
     }
 
@@ -90,11 +82,10 @@ export default function CreatePicture() {
                             id="title" 
                             name="title" 
                             value={formValues.title}
-                            onChange={changeHandler}
                             onBlur={validateInput}
+                            onChange={changeHandler}
                             placeholder="Enter picture title..." 
                     />
-                    <p className={styles["error-msg"]}>{formErrors.title}</p>
                     <label htmlFor="category">Picture category:</label>
                     <input  type="text"
                             id="category" 
@@ -104,7 +95,6 @@ export default function CreatePicture() {
                             onBlur={validateInput}
                             placeholder="Enter picture category..." 
                     />
-                    <p className={styles["error-msg"]}>{formErrors.category}</p>
                     <label htmlFor="painter">Painter name:</label>
                     <input  type="text" 
                             id="painter" 
@@ -114,20 +104,15 @@ export default function CreatePicture() {
                             onBlur={validateInput}
                             placeholder="Enter painter name..." 
                     />
-                    <p className={styles["error-msg"]}>{formErrors.painter}</p>
                     <label htmlFor="painterAge">Painter age:</label>
                      <input  type="number" 
                             id="painterAge" 
-                            className={styles["age-input"]}
                             name="painterAge" 
-                            value={formValues.painterAge}
+                            value={formValues.painter}
                             onChange={changeHandler}
                             onBlur={validateInput}
-                            placeholder="1..." 
-                            min={1}
-                            max={75}
+                            placeholder="Enter painter age..." 
                     />
-                    <p className={styles["error-msg"]}>{formErrors.painterAge}</p>
                     <label htmlFor="imageUrl">Picture URL:</label>
                     <input  type="text" 
                             id="imageUrl" 
@@ -137,7 +122,6 @@ export default function CreatePicture() {
                             onBlur={validateInput}
                             placeholder="Upload a photo..." 
                     />
-                    <p className={styles["error-msg"]}>{formErrors.imageUrl}</p>
                    <label htmlFor="description">Picture description:</label>
                     <textarea   name="description"
                                 value={formValues.description}
@@ -146,7 +130,7 @@ export default function CreatePicture() {
                                 placeholder="Enter picture description here..."
                     ></textarea>
                     <p className={styles["error-msg"]}>{formErrors.description}</p>
-                <button type="submit" onSubmit={submitHandler}>Create picture</button>
+                <button type="button" onClick={submitHandler}>Create picture</button>
                 <button type="button" onClick={resetFormHandler}>Reset</button>
             </form>
         </section>
