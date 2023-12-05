@@ -1,0 +1,25 @@
+.footer-page{
+    background-color: antiquewhite;
+    padding: 1%;
+    color: white;
+    position: absolute;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.footer-page p{
+    display: inline-block;
+    font-weight: bold;
+}
+
+.footer-page p:first-child{
+    color: rgb(160, 146, 146);
+    margin-right: 1%;
+}
+
+.footer-page a{
+    color: white;
+
+    text-decoration: none;
+}

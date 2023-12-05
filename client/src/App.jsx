@@ -14,6 +14,7 @@ import Register from './components/Register/Register';
 import PictureDetails from './components/PictureDetails/PictureDetails';
 import Logout from './components/Logout/Logout';
 import EditPicture from './components/PictureEdit/EditPicture';
+import Footer from './components/Footer/Footer';
 import ErrorBoundary from './components/404/ErrorBoundary';
 import AuthGuard from './components/quards/AuthGuard';
 
@@ -39,6 +40,7 @@ export default function App() {
               <Route path={Path.Logout} element={<Logout />} />
             </Route>
           </Routes>
+          <Footer />
         </div>
       </AuthProvider>
     </ErrorBoundary>
