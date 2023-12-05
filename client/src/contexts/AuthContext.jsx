@@ -26,7 +26,7 @@ export const AuthProvider = ({
         setErrorMsg(error);
         //navigate(Path.Login);
         //throw new Error('User does not exist!');
-        //alert(err.message);
+        alert(error.message);
       }
     };
   
