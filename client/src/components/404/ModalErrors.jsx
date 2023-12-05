@@ -1,5 +1,5 @@
 import styles from './ModalErrors.module.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Path, Notifications } from '../../constants/constants';
 import { useState } from 'react';
 
@@ -10,9 +10,7 @@ export default function Modal(error){
     const closeErrorModal = () => {
         console.log('inside closeErrorModal');
         setIsClosedClick(true);
-        //<Navigate to={Path.Login}` />
-        //navigate(Path.Login);
-        navigate(-1);
+        navigate(0);
     }
     return (
       <section>

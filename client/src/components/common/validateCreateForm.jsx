@@ -22,7 +22,7 @@ export default function validate(value){
     }
     if(!/[0-9]/.test(value.painterAge)){
         errors.painterAge = 'Age is required and must be a number!';
-    } else if(Number(value.painterAge) > 30){
+    } else if(Number(value.painterAge) > 75){
         errors.painterAge = 'Age can not be more than 75 years.';
     } else if(Number(value.painterAge) < 1){
         errors.painterAge = 'Age can not be less than 1 year.';

@@ -128,3 +128,8 @@
     color: white;
 }
 
+.error-msg{
+    margin-left: 10%;
+    color: red;
+}
+
