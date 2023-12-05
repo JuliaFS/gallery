@@ -11,7 +11,7 @@ const formInitialState = {
     title: '',
     category: '',
     painter: '',
-    painterAge: 0,
+    painterAge: 1,
     imageUrl: '',
     description: ''
 };

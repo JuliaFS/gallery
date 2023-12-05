@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Path } from "../constants/constants";
 
 export default function usePersistedState(key, defaultValue){
     const [state, setState] = useState(() => {
