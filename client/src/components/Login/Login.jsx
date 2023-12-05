@@ -66,10 +66,10 @@ export default function Login() {
         <section className={styles["login-page"]}>
             {/*<pre>{JSON.stringify(values, undefined, 2)}</pre>*/}
             {/*{error && <p>{error.message}</p>}*/}
-            {Object.keys(isError) > 0   
+            {/*{Object.keys(isError) > 0   
                 ? <p className={styles["error-msg"]}>{error.message}</p> 
                 : ""
-            }
+            }*/}
             <form method="POST" onSubmit={onSubmit}>
                 <legend>Login</legend>
                     <input
