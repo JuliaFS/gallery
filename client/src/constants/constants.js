@@ -13,7 +13,9 @@ const Path = {
 
 const Notifications ={
         CreateError: "You have to fill all fields!",
-//     name: "Please provide your name.",
+        Create: "Something wrong, you can not create picture. Pls try again later...."
+        
+        //name: "Please provide your name.",
 //     userExists: "User already exists.",
 //     emailExists: "This email already exists.",
 //     userDataNotFound: "User data not found",

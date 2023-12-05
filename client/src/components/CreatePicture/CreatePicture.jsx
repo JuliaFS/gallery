@@ -71,7 +71,8 @@ export default function CreatePicture() {
             navigate(Path.Gallery);
         } catch (err) {
             //add error notification
-            console.log(err);
+            setCreateError({message: Notifications.Create});
+            console.log(err.message);
         }
     };
 
