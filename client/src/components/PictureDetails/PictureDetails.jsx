@@ -20,8 +20,8 @@ export default function PictureDetails() {
     const [comments, dispatch] = useReducer(reducer, []);
     const { pictureId } = useParams();
     const navigate = useNavigate();
-    const [likesCount, setLikesCount] = useState(0);
-    const [liked, setLiked] = useState([]);
+    let [likesCount, setLikesCount] = useState("");
+    //const [liked, setLiked] = useState([]);
     const [isClicked, setIsClicked] = useState(false);
     //console.log('picture before useEffect: ' + picture);
 
@@ -38,9 +38,6 @@ export default function PictureDetails() {
             });
     }, [pictureId]);
 
-    //console.log('picture after useEffect: ' )
-    //console.log(picture)
-
     const addCommentHandler = async (values) => {
         const newComment = await commentService.create(
             pictureId,
@@ -56,24 +53,42 @@ export default function PictureDetails() {
     }
 
     const onClickButtonLikes = async () => {
-        if(picture.usersLike){
-            if(picture.usersLike?.includes(userId)){
-                setIsClicked(true);
-                return;
-            }
-        }
-        setLikesCount(Number(picture.likes) + 1);
-        picture.usersLike.push(userId);
+        setIsClicked(true);
 
-        //setComments(state => [...state, {...newComment, author: {email}}]);
 
-        const result = await pictureService.editLikes(pictureId, {...picture, likes: likesCount, usersLike});
-        console.log(result);
-        setPicture(result);
-        console.log('picture: ')
-        console.log(picture.likes)
+
+            setLikesCount(Number(picture.likes) + 1);
+            console.log("likesCount: " + likesCount)
+            picture.usersLiked.push(userId);
+            console.log("picture usersLiked" + picture.usersLiked)
+            console.log(likesCount)
+            picture.likes = likesCount;
+            console.log('picture likes: ' + picture.likes)
+            console.log(picture)
+
+            await pictureService.editLikes(pictureId, picture);
+
+
+
+
+        // if(picture.usersLiked.includes(userId)){
+        //     setIsClicked(true);
+        //     return;
+        // } else {
+        //     setLikesCount(Number(picture.likes) + 1);
+        //     console.log(likesCount)
+        //     picture.usersLiked.push(userId);
+        //     picture.likes = likesCount;
+        //     console.log(picture.usersLike)
+
+        //     await pictureService.editLikes(pictureId, picture);
+
+        //     //setComments(state => [...state, {...newComment, author: {email}}]);
+
+        // }
+        
+        //await pictureService.editLikes(pictureId, {...picture, likes: likesCount});
     }
-
 
     const deleteButtonClickHandler = async () => {
         const isConfirmed = confirm('Are you sure you want to delete this picture?');
@@ -131,8 +146,9 @@ export default function PictureDetails() {
                 <div>
                    {/*<Likes {...picture}/>*/}
                     {/*{ !isLiked && userId && <button onClick={onClickButtonLikes}>Likes</button> }*/}
+                    <span>{likesCount} </span>
                     <button onClick={onClickButtonLikes} disabled={isClicked}>Likes</button>
-                    <span>Likes: {likesCount} </span>
+                    
                 </div>
             }
 
