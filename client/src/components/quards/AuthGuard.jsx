@@ -11,5 +11,9 @@ export default function AuthGuard(props){
         return <Navigate to={Path.Login} />;
     }
 
+    // if(isAuthenticated){
+    //     return <Navigate to={Path.Home} />
+    // }
+
     return <Outlet />;
 }

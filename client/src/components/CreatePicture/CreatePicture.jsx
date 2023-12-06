@@ -8,7 +8,6 @@ import validate from '../common/validateCreateForm';
 
 import styles from './CreatePicture.module.css';
 import Modal from '../404/ModalErrors/ModalErrors';
-import { useEffect } from 'react';
 
 const formInitialState = {
     title: '',
@@ -16,7 +15,7 @@ const formInitialState = {
     painter: '',
     painterAge: 0,
     imageUrl: '',
-    description: ''
+    description: '',
 };
 
 export default function CreatePicture() {
@@ -25,25 +24,14 @@ export default function CreatePicture() {
     const [formErrors, setFormErrors] = useState({});
     const [isClicked, setIsClicked] = useState(false);
 
-    const[createError, setCreateError ] = useState({}); //posledno tul
-
-    // useEffect(() => {
-    //     setFormErrors({});
-    // }, []);
+    const[createError, setCreateError ] = useState({});
 
     const changeHandler = (e) => {
-        //let isEmpty = false;
-        //if(e.target.value !== ""){
-            setFormValues(state => ({
-                ...state,
-                [e.target.name]: e.target.value
-            }
-            ));
-        //} else {
-            //isEmpty = true;
-            //return;
-        //}
-        
+        setFormValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }
+        ));
     };
 
     const resetFormHandler = () => {
@@ -70,18 +58,15 @@ export default function CreatePicture() {
             resetFormHandler();
             navigate(Path.Gallery);
         } catch (err) {
-            //add error notification
             setCreateError({message: Notifications.Create});
             console.log(err.message);
         }
     };
 
     const validateInput = (e) =>{
-        //console.log(values)
         setFormErrors(validate(formValues));
         console.log('formErrors in function ValidateInput: ')
         console.log(formErrors)
-        //setIsBlur(true);
          
     }
 
@@ -92,7 +77,7 @@ export default function CreatePicture() {
     return (
         <section className={styles["create-page"]}>
             { isClicked &&
-                 <Modal {... createError}/>
+                 <Modal {...createError}/>
             }
             <form method="POST">
                     <h1>Create New Paint</h1>

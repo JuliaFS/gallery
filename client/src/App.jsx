@@ -30,8 +30,11 @@ export default function App() {
             <Route path={Path.Home} element={<Home />} />
             <Route path={Path.Gallery} element={<PicturesList />} />
             {/*<Route path={Path.CreatePicture} element={<CreatePicture />} />*/}
-            <Route path={Path.Login} element={<Login />} />
-            <Route path={Path.Register} element={<Register />} />
+            {/*<Route element={<AuthGuard />}>*/}
+              <Route path={Path.Login} element={<Login />} />
+              <Route path={Path.Register} element={<Register />} />
+              {/*<Route path={Path.Logout} element={<Logout />} />*/}
+            {/*</Route>*/}
             <Route path={Path.Details} element={<PictureDetails />} />
             
 

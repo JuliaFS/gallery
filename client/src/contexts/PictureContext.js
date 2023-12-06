@@ -2,32 +2,34 @@ import { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { gameServiceFactory } from '../services/gameService';
+import * as pictureService from '../services/pictureService';
+import { Path } from '../constants/constants';
 
-export const GameContext = createContext();
+export const PictureContext = createContext();
 
-export const GameProvider = ({
+export const PictureProvider = ({
     children,
 }) => {
     const navigate = useNavigate();
-    const [games, setGames] = useState([]);
-    const gameService = gameServiceFactory();
+    const [picture, setPicture] = useState([]);
+    const pictureService = pictureService();
 
     useEffect(() => {
-        gameService.getAll()
+        pictureService.getAll()
             .then(result => {
-                setGames(result)
+                setPicture(result)
             })
     }, []);
 
-    const onCreateGameSubmit = async (data) => {
-        const newGame = await gameService.create(data);
+    const onCreatePictureSubmit = async (data) => {
+        const newPicture = await pictureService.create(data);
 
-        setGames(state => [...state, newGame]);
+        setPicture(state => [...state, newPicture]);
 
-        navigate('/catalog');
+        navigate(Path.Gallery);
     };
 
-    const onGameEditSubmit = async (values) => {
+    const onPictureEditSubmit = async (values) => {
         const result = await gameService.edit(values._id, values);
 
         setGames(state => state.map(x => x._id === values._id ? result : x))

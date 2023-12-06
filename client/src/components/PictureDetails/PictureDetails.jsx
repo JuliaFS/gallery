@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, useReducer, useMemo } from "react";
+import { useEffect, useState, useContext, useReducer, useMemo} from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 import * as pictureService from '../../services/pictureService';
@@ -10,7 +10,7 @@ import { Path } from "../../constants/constants";
 import { pathToUrl } from "../../utils/pathUtils";
 
 import styles from "./PictureDetails.module.css";
-import Likes from "./Likes";
+//import Likes from "./Likes";
 
 export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);
@@ -20,10 +20,14 @@ export default function PictureDetails() {
     const [comments, dispatch] = useReducer(reducer, []);
     const { pictureId } = useParams();
     const navigate = useNavigate();
+    const [likesCount, setLikesCount] = useState(0);
+    const [liked, setLiked] = useState([]);
+    const [isClicked, setIsClicked] = useState(false);
+    //console.log('picture before useEffect: ' + picture);
 
     useEffect(() => {
         pictureService.getOne(pictureId)
-            .then(setPicture);
+            .then(result => setPicture(result));
 
         commentService.getAll(pictureId)
             .then((result) => {
@@ -33,6 +37,9 @@ export default function PictureDetails() {
                 })
             });
     }, [pictureId]);
+
+    //console.log('picture after useEffect: ' )
+    //console.log(picture)
 
     const addCommentHandler = async (values) => {
         const newComment = await commentService.create(
@@ -47,6 +54,26 @@ export default function PictureDetails() {
             payload: newComment
         });
     }
+
+    const onClickButtonLikes = async () => {
+        if(picture.usersLike){
+            if(picture.usersLike?.includes(userId)){
+                setIsClicked(true);
+                return;
+            }
+        }
+        setLikesCount(Number(picture.likes) + 1);
+        picture.usersLike.push(userId);
+
+        //setComments(state => [...state, {...newComment, author: {email}}]);
+
+        const result = await pictureService.editLikes(pictureId, {...picture, likes: likesCount, usersLike});
+        console.log(result);
+        setPicture(result);
+        console.log('picture: ')
+        console.log(picture.likes)
+    }
+
 
     const deleteButtonClickHandler = async () => {
         const isConfirmed = confirm('Are you sure you want to delete this picture?');
@@ -100,9 +127,12 @@ export default function PictureDetails() {
                     </div>
                 )}
             </div>
-            {(!isOwner && userId) && 
+            {(userId) && 
                 <div>
-                   <Likes {...picture}/>
+                   {/*<Likes {...picture}/>*/}
+                    {/*{ !isLiked && userId && <button onClick={onClickButtonLikes}>Likes</button> }*/}
+                    <button onClick={onClickButtonLikes} disabled={isClicked}>Likes</button>
+                    <span>Likes: {likesCount} </span>
                 </div>
             }
 

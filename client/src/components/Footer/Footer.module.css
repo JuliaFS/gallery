@@ -2,11 +2,10 @@
     background-color: antiquewhite;
     padding: 1%;
     color: white;
-    position: absolute;
     display: block;
     width: 100%;
-    margin-bottom: 0;
-    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 .footer-page p{

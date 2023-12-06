@@ -1,6 +1,6 @@
 import * as request from '../lib/request';
 
-const baseUrl = 'http://localhost:3030/data/likes';
+const baseUrl = 'http://localhost:3030/data/pictures';
 
 // export const getLikes = async (pictureId) => {
 //     const query = new URLSearchParams({
@@ -16,14 +16,14 @@ const baseUrl = 'http://localhost:3030/data/likes';
 //     return result;
 // };
 
-export const createLike = async (pictureId, data) => {
-    const newLikes = await request.post(baseUrl, {
-        pictureId,
-        data
-    });
+// export const createLike = async (pictureId, data) => {
+//     const newLikes = await request.post(baseUrl, {
+//         pictureId,
+//         data
+//     });
 
-    return newLikes;
-};
+//     return newLikes;
+// };
 
 export const editLikes = async (pictureId, pictureData) => {
     const result = await request.put(`${baseUrl}/${pictureId}`, pictureData);
@@ -33,13 +33,25 @@ export const editLikes = async (pictureId, pictureData) => {
     return result;
 };
 
-export const getLikes = async () => {
+// export const getLikes = async (pictureId) => {
 
-   // GET /data/likes?distinct=6f740824-3620-46e2-a099-b87be7404601
-   //http://localhost:3030/data/likes?distinct=6f740824-3620-46e2-a099-b87be7404601
+//    // GET /data/likes?distinct=6f740824-3620-46e2-a099-b87be7404601
+//    //http://localhost:3030/data/likes?distinct=6f740824-3620-46e2-a099-b87be7404601
 
-    //const result = await request.get(`${baseUrl}/?distinct=${pictureId}&count`);
-    const result = await request.get(`${baseUrl}`);
-    return result;
-}
+//        const query = new URLSearchParams({
+//         where: `pictureId="${pictureId}"`,
+//         load: `owner=_ownerId:users`
+//         });
+
+//     ///data/comments?where=recipeId="8f414b4f-ab39-4d36-bedb-2ad69da9c830"
+//     //console.log(`${baseUrl}/?distinct=${query}`)
+//     //const result = await request.get(`${baseUrl}/?${query}`);
+//     console.log(`${baseUrl}/?${query}`)
+//     const result = await request.get(`${baseUrl}/${query}`);
+
+//     console.log("result in LikeService")
+//     console.log(result)
+//     //const result = await request.get(`${baseUrl}`);
+//     return result;
+// }
 

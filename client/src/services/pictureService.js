@@ -15,9 +15,10 @@ export const getOne = async (pictureId) => {
     return result;
 }
 
+///data/recipes?offset=10&pageSize=5
 export const getLatest = async () => {
     const query = {
-        sortBy: `_createdOn desc`,
+        //sortBy: `_createdOn desc`,
         offset: 0,
         pageSize: 3
     }
@@ -39,6 +40,15 @@ export const create = async (pictureData) => {
 
 export const edit = async (pictureId, pictureData) => {
     const result = await request.put(`${baseUrl}/${pictureId}`, pictureData);
+
+    //const result = await response.json();
+
+    return result;
+};
+
+export const editLikes = async (pictureId, pictureData) => {
+    console.log(`${baseUrl}/${pictureId}`);
+    const result = await request.patch(`${baseUrl}/${pictureId}`, pictureData);
 
     //const result = await response.json();
 
