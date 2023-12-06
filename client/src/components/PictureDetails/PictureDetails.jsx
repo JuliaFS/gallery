@@ -20,7 +20,7 @@ export default function PictureDetails() {
     const [comments, dispatch] = useReducer(reducer, []);
     const { pictureId } = useParams();
     const navigate = useNavigate();
-    let [likesCount, setLikesCount] = useState("");
+    //let [likesCount, setLikesCount] = useState(0);
     //const [liked, setLiked] = useState([]);
     const [isClicked, setIsClicked] = useState(false);
     //console.log('picture before useEffect: ' + picture);
@@ -53,41 +53,20 @@ export default function PictureDetails() {
     }
 
     const onClickButtonLikes = async () => {
-        setIsClicked(true);
+        if(picture.usersLiked.includes(userId)){
+            setIsClicked(true);
+            return;
+        }
 
 
-
-            setLikesCount(Number(picture.likes) + 1);
-            console.log("likesCount: " + likesCount)
-            picture.usersLiked.push(userId);
-            console.log("picture usersLiked" + picture.usersLiked)
-            console.log(likesCount)
-            picture.likes = likesCount;
-            console.log('picture likes: ' + picture.likes)
-            console.log(picture)
-
-            await pictureService.editLikes(pictureId, picture);
-
-
-
-
-        // if(picture.usersLiked.includes(userId)){
-        //     setIsClicked(true);
-        //     return;
-        // } else {
-        //     setLikesCount(Number(picture.likes) + 1);
-        //     console.log(likesCount)
-        //     picture.usersLiked.push(userId);
-        //     picture.likes = likesCount;
-        //     console.log(picture.usersLike)
-
-        //     await pictureService.editLikes(pictureId, picture);
-
-        //     //setComments(state => [...state, {...newComment, author: {email}}]);
-
-        // }
+        picture.usersLiked.push(userId);
+        picture.likes = Number(picture.likes) + 1;
         
-        //await pictureService.editLikes(pictureId, {...picture, likes: likesCount});
+        try{
+            await pictureService.editLikes(pictureId, picture);
+        } catch(err){
+            //setCreateError({message: Notifications.CreateError});
+        }
     }
 
     const deleteButtonClickHandler = async () => {
@@ -142,15 +121,15 @@ export default function PictureDetails() {
                     </div>
                 )}
             </div>
-            {(userId) && 
+            
                 <div>
                    {/*<Likes {...picture}/>*/}
                     {/*{ !isLiked && userId && <button onClick={onClickButtonLikes}>Likes</button> }*/}
-                    <span>{likesCount} </span>
-                    <button onClick={onClickButtonLikes} disabled={isClicked}>Likes</button>
-                    
+                    <span>Likes: {picture.likes} </span>
+                    {!isOwner && userId &&
+                     <button onClick={onClickButtonLikes} disabled={isClicked}>Likes</button>  
+                    }
                 </div>
-            }
 
             <article className={styles["create-comment"]}>
                 <legend>Add new comment:</legend>
