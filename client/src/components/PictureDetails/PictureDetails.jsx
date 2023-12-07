@@ -9,6 +9,8 @@ import useForm from "../../hooks/useForm";
 import { Path } from "../../constants/constants";
 import { pathToUrl } from "../../utils/pathUtils";
 
+import * as likesService from "../../services/likesService";
+
 import styles from "./PictureDetails.module.css";
 //import Likes from "./Likes";
 
@@ -24,6 +26,7 @@ export default function PictureDetails() {
     //const [liked, setLiked] = useState([]);
     const [isClicked, setIsClicked] = useState(false);
     //console.log('picture before useEffect: ' + picture);
+    const [likes, setLikes] = useState([]);
 
     useEffect(() => {
         pictureService.getOne(pictureId)
@@ -52,23 +55,27 @@ export default function PictureDetails() {
         });
     }
 
-    const onClickButtonLikes = async () => {
-        if(picture.usersLiked.includes(userId)){
-            setIsClicked(true);
-            return;
-        }
+    const onClickButtonLikes = () => {
+
+        likesService.getLikes(pictureId).then(result => setLikes(result));
+        console.log(likes)
+        // if(picture.usersLiked.includes(userId)){
+        //     setIsClicked(true);
+        //     return;
+        // }
 
 
-        picture.usersLiked.push(userId);
-        picture.likes = Number(picture.likes) + 1;
-        console.log(userId)
-        console.log(picture.likes)
+        // picture.usersLiked.push(userId);
+        // picture.likes = Number(picture.likes) + 1;
+        // console.log(userId)
+        // console.log(picture.likes)
+        // console.log(picture.likes)
         
-        try{
-            await pictureService.editLikes(pictureId, picture);
-        } catch(err){
-            //setCreateError({message: Notifications.CreateError});
-        }
+        // try{
+        //     await pictureService.edit(pictureId, picture);
+        // } catch(err){
+        //     //setCreateError({message: Notifications.CreateError});
+        // }
     }
 
     const deleteButtonClickHandler = async () => {

@@ -29,6 +29,7 @@ export default function EditPicture() {
                 title: result.title,
                 category: result.category,
                 painter: result.painter,
+                painterAge: result.painterAge,
                 imageUrl: result.imageUrl,
                 description: result.description,
             });
@@ -59,7 +60,7 @@ export default function EditPicture() {
     return (
         <section className={styles["create-page"]}>
             <form method="PUT">
-                    <legend>Create New Paint</legend>
+                    <legend>Edit picture</legend>
                     <label htmlFor="title">Picture title</label>
                     <input  type="text" 
                             id="title" 
@@ -84,6 +85,14 @@ export default function EditPicture() {
                             value={picture.painter}
                             onChange={onChange}
                             placeholder="Enter painter..." 
+                    />
+                     <label htmlFor="painterAge">Painter age:</label>
+                     <input  type="number" 
+                            id="painterAge" 
+                            name="painterAge" 
+                            value={picture.painterAge}
+                            onChange={onChange}
+                            placeholder="Enter painter age..." 
                     />
                     <label htmlFor="imageUrl">Picture url</label>
                     <input  type="text" 
