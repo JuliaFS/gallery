@@ -13,7 +13,8 @@ const Path = {
 
 const Notifications ={
         CreateError: "You have to fill all fields!",
-        Create: "Something wrong, you can not create picture. Pls try again later...."
+        Create: "Something wrong, you can not create picture. Pls try again later....",
+        Voted: "Unsuccesfull vote, try again later...",
         
         //name: "Please provide your name.",
 //     userExists: "User already exists.",

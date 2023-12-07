@@ -12,7 +12,7 @@ import { pathToUrl } from "../../utils/pathUtils";
 import * as likesService from "../../services/likesService";
 
 import styles from "./PictureDetails.module.css";
-//import Likes from "./Likes";
+import Likes from "./Likes";
 
 export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);
@@ -26,7 +26,7 @@ export default function PictureDetails() {
     //const [liked, setLiked] = useState([]);
     const [isClicked, setIsClicked] = useState(false);
     //console.log('picture before useEffect: ' + picture);
-    const [likes, setLikes] = useState([]);
+    //const [likes, setLikes] = useState([]);
 
     useEffect(() => {
         pictureService.getOne(pictureId)
@@ -55,28 +55,28 @@ export default function PictureDetails() {
         });
     }
 
-    const onClickButtonLikes = () => {
+    // const onClickButtonLikes = () => {
 
-        likesService.getLikes(pictureId).then(result => setLikes(result));
-        console.log(likes)
-        // if(picture.usersLiked.includes(userId)){
-        //     setIsClicked(true);
-        //     return;
-        // }
+    //     likesService.getLikes(pictureId).then(result => setLikes(result));
+    //     console.log(likes)
+    //     // if(picture.usersLiked.includes(userId)){
+    //     //     setIsClicked(true);
+    //     //     return;
+    //     // }
 
 
-        // picture.usersLiked.push(userId);
-        // picture.likes = Number(picture.likes) + 1;
-        // console.log(userId)
-        // console.log(picture.likes)
-        // console.log(picture.likes)
+    //     // picture.usersLiked.push(userId);
+    //     // picture.likes = Number(picture.likes) + 1;
+    //     // console.log(userId)
+    //     // console.log(picture.likes)
+    //     // console.log(picture.likes)
         
-        // try{
-        //     await pictureService.edit(pictureId, picture);
-        // } catch(err){
-        //     //setCreateError({message: Notifications.CreateError});
-        // }
-    }
+    //     // try{
+    //     //     await pictureService.edit(pictureId, picture);
+    //     // } catch(err){
+    //     //     //setCreateError({message: Notifications.CreateError});
+    //     // }
+    // }
 
     const deleteButtonClickHandler = async () => {
         const isConfirmed = confirm('Are you sure you want to delete this picture?');
@@ -133,12 +133,12 @@ export default function PictureDetails() {
             </div>
             
                 <div>
-                   {/*<Likes {...picture}/>*/}
-                    {/*{ !isLiked && userId && <button onClick={onClickButtonLikes}>Likes</button> }*/}
+                   <Likes {...picture}/>
+                    {/*{ !isLiked && userId && <button onClick={onClickButtonLikes}>Likes</button> }
                     <span>Likes: {picture.likes} </span>
-                    {!isOwner && userId &&
+                    {/*{!isOwner && userId &&
                      <button onClick={onClickButtonLikes} disabled={isClicked}>Likes</button>  
-                    }
+                    } */}
                 </div>
 
             <article className={styles["create-comment"]}>

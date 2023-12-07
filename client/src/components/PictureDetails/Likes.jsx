@@ -1,65 +1,56 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import AuthContext from "../../contexts/AuthContext";
-//import * as likesService from '../../services/likesService';
+import * as likesService from '../../services/likesService';
+import Modal from '../404/ModalErrors/ModalErrors';
+import { Notifications } from '../../constants/constants';
 
 
-export default function Likes (props){
-    // console.log("print props: ")
-    //const [picture, setPicture] = useState({});
+export default function Likes (){
+const { userId } = useContext(AuthContext);
+    const { pictureId } = useParams();
+    const [isClicked, setIsClicked] = useState(false);
+    const [pictureLikes, setPictureLikes] = useState([]);
+    const[createError, setCreateError ] = useState({});
 
     useEffect(() => {
-        setPicture(props)
-    }, []);
-
-    console.log('in likes function')
-
-    console.log('this is picture: ')
-    console.log(picture)
-
-
-    const { userId } = useContext(AuthContext);
-    const { pictureId } = useParams();
-    //console.log(pictureId)
-    //console.log(props._id)
-    //console.log(props.title)
-    const [likesCount, setLikesCount] = useState(5);
-
-    function getLikes(result){
-
-    }
+        likesService.getLikes(pictureId)
+        .then(result => {
+            setPictureLikes(result);
+        });
+    },[]);
 
 const onClickButtonLikes = async () => {
+        setIsClicked(true);
+        const token = localStorage.getItem('accessToken');
 
-    
-    //let pictureInfo = await likesService.getLikes(props._id);
-    //console.log('likes before filter' + pictureInfo);
+        const isVoted = pictureLikes.find(x => x.userId === userId);
+        console.log(isVoted)
+        
+        // if(isVoted){
+        //     setIsClicked(true);
+        //     //setCreateError({message: Notifications.Voted});
+        //     return;
+        // } 
 
-    // likes = likes.filter(pictureLikes => pictureLikes.pictureId === pictureId);
-    // console.log(likes);
-    //console.log('likes after filter' + likes);
+            console.log(Object.keys(createError).length)
+        try{
+            const postedUser = await likesService.createLike(pictureId, userId, token);
+            //console.log(postedUser)
+            setIsClicked(true);
 
-    // isLiked = likes.find(liked => liked.data.userId === userId);
-    // console.log(isLiked)
-
-    // if(!isLiked){
-    //     likes.find(liked => setLikesCount(liked.data.likes));
-    //     try {
-    //         const result = await likesService.createLike(pictureId, {userId, likes: likes.length });
-    //     } catch (err) {
-    //         //add error notification
-    //         console.log(err);
-    //     }  
-    // } else {
-    //     setLikesCount(9);//(likes.length);
-    //     ///TO DO
-    // }
-}
-
+        }catch(err){
+            setCreateError({message: Notifications.Voted});
+        }
+    }      
     return (
         <>
-            <div>{ !isLiked && userId && <button onClick={onClickButtonLikes}>Likes</button> }</div>
-            <span>Likes: {likesCount} </span>
+        {Object.keys(createError).length > 0 &&
+            <Modal {...createError}/>
+        }
+        { userId && 
+            <button onClick={onClickButtonLikes} disabled={isClicked}>Likes</button> }
+            <span>Likes: {pictureLikes.length} </span>
         </>
     );
 }

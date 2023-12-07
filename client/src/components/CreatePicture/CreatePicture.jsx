@@ -16,8 +16,6 @@ const formInitialState = {
     painterAge: 0,
     imageUrl: '',
     description: '',
-    likes: 0, 
-    usersLiked: []
 };
 
 export default function CreatePicture() {

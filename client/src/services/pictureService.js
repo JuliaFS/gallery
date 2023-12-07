@@ -23,7 +23,8 @@ export const getLatest = async () => {
         pageSize: 3
     }
 
-    console.log(`${baseUrl}?${query}`);
+//     const result = await request.get(${baseUrl}?sortBy=_createdOn desc&offset=0&pageSize=3);
+//   return result;
     const result = await request.get(`${baseUrl}?${query}`);
 
     return result;

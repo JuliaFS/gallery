@@ -1,27 +1,6 @@
-const baseUrl = "http://localhost:3030/data";
+import * as request from "../lib/request";
 
-export const likes = (articleId, userId, token) => {
-    return fetch(`${baseUrl}/likes`, {
-        method: 'POST',
-        headers: { 
-            'Content-Type': 'application/json',
-            'X-Authorization': token,
-        },
-        body: JSON.stringify({ userId, articleId})
-    }).then(result => result.json());
-};
-
-export const getLikes = (articleId,) => {
-    const search = encodeURIComponent(`articleId="${articleId}"`);
-
-    return fetch(`${baseUrl}/likes?select=userId&where=${search}`)
-        .then(result => result.json());
-};
-
-
-// //const baseUrl = 'http://localhost:3030/data/pictures';
-
-// const baseUrl = "http://localhost:3030/data";
+const baseUrl = "http://localhost:3030/data/likes";
 
 // export const likes = (articleId, userId, token) => {
 //     return fetch(`${baseUrl}/likes`, {
@@ -32,9 +11,32 @@ export const getLikes = (articleId,) => {
 //         },
 //         body: JSON.stringify({ userId, articleId})
 //     }).then(result => result.json());
-// }
+// };
 
 // export const getLikes = (articleId,) => {
+//     const search = encodeURIComponent(`articleId="${articleId}"`);
+
+//     return fetch(`${baseUrl}/likes?select=userId&where=${search}`)
+//         .then(result => result.json());
+// };
+
+
+// //const baseUrl = 'http://localhost:3030/data/pictures';
+
+// const baseUrl = "http://localhost:3030/data";
+
+export const createLike = (pictureId, userId, token) => {
+    return fetch(`${baseUrl}`, {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 'application/json',
+            'X-Authorization': token,
+        },
+        body: JSON.stringify({ userId, pictureId})
+    }).then(result => result.json());
+}
+
+// export const getLikes = (articleId) => {
 //     const search = encodeURIComponent(`articleId="${articleId}"`);
 
 //     return fetch(`${baseUrl}/likes?select=userId&where=${search}`)
@@ -50,19 +52,19 @@ export const getLikes = (articleId,) => {
 //     });
 // }
 
-// export const getLikes = async (pictureId) => {
-//     const query = new URLSearchParams({
-//         where: `pictureId="${pictureId}"`,
-//         load: `owner=_ownerId:users`
-//     });
+export const getLikes = async (pictureId) => {
+    const query = encodeURIComponent(`pictureId="${pictureId}"`);
 
-//     let test = `${baseUrl}?${query}`;
+    //const result = await request.get(`${baseUrl}/likes?select=userId&where=${query}`)
+    //?select=userId&where=${search}
+//     let test = `${baseUrl}?select=userId&where=${search}`;
 //     //http://localhost:3030/data/likes?where=pictureId%3D%2248f13c81-9aa1-4096-9a4a-4f622e03c2b5%22&load=owner%3D_ownerId%3Ausers
 //     console.log('test il likesService: ' + test)
 
-//     const result = await request.get(`${baseUrl}?${query}`);
-//     return result;
-// };
+    const result = await request.get(`${baseUrl}?select=userId&where=${query}`);
+    
+     return result;
+};
 
 // export const createLike = async (pictureId, data) => {
 //     const newLikes = await request.post(baseUrl, {
