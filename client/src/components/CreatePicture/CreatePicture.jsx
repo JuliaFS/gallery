@@ -41,8 +41,6 @@ export default function CreatePicture() {
     };
 
     const submitHandler = async () => {
-
-        console.log(formValues)
         if ( formValues.title === '' ||
              formValues.category === '' ||
              formValues.painter === '' ||

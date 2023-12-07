@@ -1339,6 +1339,21 @@
     	}
     };
     var seedData = {
+        pictures: {
+            "9beda7ff-9064-45f3-b039-a878960011d4": {
+                    "_ownerId": "3a0983c8-edc5-43f4-9993-e8cf767d4638",
+                    "title": "Autumn",
+                    "category": "Landscape",
+                    "painter": "Elif",
+                    "painterAge": "11",
+                    "imageUrl": "/images/autumn-500width-72.jpg",
+                    "description": "Very beautiful autumn landscape. Delight for the soul, uniquely conveys the beauty and natural autumn shades.",
+                    "likes": 0,
+                    "usersLiked": [],
+                    "_createdOn": 1701944299384,
+                    "_id": "9beda7ff-9064-45f3-b039-a878960011d4"
+            } 
+        },
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",

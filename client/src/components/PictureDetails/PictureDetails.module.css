@@ -1,4 +1,5 @@
 .picture-details{
+    width: 50%;
     display: inline-block;
     position: relative;
     border: 1px solid white;
@@ -41,7 +42,7 @@
     text-align: center;
 }
 .info-details img{
-    width: 100%;
+    width: 60%;
 }
 .info-details>div>p{
     display: block;

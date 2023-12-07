@@ -113,6 +113,7 @@ export default function PictureDetails() {
                         <p>Painter: {picture.painter} </p>
                         <p>Category: {picture.category}</p>
                         <p>Description: {picture.description}</p>
+                        <p>Painter age: {picture.painterAge}</p>
                     </div>
                 </div>
                 {isOwner && (
