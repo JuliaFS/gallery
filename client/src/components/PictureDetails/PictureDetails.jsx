@@ -61,6 +61,8 @@ export default function PictureDetails() {
 
         picture.usersLiked.push(userId);
         picture.likes = Number(picture.likes) + 1;
+        console.log(userId)
+        console.log(picture.likes)
         
         try{
             await pictureService.editLikes(pictureId, picture);

@@ -50,7 +50,7 @@ export const editLikes = async (pictureId, pictureData) => {
     // console.log(`${baseUrl}/${pictureId}`);
     // console.log(baseUrl)
     // console.log(pictureId)
-    const result = await request.put(`${baseUrl}/${pictureId}`, pictureData);
+    const result = await request.patch(`${baseUrl}/${pictureId}`, pictureData);
 
     //const result = await response.json();
 

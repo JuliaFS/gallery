@@ -12,6 +12,8 @@ export default function Likes (props){
         setPicture(props)
     }, []);
 
+    console.log('in likes function')
+
     console.log('this is picture: ')
     console.log(picture)
 
