@@ -1,8 +1,11 @@
+import { useState } from "react";
 import * as request from "../lib/request";
 
 const baseUrl = 'http://localhost:3030/users';
 
 export const login = async (email, password) => {
+    const [error, setError] = useState({});
+    try{
         const result = await request.post(`${baseUrl}/login`, {
             email,
             password
@@ -13,6 +16,10 @@ export const login = async (email, password) => {
         // }
 
         return result;
+    } catch(err){
+        setError(err);
+        console.log(err);
+    }
 
 }
 

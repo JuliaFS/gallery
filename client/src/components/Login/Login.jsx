@@ -33,8 +33,6 @@ export default function Login() {
 
     const validate = (value) => {
         const errors = {};
-        //console.log('validate: ' + value);
-       // const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
         if(!value.email){
             errors.email = 'Email is required!';
@@ -52,15 +50,11 @@ export default function Login() {
     }
 
     const validateInput = (e) =>{
-        //console.log(values)
         setFormErrors(validate(values));
         setIsBlur(true);
          
     }
 
-
-   
-    //console.log('props in login' + props);
     return (
         <section className={styles["login-page"]}>
             {/*<pre>{JSON.stringify(values, undefined, 2)}</pre>*/}

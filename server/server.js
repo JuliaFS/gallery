@@ -1348,8 +1348,6 @@
                     "painterAge": "11",
                     "imageUrl": "/images/autumn-500width-72.jpg",
                     "description": "Very beautiful autumn landscape. Delight for the soul, uniquely conveys the beauty and natural autumn shades.",
-                    "likes": 0,
-                    "usersLiked": [],
                     "_createdOn": 1701944299384,
                     "_id": "9beda7ff-9064-45f3-b039-a878960011d4"
             } 
