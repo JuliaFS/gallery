@@ -5,8 +5,8 @@ export default function validate(value){
     const regex = /(https?:\/\/.*\.(?:png|jpg))/i;
     if(!value.title){
         errors.title = 'Title is required!';
-    } else if(value.title.length > 50){
-        errors.title = 'Title can not be more than 50 characters.';
+    } else if(value.title.length > 30){
+        errors.title = 'Title can not be more than 30 characters.';
     }
 
     if(!value.category){

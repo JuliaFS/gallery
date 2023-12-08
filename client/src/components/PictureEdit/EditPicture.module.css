@@ -89,6 +89,10 @@
         border-color: #ff7052;
     }
 }
+.error-msg{
+    margin-left: 10%;
+    color: red;
+}
 
 
 

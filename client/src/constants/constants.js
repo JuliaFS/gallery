@@ -16,8 +16,9 @@ const Notifications ={
         Create: "Something wrong, you can not create picture. Pls try again later....",
         Voted: "Unsuccesfull vote, try again later...",
         EmptyComment: "You can not published empty comment.",
-        CommentNotPublished: "Error during publish comment..."
-        
+        CommentNotPublished: "Error during publish comment...",
+        EditError: "Pls, fill all the fields correctly!",
+        OnEditError: "Unsuccesfull edited!",
 }
 
 export {
