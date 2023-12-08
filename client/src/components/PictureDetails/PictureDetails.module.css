@@ -42,7 +42,7 @@
     text-align: center;
 }
 .info-details img{
-    width: 60%;
+    width: 70%;
 }
 .info-details>div>p{
     display: block;
@@ -54,22 +54,23 @@
     position: relative;
     text-align: left;
 }
-.create-comment>form{
-    display: block;
+.create-comment>form>div{
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.create-comment>form>input[type="submit"]{
+.create-comment>form>div>input[type="submit"]{
     color: rgb(183, 169, 145);
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
     text-transform: uppercase;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 10%;
-    margin-top: -50px;
-    margin-bottom: 0;
+    padding: 2.2%;
     position: relative;
-    display: inline-block;
+    border-radius: 4px;
+    margin-top: 0;
+    margin-bottom: 3%;
+    border: 1px solid rgb(183, 169, 145);
     
 }
 
@@ -79,7 +80,7 @@
         font-size: 1.4em;
         font-weight: bold;
         text-transform: uppercase;
-        color: rgb(183, 169, 145);
+        color: white;
       
         &:after {
           content: "";
@@ -95,9 +96,8 @@
           position: absolute;
         }
 }
-.create-comment>form textarea{
-    width: 30%;
-    height: 70px;
+.create-comment>form>div>textarea{
+    width: 80%;
     display: inline-block;
     margin-left: 10%;
 }
@@ -106,26 +106,28 @@
 }
 
 .details-comments h2{
-        font-size: 1.6em;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: white;
-        margin-bottom: 2%;
+    font-size: 1.6em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 2%;
 
 }
-.details-comments>ul{
-    display: block;
+.details-comments>table{
+display: flex;
    height: 100%;
    position: relative;
    text-align: left;
    padding:0;
-   margin: 0;
-
+   color: white;
 }
-.details-comments>ul li{
-    display: block;
+
+.details-comments>table>tbody>tr{
+    display: inline-block;
+    width: 30%;
     position: relative;
     padding: 18px;
+    color: white;
     text-decoration: underline;
 
     &:before {
@@ -133,7 +135,7 @@
         background-image: url(https://simpleicon.com/wp-content/uploads/chat_18.png);
         background-size: 30px 30px;
         background-repeat: no-repeat;
-        background-position: -7%;
+        background-position: -1%;
         background-color: white;
         opacity: 0.06;
         top: 0;
@@ -142,6 +144,13 @@
         right: 0;
         position: absolute;
       }
+}
+
+.details-comments>table>tbody>tr>td{
+    display: block;
+}
+.details-comments>table>tbody>tr>td>span{
+    font-weight: bold;
 }
 
 .no-comment{

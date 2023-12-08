@@ -44,9 +44,8 @@ export default function CreatePicture() {
              formValues.painter === '' ||
              formValues.imageUrl === '' ||
              formValues.description === '') {
-                console.log('in return in CreatePicture')
                 setCreateError({message: Notifications.CreateError});
-                console.log(createError);
+
                 setIsClicked(true);
                  return;
         }

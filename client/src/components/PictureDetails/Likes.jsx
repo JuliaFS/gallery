@@ -7,11 +7,11 @@ import { Notifications } from '../../constants/constants';
 
 
 export default function Likes (){
-const { userId } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
     const { pictureId } = useParams();
     const [isClicked, setIsClicked] = useState(false);
     const [pictureLikes, setPictureLikes] = useState([]);
-    const[createError, setCreateError ] = useState({});
+    const [createError, setCreateError ] = useState({});
 
     useEffect(() => {
         likesService.getLikes(pictureId)
@@ -20,24 +20,21 @@ const { userId } = useContext(AuthContext);
         });
     },[]);
 
-const onClickButtonLikes = async () => {
-        setIsClicked(true);
+    const isOwner = userId === pictureLikes._ownerId;
+
+    const onClickButtonLikes = async () => {
         const token = localStorage.getItem('accessToken');
 
         const isVoted = pictureLikes.find(x => x.userId === userId);
-        console.log(isVoted)
         
-        // if(isVoted){
-        //     setIsClicked(true);
-        //     //setCreateError({message: Notifications.Voted});
-        //     return;
-        // } 
+        if(isVoted){
+            setIsClicked(true);
+            //setCreateError({message: Notifications.Voted});
+            return;
+        } 
 
-            console.log(Object.keys(createError).length)
         try{
             const postedUser = await likesService.createLike(pictureId, userId, token);
-            //console.log(postedUser)
-            setIsClicked(true);
 
         }catch(err){
             setCreateError({message: Notifications.Voted});
@@ -48,8 +45,9 @@ const onClickButtonLikes = async () => {
         {Object.keys(createError).length > 0 &&
             <Modal {...createError}/>
         }
-        { userId && 
-            <button onClick={onClickButtonLikes} disabled={isClicked}>Likes</button> }
+        { userId && !isOwner &&
+            <button onClick={onClickButtonLikes} disabled={isClicked}>Likes</button> 
+        }
             <span>Likes: {pictureLikes.length} </span>
         </>
     );
