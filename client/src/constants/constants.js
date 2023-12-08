@@ -19,6 +19,7 @@ const Notifications ={
         CommentNotPublished: "Error during publish comment...",
         EditError: "Pls, fill all the fields correctly!",
         OnEditError: "Unsuccesfull edited!",
+        CanNotGetImage: "Unsuccesfull loading the images...",
 }
 
 export {

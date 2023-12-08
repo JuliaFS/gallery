@@ -73,11 +73,7 @@ export default function EditPicture() {
     };
 
     const validateInput = (e) =>{
-        //setFormErrors(validate(formValues));
         setFormErrors(validate(picture));
-        console.log('formErrors in function ValidateInput: ')
-        console.log(formErrors)
-         
     }
 
 {/* -lekciq forms 1:02 controlled forms
