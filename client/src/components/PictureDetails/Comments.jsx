@@ -1,4 +1,4 @@
-import { useEffect, useContext, useReducer } from "react";
+import { useEffect, useContext, useReducer, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 import reducer from './commentReducer';
@@ -15,6 +15,7 @@ export default function Comments() {
 
     const { email, userId } = useContext(AuthContext);
     const [comments, dispatch] = useReducer(reducer, []);
+    const [error, setError] = useState({});
     console.log(userId);
 
     const { pictureId } = useParams();
@@ -27,22 +28,23 @@ export default function Comments() {
                     type: 'GET_ALL_COMMENTS',
                     payload: result
                 })
-            });
+            })
+            .catch((error) => setError(error));
     }, [pictureId]);
 
-    const addCommentHandler = async (values) => {
-        const newComment = await commentService.create(
-            pictureId,
-            values.comment
-        );
-        newComment.owner = { email };
+    // const addCommentHandler = async (values) => {
+    //     const newComment = await commentService.create(
+    //         pictureId,
+    //         values.comment
+    //     );
+    //     newComment.owner = { email };
 
-        //setComments(state => [...state, {...newComment, author: {email}}]);
-        dispatch({
-            type: 'ADD_COMMENT',
-            payload: newComment
-        });
-    }
+    //     //setComments(state => [...state, {...newComment, author: {email}}]);
+    //     dispatch({
+    //         type: 'ADD_COMMENT',
+    //         payload: newComment
+    //     });
+    // }
     const addCommentHandler = async (values) => {
         const newComment = await commentService.create(
             pictureId,
@@ -60,6 +62,10 @@ export default function Comments() {
 
     return (
         <>
+         {/*{error  
+                ? <p className={styles["error-msg"]}>{error.message}</p> 
+                : <p className={styles["no-error"]}>{''}</p>
+            }*/}
         <legend>Add new comment:</legend>
     { userId
             ? <form className="form" onSubmit={onSubmit}>

@@ -10,7 +10,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({
     children, 
 }) => {
-    const [errorMsg, setErrorMsg] = useState({});
+    const [error, setError] = useState({});
     const navigate = useNavigate();
     const [auth, setAuth] = usePersistedState('auth', {});
 
@@ -23,11 +23,11 @@ export const AuthProvider = ({
         localStorage.setItem('accessToken', result.accessToken);
         navigate(Path.Gallery);
       } catch(error){
-        //setErrorMsg(error);
+        setError(error);
         console.log(error)
         navigate(Path.Login);
-        //throw new Error('User does not exist!');
-        alert(error.message);
+        throw new Error('Users data is not valid');
+        //alert(error.message);
       }
     };
   
@@ -38,7 +38,7 @@ export const AuthProvider = ({
         localStorage.setItem('accessToken', result.accessToken);
          navigate(Path.Gallery);
       } catch(err){
-        setErrorMsg(err);
+        setError(err);
         console.log(err);
         //navigate(Path.Error404Path);
       }
@@ -57,7 +57,7 @@ export const AuthProvider = ({
       //username: auth.username,
       email: auth.email,
       userId: auth._id,
-      error: errorMsg,
+      error,
       isAuthenticated: !!auth.accessToken //double nogation, ako ima username, obrashtame v truti stoinost ili folsi,
      
     };

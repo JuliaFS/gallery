@@ -1,3 +1,10 @@
+@font-face {
+    font-family: "Finger_Paint";
+    src:
+      local("Trickster"),
+      url("./fonts/Finger_Paint/FingerPaint-Regular.ttf") format("TrueType");
+  }
+
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background: linear-gradient(90deg, rgb(234, 220, 195), rgba(152, 137, 137, 0.346));

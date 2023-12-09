@@ -18,10 +18,11 @@ import Footer from './components/Footer/Footer';
 import ErrorBoundary from './components/404/Error boundary/ErrorBoundary';
 import AuthGuard from './components/quards/AuthGuard';
 import PageNotFound from './components/404/PageNotFound/PageNotFound';
+import ErrorFallback from './components/common/ErrorFallBack';
 
 export default function App() {
   return (
-    <ErrorBoundary>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
       <AuthProvider>
         <div>
           <Header />

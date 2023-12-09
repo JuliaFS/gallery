@@ -82,8 +82,6 @@ header nav a:hover {
     background-color: rgb(183, 169, 145);
 }
 
-
-
 @media (min-width: 48em) {
     header>div{
         position: relative;
@@ -95,75 +93,6 @@ header nav a:hover {
         padding: 20px 30px;
     }
 }
-/*header {
-    width: 80%;
-    background-color: rgb(183, 169, 145);
-    width: 100%;
-    overflow: hidden;
-    color: white;
-}
 
-.home {
-    font-size: 1.2em;
-    font-family: "Finger_Paint", Times, serif;
-    color: white;
-    margin-bottom: 10px;
-}
 
-header {
-    position: relative;
-    padding: 10px;
-}
 
-header h2 {
-    float: left;
-    color: white;
-    margin-bottom: 20px;
-    margin-left: 20px;
-}
-
-header nav {
-    font-size: auto;
-    font-family: sans-serif;
-    position: absolute;
-    right: 0;
-    bottom: 8px;
-}
-
-header nav>* {
-    float: left;
-}
-
-header a{
-    color: white;
-    text-decoration: none;
-}
-
-footer {
-    padding: 0.5em;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-
-nav a {
-    margin: 0 0.5em;
-}
-
-nav a:hover {
-    cursor: pointer;
-    color: rgb(82, 133, 139);
-    font-weight: bolder;
-}
-
-.home:hover {
-    color: rgb(82, 133, 139);
-}
-
-#user,
-#guest {
-    margin: 0;
-    padding: 0;
-}
-*/

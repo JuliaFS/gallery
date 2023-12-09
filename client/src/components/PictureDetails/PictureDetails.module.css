@@ -234,6 +234,10 @@ display: flex;
         border-color: rgb(183, 169, 145);;
     }
 }
+.error-msg{
+    color: red;
+    margin-left: 1%;
+}
 
 
 

@@ -14,7 +14,7 @@ const Path = {
 const Notifications ={
         CreateError: "You have to fill all fields!",
         Create: "Something wrong, you can not create picture. Pls try again later....",
-        Voted: "Sorry, may be you already voted...",
+        Voted: "Sorry, you already voted for this picture...",
         EmptyComment: "You can not published empty comment.",
         CommentNotPublished: "Error during publish comment...",
         EditError: "Pls, fill all the fields correctly!",

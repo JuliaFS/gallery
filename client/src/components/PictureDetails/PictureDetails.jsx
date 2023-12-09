@@ -20,12 +20,13 @@ export default function PictureDetails() {
     const { pictureId } = useParams();
     const navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
-    const[createError, setCreateError ] = useState({});
+    const[error, setError ] = useState({});
     const [isClicked, setIsClicked] = useState(false);
 
     useEffect(() => {
         pictureService.getOne(pictureId)
-            .then(result => setPicture(result));
+            .then(result => setPicture(result))
+            .catch(err => setError(err));
 
         commentService.getAll(pictureId)
             .then((result) => {
@@ -33,14 +34,15 @@ export default function PictureDetails() {
                     type: 'GET_ALL_COMMENTS',
                     payload: result
                 })
-            });
+            })
+            .catch(err => setError(err));
     }, [pictureId]);
 
     const addCommentHandler = async (values) => {
 
         if(values.comment === ''){
-            setCreateError({message: Notifications.EmptyComment});
-            setIsClicked(true);
+            setError({message: Notifications.EmptyComment});
+            //setIsClicked(true);
             return;
         }
 
@@ -95,6 +97,9 @@ export default function PictureDetails() {
         <section className={styles["picture-details"]}>
             <h1>{picture.title}</h1>
             <div className={styles["info-section"]}>
+            {Object.keys(error).length > 0 &&  
+                <p className={styles["error-msg"]}>{error.message}</p> 
+            }
                 <div className={styles["info-details"]}>
                     <div>
                         <img src={picture.imageUrl} alt={picture.title} />
@@ -122,6 +127,9 @@ export default function PictureDetails() {
                 <legend>Add new comment:</legend>
                 {userId
                     ? <form onSubmit={onSubmit}>
+                        {Object.keys(error).length > 0 &&  
+                            <p className={styles["error-msg"]}>{error.message}</p> 
+                        }
                         <div>
                             <textarea
                                 name="comment"

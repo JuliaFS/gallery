@@ -45,6 +45,10 @@ export default function Register() {
 
     return (
         <section className={styles["register-page"]}>
+            {error  
+                ? <p className={styles["error-msg"]}>{error.message}</p> 
+                : <p className={styles["no-error"]}>{''}</p>
+            }
             <form  method="post" onSubmit={onSubmit}>
                 <legend>Register</legend>
                 <input
