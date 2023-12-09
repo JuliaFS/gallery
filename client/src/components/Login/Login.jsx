@@ -1,9 +1,6 @@
 
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
-//import { useAuthContext } from "../../contexts/AuthContext";
-//import { useForm } from "../../hooks/useForm";
 import useForm from '../../hooks/useForm';
 
 import { Path } from '../../constants/constants';
@@ -21,7 +18,6 @@ const LoginFormKeys = {
 export default function Login() {
     const [formErrors, setFormErrors] = useState({});
     const [isBlur, setIsBlur] = useState(false);
-    const [isError, setIsError] = useState(false);
     
     const { loginSubmitHandler } = useContext(AuthContext);
     const { error } = useContext(AuthContext);
@@ -58,15 +54,7 @@ export default function Login() {
     return (
         <section className={styles["login-page"]}>
             {/*<pre>{JSON.stringify(values, undefined, 2)}</pre>*/}
-            {/*{error && <p>{error.message}</p>}*/}
-            {/*{Object.keys(isError) > 0   
-                ? <p className={styles["error-msg"]}>{error.message}</p> 
-                : ""
-            }*/}
-            {isError  
-                ? <p className={styles["error-msg"]}>{error.message}</p> 
-                : <p className={styles["no-error"]}>{''}</p>
-            }
+            <p className={styles["error-msg"]}>{error.message}</p>
             <form method="POST" onSubmit={onSubmit}>
                 <legend>Login</legend>
                     <input
@@ -97,4 +85,3 @@ export default function Login() {
         </section>
     );
 }
-
