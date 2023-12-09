@@ -25,7 +25,7 @@ export const AuthProvider = ({
       } catch(error){
         setError(error);
         console.log(error)
-        navigate(Path.Login);
+        //navigate(Path.Login);
         throw new Error('Users data is not valid');
         //alert(error.message);
       }
@@ -40,8 +40,6 @@ export const AuthProvider = ({
       } catch(err){
         setError(err);
         throw new Error(err);
-        console.log(err);
-        //navigate(Path.Error404Path);
       }
     };
   
@@ -55,12 +53,10 @@ export const AuthProvider = ({
       loginSubmitHandler,
       registerSubmitHandler,
       logoutHandler,
-      //username: auth.username,
       email: auth.email,
       userId: auth._id,
       error,
-      isAuthenticated: !!auth.accessToken //double nogation, ako ima username, obrashtame v truti stoinost ili folsi,
-     
+      isAuthenticated: !!auth.accessToken 
     };
 
     return (
