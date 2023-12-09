@@ -11,12 +11,9 @@ export default function LatestPicture({
 {
    
     return(
-        <div className="latest-image">
+        <div className={styles["latest-image"]}>
             <h3>{title}</h3>
             <img src={imageUrl}></img>
-            <div>
-                <p>Likes: </p>
-            </div>
             <Link to={pathToUrl(Path.Details, {pictureId: _id})}>Details</Link>
         </div>
     );

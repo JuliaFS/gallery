@@ -15,16 +15,22 @@ export const getOne = async (pictureId) => {
     return result;
 }
 
+
+//where={match}
+//wait request.get(`${baseUrl}?select=userId&where=${query}`);
 ///data/recipes?offset=10&pageSize=5
 export const getLatest = async () => {
     const query = {
-        //sortBy: `_createdOn desc`,
-        offset: 0,
-        pageSize: 3
+        sortBy: `_createdOn desc`,
+        offset: 5,
+        pageSize:1
     }
+    //const query = 'offset=10&pageSize=5';
 
 //     const result = await request.get(${baseUrl}?sortBy=_createdOn desc&offset=0&pageSize=3);
 //   return result;
+//console.log(`${baseUrl}?${query}`)
+//console.log(`${baseUrl}?offset=10&pageSize=5`)
     const result = await request.get(`${baseUrl}?${query}`);
 
     return result;

@@ -79,16 +79,6 @@ export default function PictureDetails() {
 
     const isOwner = userId === picture._ownerId;
 
-    // const validateComment = (values) => {
-    //     console.log(values)
-    //     console.log(values.comment)
-    //     setFormErrors(validate(values));
-    //     //console.log(formErrors)
-
-    //     console.log(validateComment)
-    //     console.log(values.comment)
-    // }
-
     function validate(value){
         const errors = {};
         if(!value.comment){

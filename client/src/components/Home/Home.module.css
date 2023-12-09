@@ -1,147 +1,4 @@
-/*body {
-    margin: 0px;
-    font-family: 'Cedarville Cursive', cursive;
-  }
-  
-  div#background {
-    height: 700px;
-    width: 100%;
-    background-image: url(http://garchitecture.ca/php/images/headers/wood.jpg);
-    padding-top: 20px;
-  }
-  
-  div#gallery {
-    width: 800px;
-    margin: auto;
-  }
-  
-  
-  #background img {
-    height: 150px;
-    margin: 0px;
-  }
-  
-  #background figure {
-    float: left;
-    position: relative;
-    background-color: white;
-    text-align: center;
-    font-size: 15px;
-    padding: 10px;
-    margin: 10px;
-    box-shadow: 1px 2px 3px black;
-  }
-  
-  figure.pic1 {
-    -webkit-transform : rotate(-10deg);
-    z-index: 1;
-  }
-  
-  figure.pic2 {
-    -webkit-transform : rotate(15deg);
-    z-index: 2;
-  }
-  
-  figure.pic3 {
-    -webkit-transform : rotate(-25deg);
-    z-index: 1;
-  }
-  
-  figure.pic4 {
-    -webkit-transform : rotate(5deg);
-    z-index:1;
-  }
-  
-  figure.pic5 {
-    -webkit-transform : rotate(5deg);
-    z-index:1;
-  }
-  
-  figure.pic6 {
-    -webkit-transform : rotate(-8deg);
-    z-index:1;
-  }
-  
-  figure.pic7 {
-    -webkit-transform : rotate(2deg);
-    z-index:1;
-  }
-  
-  figure.pic8 {
-    -webkit-transform : rotate(-13deg);
-    z-index:1;
-  }
-  
-  figure.pic9 {
-    -webkit-transform : rotate(-7deg);
-    z-index:1;
-  }
-  
-  figure.pic10 {
-    -webkit-transform : rotate(2deg);
-    z-index:1;
-  }
-  
-  figure.pic11 {
-   -webkit-transform : rotate(-3deg);
-    z-index:1;
-  }
-  
-  #background figure:hover {
-    box-shadow: 5px 10px 100px black;
-    -webkit-transform: scale(1.1,1.1);
-    z-index: 20;
-  }
-  */
-.latest-pictures{
-  width: 80%;
-  position: relative;
-  display: inline-block;
-}
-
-.latest-pictures>h1{
-    margin-bottom: 10px;
-    background: linear-gradient(90deg, rgb(200, 187, 165), rgba(152, 137, 137, 0.346));
-    background-image: url("/images/fon-kartina.png");
-    position: relative;
-    width: 100%;
-    padding: 25px 15px;
-    font-size: 1.6em;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #fff;
-  
-    &:after {
-      content: "";
-      background-image: url(https://simpleicon.com/wp-content/uploads/magic_wand.png);
-      background-size: 70px 70px;
-      background-repeat: no-repeat;
-      background-position: 95%;
-      opacity: 0.06;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      position: absolute;
-    }
-}
-
-.latest-pictures>p{
-    color:  rgb(200, 187, 165);
-    margin-top: 8%;
-    text-transform: uppercase;
-    font-size: 1.2em;
-    font-weight: bold;
-    display: inline-block;
-    padding-bottom: 1%;
-    border-bottom: 3px solid antiquewhite;
-}
-
-
-  
-  
-  
-  
+ 
   ul{
     position: absolute;
     margin-top: 15%;
@@ -178,5 +35,82 @@
     background:#f5f5f5;
     box-shadow:0 0 10px 1px rgba(0,0,0,.5);
   }
+
+.latest-pictures{
+    display: inline-block;
+    width: 80%;
+    position: relative;
+}
+
+
+.latest-pictures h1 {
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, rgb(200, 187, 165), rgba(152, 137, 137, 0.346));
+  position: relative;
+  padding: 25px 15px;
+  font-size: 1.6em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+
+  &:after {
+    content: "";
+    background-image: url(https://simpleicon.com/wp-content/uploads/magic_wand.png);
+    background-size: 70px 70px;
+    background-repeat: no-repeat;
+    background-position: 95%;
+    opacity: 0.06;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+}
+
+.latest-image{
+  padding: 1%;
+  display: inline-block;
+  border: 1px solid white;
+  width: 20%;
+  margin: 1%;
+}
+
+.latest-image img{
+  padding: 20px;
+  width: 80%;
+  position: relative;
+  display: inline-block;
+  margin-top: 10%;
+}
+
+.latest-image a{
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  width: 60%;
+  margin-top: 10%;
+  border-bottom: 2px solid white;
+  padding: 10px;
+
+
+  &:hover {
+      color: rgb(183, 169, 145);
+      background-color: white;
+      padding: 10px;
+  }
+}
+
+.latest-image>h3{
+  color:  rgb(200, 187, 165);
+  margin-top: 8%;
+  text-transform: uppercase;
+  display: inline-block;
+  padding-bottom: 1%;
+  border-bottom: 3px solid antiquewhite;
+}
+
   
   

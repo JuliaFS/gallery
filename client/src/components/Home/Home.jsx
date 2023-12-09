@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import * as pictureService from '../../services/pictureService';
 import styles from './Home.module.css';
 import LatestPicture from './LatestPicture';
+import Modal from '../404/ModalErrors/ModalErrors';
 
 export default function Home({
     _id,
@@ -10,17 +11,25 @@ export default function Home({
     email
 }) {
     const[ latestPicture, setLatestPicture ] = useState([]);
+    const [errorMsg, setErrorMsg] = useState({});
 
     useEffect(() =>{
         pictureService.getLatest()
-        .then(result => setLatestPicture(result));
+        .then(result => setLatestPicture(result.slice(-3)))
+        .catch(error => setErrorMsg(error));
     }, []);
+
     
     return (
         <section className={styles["latest-pictures"]}>
-            <h1>Latest pictures</h1>
+            {Object.keys(errorMsg).length > 0 &&
+            <Modal {...errorMsg}/>
+            }
+            <h1>Latest 3 pictures</h1>
+            <div>
                 {latestPicture.map(picture => <LatestPicture key={picture._id} {...picture} /> )}
                 {latestPicture.length === 0 && <p>No added picture in gallery yet!</p>}
+            </div>
         </section>
     );
 }

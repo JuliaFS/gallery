@@ -23,10 +23,11 @@ export const AuthProvider = ({
         localStorage.setItem('accessToken', result.accessToken);
         navigate(Path.Gallery);
       } catch(error){
-        setErrorMsg(error);
+        //setErrorMsg(error);
+        console.log(error)
         navigate(Path.Login);
         //throw new Error('User does not exist!');
-        //alert(error.message);
+        alert(error.message);
       }
     };
   

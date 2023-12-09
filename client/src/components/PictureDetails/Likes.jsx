@@ -17,6 +17,7 @@ export default function Likes (){
         likesService.getLikes(pictureId)
         .then(result => {
             setPictureLikes(result);
+            console.log(pictureLikes);
         });
     },[]);
 
@@ -29,7 +30,7 @@ export default function Likes (){
         
         if(isVoted){
             setIsClicked(true);
-            //setCreateError({message: Notifications.Voted});
+            setCreateError({message: Notifications.Voted});
             return;
         } 
 

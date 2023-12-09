@@ -67,10 +67,6 @@ export default function CreatePicture() {
          
     }
 
-{/* -lekciq forms 1:02 controlled forms
-    - add onblur for validation for better UI
-    - input type submit predotvratqva defaultnoto prezarejdane na stranicata
-*/}
     return (
         <section className={styles["create-page"]}>
             { isClicked &&
