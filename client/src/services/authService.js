@@ -12,7 +12,7 @@ export const login = async (email, password) => {
 
     return result;
     } catch(error){
-        throw new Error('Login is unsuccesfull')
+        throw new Error('Login is unsuccesfull. Email or password do not match.')
     }
 };
 
@@ -41,6 +41,7 @@ export const register = async (email, password, confirmPassword) => {
         //to do -> add user message
         throw new Error('Passwords do not match! Pls try again...');
       }
+      
     const result = await request.post(`${baseUrl}/register`, {
         email,
         password

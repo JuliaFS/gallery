@@ -22,11 +22,16 @@ export default function Home({
     
     return (
         <section className={styles["latest-pictures"]}>
-            {Object.keys(errorMsg).length > 0 &&
-            <Modal {...errorMsg}/>
-            }
-            <h1>Latest 3 pictures</h1>
+            {/*{Object.keys(errorMsg).length > 0 &&
+                <Modal {...errorMsg}/>
+            }*/}
             <div>
+                <p>This site is intended as an exhibition of the paintings of my princesses - Elif and Meral.</p>
+                <img src="./public/images/elif-meral.jpg"/>
+
+            </div>
+            <div>
+                <h3>Our latest 3 pictures</h3>
                 {latestPicture.map(picture => <LatestPicture key={picture._id} {...picture} /> )}
                 {latestPicture.length === 0 && <p>No added picture in gallery yet!</p>}
             </div>

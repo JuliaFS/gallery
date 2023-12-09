@@ -31,41 +31,35 @@ export default function Comments() {
             })
             .catch((error) => setError(error));
     }, [pictureId]);
+   
 
-    // const addCommentHandler = async (values) => {
-    //     const newComment = await commentService.create(
-    //         pictureId,
-    //         values.comment
-    //     );
-    //     newComment.owner = { email };
-
-    //     //setComments(state => [...state, {...newComment, author: {email}}]);
-    //     dispatch({
-    //         type: 'ADD_COMMENT',
-    //         payload: newComment
-    //     });
-    // }
     const addCommentHandler = async (values) => {
-        const newComment = await commentService.create(
-            pictureId,
-            values.comment
-        );
-        newComment.owner = { email };
+        console.log(values)
+        try{
+            const newComment = await commentService.create(
+                pictureId,
+                values.comment
+            );
+            newComment.owner = { email };
 
-        //setComments(state => [...state, {...newComment, author: {email}}]);
-        dispatch({
-            type: 'ADD_COMMENT',
-            payload: newComment
-        });
+            //setComments(state => [...state, {...newComment, author: {email}}]);
+            dispatch({
+                type: 'ADD_COMMENT',
+                payload: newComment
+            });
+
+        } catch(err){
+            throw new Error('Problem with loading a comment');
+        }
+       
     }
 
 
     return (
         <>
-         {/*{error  
-                ? <p className={styles["error-msg"]}>{error.message}</p> 
-                : <p className={styles["no-error"]}>{''}</p>
-            }*/}
+         {Object.keys(error).length > 0 &&  
+                <p className={styles["error-msg"]}>{error.message}</p> 
+            }
         <legend>Add new comment:</legend>
     { userId
             ? <form className="form" onSubmit={onSubmit}>
