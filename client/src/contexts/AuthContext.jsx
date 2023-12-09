@@ -25,8 +25,7 @@ export const AuthProvider = ({
       } catch(error){
         setError(error);
         console.log(error)
-        //navigate(Path.Login);
-        throw new Error('Users data is not valid');
+        console.log('Users data is not valid');
         //alert(error.message);
       }
     };
@@ -39,7 +38,7 @@ export const AuthProvider = ({
          navigate(Path.Gallery);
       } catch(err){
         setError(err);
-        throw new Error(err);
+        console.log(err);
       }
     };
   
@@ -56,7 +55,7 @@ export const AuthProvider = ({
       email: auth.email,
       userId: auth._id,
       error,
-      isAuthenticated: !!auth.accessToken 
+      isAuthenticated: !!auth.accessToken,
     };
 
     return (

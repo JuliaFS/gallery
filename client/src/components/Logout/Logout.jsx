@@ -18,12 +18,8 @@ export default function Logout(){
             logoutHandler();
             navigate(Path.Home);
         })
-        .catch((err) => {
-            throw new Error(err);
-            //logoutHandler();
-            //navigate(Path.Login);
-        });
     }, []);
+    console.log("logout");
 
     return null;
 }

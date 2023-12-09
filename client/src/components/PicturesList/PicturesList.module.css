@@ -38,3 +38,6 @@
     padding-bottom: 1%;
     border-bottom: 3px solid antiquewhite;
 }
+.gallery>div>img{
+  border: 5px solid white;
+}

@@ -45,8 +45,9 @@ The application contains two parts:
 * [SoftUni practice server](https://github.com/softuni-practice-server/softuni-practice-server) as a backend solution
 
 ## How to start
- - server: node server.js
- - app: npm i
+ - start softuni practise server( navigate to server folder in terminal): node server.js
+ - main folder for project = client (navigate to client falder in terminal): 
+        npm install
         npm run dev
 
 

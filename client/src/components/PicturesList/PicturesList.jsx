@@ -5,26 +5,28 @@ import * as pictureService from '../../services/pictureService';
 import PictureListItem from './PictureListItem/PictureListItem';
 import { Notifications } from '../../constants/constants';
 import styles from './PicturesList.module.css';
+import Modal from '../404/ModalErrors/ModalErrors';
+import { isObjectIdOrHexString } from 'mongoose';
 
 export default function PicturesList(){
 
     const [pictures, setPictures] = useState([]);
-    const[createError, setCreateError ] = useState({});
+    const  [createError, setCreateError ] = useState({});
+    const [isClicked, setIsClicked] = useState(false);
 
     useEffect(() => {
         pictureService.getAll()
         .then(result => setPictures(result))
         .catch(err => {
             setCreateError({message: Notifications.CanNotGetImage});
+            setIsClicked(true);
             console.log(err);
         });
     }, []);
 
     return(
         <section className={styles["gallery"]}>
-            { Object.keys(createError).length > 0 &&
-                 <Modal {...createError}/>
-            }
+           
            <h1>Pictures gallery</h1>
            <div className={styles["container"]}>
                 {pictures.map(picture => (

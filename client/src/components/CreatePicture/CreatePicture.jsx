@@ -62,8 +62,6 @@ export default function CreatePicture() {
 
     const validateInput = (e) =>{
         setFormErrors(validate(formValues));
-        console.log('formErrors in function ValidateInput: ')
-        console.log(formErrors)
          
     }
 

@@ -1,22 +1,22 @@
-import { useEffect, useState, useContext, useReducer, useMemo } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 import * as pictureService from '../../services/pictureService';
 import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/AuthContext";
-import reducer from './commentReducer';
 import useForm from "../../hooks/useForm";
 import { Path, Notifications } from "../../constants/constants";
 import { pathToUrl } from "../../utils/pathUtils";
 
 import styles from "./PictureDetails.module.css";
 import Likes from "./Likes";
+import Comments from "./Comments";
 
 export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);
     const [picture, setPicture] = useState({});
 
-    const [comments, dispatch] = useReducer(reducer, []);
+    const [comments, setComments] = useState({});
     const { pictureId } = useParams();
     const navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
@@ -28,70 +28,52 @@ export default function PictureDetails() {
             .then(result => setPicture(result))
             .catch(err => setError(err));
 
-        commentService.getAll(pictureId)
-            .then((result) => {
-                dispatch({
-                    type: 'GET_ALL_COMMENTS',
-                    payload: result
-                })
-            })
-            .catch(err => setError(err));
+        // commentService.getAll(pictureId)
+        //     .then((result) => {
+        //         setComments(result)
+        //     })
+        //     .catch(err => setError(err));
     }, [pictureId]);
 
-    const addCommentHandler = async (values) => {
+    // const addCommentHandler = async (values) => {
 
-        if(values.comment === ''){
-            setError({message: Notifications.EmptyComment});
-            //setIsClicked(true);
-            return;
-        }
+    //     if(values.comment === ''){
+    //         setError({message: Notifications.EmptyComment});
+    //         //setIsClicked(true);
+    //         return;
+    //     }
 
-        try{
-        const newComment = await commentService.create(
-            pictureId,
-            values.comment
-        );
-        newComment.owner = { email };
+    //     try{
+    //     const newComment = await commentService.create(
+    //         pictureId,
+    //         values.comment
+    //     );
+    //     newComment.owner = { email };
 
-        //setComments(state => [...state, {...newComment, author: {email}}]);
-        dispatch({
-            type: 'ADD_COMMENT',
-            payload: newComment
-        });
+    //     setComments(state => [...state, {...newComment, author: {email}}]);
+    
 
-        } catch(err){
-            setCreateError({message: Notifications.CommentNotPublished});
-            setIsClicked(true);
-        }
+    //     } catch(err){
+    //         setCreateError({message: Notifications.CommentNotPublished});
+    //         setIsClicked(true);
+    //     }
         
-    }
+    // }
     const deleteButtonClickHandler = async () => {
         const isConfirmed = confirm('Are you sure you want to delete this picture?');
 
         if (isConfirmed) {
             await pictureService.remove(pictureId);
-
             navigate(Path.Gallery);
         }
     }
 
-    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
-        comment: '',
-    });
+    // const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+    //     comment: '',
+    // });
 
     const isOwner = userId === picture._ownerId;
 
-    function validate(value){
-        const errors = {};
-        if(!value.comment){
-            errors.comment = 'Pls write comment...';
-        } else if(value.comment.length < 10){
-            errors.comment = 'Comment must be min 10 characters';
-        }else if(value.comment.length > 200){
-            errors.comment= 'Comment can be max 200 characters';
-        }
-        return errors;
-    }
 
     return (
         <section className={styles["picture-details"]}>
@@ -125,39 +107,7 @@ export default function PictureDetails() {
 
             <article className={styles["create-comment"]}>
                 <legend>Add new comment:</legend>
-                {userId
-                    ? <form onSubmit={onSubmit}>
-                        {Object.keys(error).length > 0 &&  
-                            <p className={styles["error-msg"]}>{error.message}</p> 
-                        }
-                        <div>
-                            <textarea
-                                name="comment"
-                                value={values.comment}
-                                onChange={onChange}
-                                placeholder="Write comment here..." >
-                            </textarea>
-                            <p className={styles["error-msg"]}>{formErrors.comment}</p>
-                        </div>
-                        <div>
-                            <input type="submit" value="Add Comment" />
-                        </div>
-                    </form>
-                    : <p className={styles["comments-link"]}>To can comments you have to login <Link to={Path.Login}>Login</Link> or <Link to={Path.Register}>Register</Link>first!!!</p>
-                }
-                <div className={styles["details-comments"]}>
-                    <h2>Comments:</h2>
-                    <table>
-                        <tbody>
-                        {comments.map(({ _id, text, owner: { email } }) => (
-                            <tr key={_id}><td><span>{email}: </span> {text}</td></tr>
-                        ))}
-                        </tbody>
-                    </table>
-                    {comments.length === 0 &&
-                        <p className={styles["no-comment"]}>No comments yet.</p>
-                    }
-                </div>
+                {/*<Comments />*/}
             </article>
         </section>
     );
