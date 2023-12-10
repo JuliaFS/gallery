@@ -32,6 +32,7 @@ export default function Comments() {
         commentService.getAll(pictureId)
             .then((result) => {
                 setComments(result);
+                console.log(comments);
             })
             .catch((error) => setError(error));
     }, [pictureId]);
@@ -55,7 +56,7 @@ export default function Comments() {
         }
 
         try {
-            const newComment = await commentService.create(pictureId, formValues);
+            const newComment = await commentService.create(pictureId, {fformValues});
             resetFormHandler();
             navigate(Path.Gallery);
         } catch (err) {
@@ -136,9 +137,9 @@ return (
             <h2>Comments:</h2>
             <table>
                 <tbody>
-                    {comments.map((comment) => (
+                    {/*{comments.map((comment) => (
                         <tr key={id}><td><span>{email}: </span> {text}</td></tr>
-                    ))}
+                    ))}*/}
                 </tbody>
             </table>
             {comments.length === 0 &&

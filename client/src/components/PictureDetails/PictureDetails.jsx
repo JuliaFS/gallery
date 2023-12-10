@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useReducer, useMemo } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 import * as pictureService from '../../services/pictureService';
@@ -8,6 +8,7 @@ import useForm from "../../hooks/useForm";
 import { Path, Notifications } from "../../constants/constants";
 import { pathToUrl } from "../../utils/pathUtils";
 
+import reducer from './commentReducer';
 import styles from "./PictureDetails.module.css";
 import Likes from "./Likes";
 import Comments from "./Comments";
@@ -16,7 +17,7 @@ export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);
     const [picture, setPicture] = useState({});
 
-    const [comments, setComments] = useState({});
+    const [comments, dispatch] = useReducer(reducer, []);
     const { pictureId } = useParams();
     const navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
@@ -28,37 +29,28 @@ export default function PictureDetails() {
             .then(result => setPicture(result))
             .catch(err => setError(err));
 
-        // commentService.getAll(pictureId)
-        //     .then((result) => {
-        //         setComments(result)
-        //     })
-        //     .catch(err => setError(err));
+        commentService.getAll(pictureId)
+            .then((result) => {
+                dispatch({
+                    type: 'GET_ALL_COMMENTS',
+                    payload: result,
+                });
+            });
     }, [pictureId]);
 
-    // const addCommentHandler = async (values) => {
+    const addCommentHandler = async (values) => {
+        const newComment = await commentService.create(
+            pictureId,
+            values.comment
+        );
 
-    //     if(values.comment === ''){
-    //         setError({message: Notifications.EmptyComment});
-    //         //setIsClicked(true);
-    //         return;
-    //     }
+        newComment.owner = { email };
 
-    //     try{
-    //     const newComment = await commentService.create(
-    //         pictureId,
-    //         values.comment
-    //     );
-    //     newComment.owner = { email };
-
-    //     setComments(state => [...state, {...newComment, author: {email}}]);
-    
-
-    //     } catch(err){
-    //         setCreateError({message: Notifications.CommentNotPublished});
-    //         setIsClicked(true);
-    //     }
-        
-    // }
+        dispatch({
+            type: 'ADD_COMMENT',
+            payload: newComment
+        })
+    }
     const deleteButtonClickHandler = async () => {
         const isConfirmed = confirm('Are you sure you want to delete this picture?');
 
@@ -68,9 +60,9 @@ export default function PictureDetails() {
         }
     }
 
-    // const { values, onChange, onSubmit } = useForm(addCommentHandler, {
-    //     comment: '',
-    // });
+    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+        comment: '',
+    });
 
     const isOwner = userId === picture._ownerId;
 
@@ -107,7 +99,42 @@ export default function PictureDetails() {
 
             <article className={styles["create-comment"]}>
                 <legend>Add new comment:</legend>
-                {/*<Comments />*/}
+                
+        {userId
+            ? <form method="POST" onSubmit={onSubmit}>
+                {Object.keys(error).length > 0 &&
+                    <p className={styles["error-msg"]}>{error.message}</p>
+                }
+                <div>
+                    <textarea
+                        id="comment"
+                        name="comment"
+                        value={values.comment}
+                        onChange={onChange}
+                        placeholder="Write comment here..." >
+                    </textarea>
+                    <p className={styles["error-msg"]}>{formErrors.comment}</p>
+                </div>
+                <div>
+                <input className="btn submit" type="submit" value="Add Comment" />
+
+                </div>
+            </form>
+            : <p className={styles["comments-link"]}>To can comments you have to login <Link to={Path.Login}>Login</Link> or <Link to={Path.Register}>Register</Link>first!!!</p>
+        }
+        <div className={styles["details-comments"]}>
+            <h2>Comments:</h2>
+            <table>
+                <tbody>
+                    {comments.map(({ _id, text, owner: { email } }) => (
+                        <tr key={_id}><td><span>{email}: </span> {text}</td></tr>
+                    ))}
+                </tbody>
+            </table>
+            {comments.length === 0 &&
+                <p className={styles["no-comment"]}>No comments yet.</p>
+            }
+        </div>
             </article>
         </section>
     );
