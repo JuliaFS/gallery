@@ -24,7 +24,7 @@ export default function App() {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <AuthProvider>
-        <div>
+        <div className='main-container'>
           <Header />
 
           <Routes>

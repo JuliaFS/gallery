@@ -15,10 +15,10 @@ export default function Modal(error, props){
     }
     return (
       <section>
-        {isClosedClick 
+        {/*{isClosedClick 
         ? <div className={styles["hide-modal"]}></div>
         : <div className={styles["modal-container"]}></div>
-        }
+        }*/}
         <div className={styles["modal-container"]}>
           <header>
             <h2>Error</h2>
@@ -27,7 +27,7 @@ export default function Modal(error, props){
             <p>{error.message}</p>
             </div>
           <footer className={styles["modal-close"]}>
-            <button type="button" onClick={closeErrorModal}>close</button>
+            <button type="button" onClick={closeErrorModal}>Close</button>
           </footer>
         </div>
       </section>

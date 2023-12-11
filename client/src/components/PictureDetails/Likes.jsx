@@ -7,7 +7,7 @@ import { Notifications } from '../../constants/constants';
 import styles from './PictureDetails.module.css';
 
 
-export default function Likes (){
+export default function Likes ({isOwner}){
     const { userId } = useContext(AuthContext);
     const { pictureId } = useParams();
     const [isClicked, setIsClicked] = useState(false);
@@ -19,10 +19,10 @@ export default function Likes (){
         .then(result => {
             setPictureLikes(result);
         }).catch(err => setError(err));
-    },[pictureId]);
+    },[pictureLikes]);
 
-    const isOwner = userId === pictureLikes._ownerId;
-
+    //const isOwner = userId === pictureLikes._ownerId;
+    //console.log(isOwner)
     const onClickButtonLikes = async () => {
         setIsClicked(true);
         const token = localStorage.getItem('accessToken');
@@ -44,9 +44,9 @@ export default function Likes (){
     }      
     return (
         <>
-        {/*{Object.keys(error).length > 0 &&
+        {Object.keys(error).length > 0 &&
             <Modal {...error}/>
-        }*/}
+        }
         {Object.keys(error).length > 0 &&  
                 <p className={styles["error-msg"]}>{error.message}</p> 
         }

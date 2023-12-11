@@ -16,7 +16,7 @@ export default function Header(){
             <div className="curve">
                 <h1><Link className="home" to={Path.Home}>Art gallery</Link></h1>
             </div>
-            <nav className="more">
+            <nav className="navigation">
                 <div>
                     <Link to={Path.Home}>Home</Link>
                 </div>

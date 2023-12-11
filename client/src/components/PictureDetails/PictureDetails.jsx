@@ -94,7 +94,7 @@ export default function PictureDetails() {
             </div>
 
             <div>
-                <Likes {...picture} />
+                <Likes props={isOwner} />
             </div>
 
             <article className={styles["create-comment"]}>
