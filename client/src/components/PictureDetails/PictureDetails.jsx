@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, useReducer, useMemo } from "react";
+import { useEffect, useState, useContext, useReducer } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 import * as pictureService from '../../services/pictureService';
@@ -11,7 +11,7 @@ import { pathToUrl } from "../../utils/pathUtils";
 import reducer from './commentReducer';
 import styles from "./PictureDetails.module.css";
 import Likes from "./Likes";
-import Comments from "./Comments";
+import ImageMagnifier from "./ImageMagnifier";
 
 export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);

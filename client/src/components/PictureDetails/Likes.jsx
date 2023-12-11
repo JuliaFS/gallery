@@ -18,9 +18,8 @@ export default function Likes (){
         likesService.getLikes(pictureId)
         .then(result => {
             setPictureLikes(result);
-            console.log(pictureLikes);
         }).catch(err => setError(err));
-    },[]);
+    },[pictureId]);
 
     const isOwner = userId === pictureLikes._ownerId;
 
