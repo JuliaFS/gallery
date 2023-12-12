@@ -9,20 +9,19 @@ import styles from "./PictureDetails.module.css";
 import AuthContext from "../../contexts/AuthContext";
 import * as commentService from '../../services/commentService';
 
-const formInitialState = {
-    comment: ''
-};
-
 export default function Comments() {
 
-    const { email, userId } = useContext(AuthContext);
+    const { email, userId, ownerId } = useContext(AuthContext);
     const [comments, setComments] = useState({});
+
+
     const [error, setError] = useState({});
     const [isClicked, setIcClcked] = useState(false);
     const [createError, setCreateError] = useState({});
     //console.log(userId);
     //console.log(email)
-    const [formValues, setFormValues] = useState(formInitialState);
+    const [formValue, setFormValue] = useState("");
+    const [value, setValue] = useState("");
     const [formErrors, setFormErrors] = useState({});
 
     const { pictureId } = useParams();
@@ -32,69 +31,80 @@ export default function Comments() {
         commentService.getAll(pictureId)
             .then((result) => {
                 setComments(result);
-                console.log(comments);
+                //console.log(comments);
             })
             .catch((error) => setError(error));
-    }, [pictureId]);
+    }, []);
+    console.log("comments:")
+    console.log(comments)
 
-    const onChange = (e) => {
-        setValue(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
-    }
+    // const onChange = (e) => {
+    //     console.log(e.target.value);    
+    // }
+    // console.log(formValue)
 
     const resetFormHandler = () => {
-        setFormValues(formInitialState);
+        setFormValue("");
     };
 
-    const submitHandler = async () => {
-        if ( formValues.comment === '' ) {
-                setCreateError({message: Notifications.CreateError});
-                setIsClicked(true);
-                 return;
-        }
+    // const submitHandler = async () => {
+    //     // if ( formValues.comment === '' ) {
+    //     //         setCreateError({message: Notifications.CreateError});
+    //     //        // setIsClicked(true);
+    //     //          return;
+    //     // }
 
-        try {
-            const newComment = await commentService.create(pictureId, {fformValues});
-            resetFormHandler();
-            navigate(Path.Gallery);
-        } catch (err) {
-            setCreateError({message: Notifications.Create});
-            console.log(err.message);
-        }
-    };
+    //     try {
+    //         // const newComment = await commentService.create(pictureId, {formValues});
+    //         // resetFormHandler();
+    //         // navigate(Path.Gallery);
+    //     } catch (err) {
+    //         setCreateError({message: Notifications.Create});
+    //         console.log(err.message);
+    //     }
+    // };
 
     const changeHandler = (e) => {
-        setFormValues(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }
-        ));
+        setFormValue(e.target.value)
     };
+    //console.log(formValue)
 
-    const validateInput = (e) =>{
-        setFormErrors(validate(formValues));
+    // const validateInput = (e) =>{
+    //     //setValue(validate());
          
-    }
+    // }
 
     const validateComment = (e) =>{
-        setFormErrors(validate(value.comment));
+        setFormErrors(validate(formValue));
          
     }
 
 
     const onSubmit = async (e) => {
-        e.preventDefault();
+        //console.log('formValue in onSubmit')
+        //console.log(formValue)
+
+        //e.preventDefault();
         // console.log(e.target.name)
         // console.log('in add comment handler')
-        if ( value.comment === '') {
+        if ( formValue === '') {
                 setCreateError({message: Notifications.CreateError});
                 //setIsClicked(true);
                  return;
         }
 
+        const newComment = await commentService.create(pictureId, formValue);
+        setComments(newComment);
+        
+        resetFormHandler();
  }
+
+    // let allComments = Object.entries(comments);
+    // console.log(allComments)
+    // let commentsValues = allComments.map(comment => console.log(comment[1].text));
+   // console.log(commentsValues)
+ //console.log((test.map(comment => console.log(comment[1].text))));
+
  function validate(value){
     const errors = {};
     if(!value.comment){
@@ -110,6 +120,7 @@ export default function Comments() {
 
 return (
     <>
+     <legend>Add new comment:</legend>
         {userId
             ? <form method="POST">
                 {Object.keys(setCreateError).length > 0 &&
@@ -119,15 +130,15 @@ return (
                     <textarea
                         id="comment"
                         name="comment"
-                        value={formValues["comment"]}
+                        value={formValue}
                         onChange={changeHandler}
-                        onBlur={validateInput}
+                        onBlur={validateComment}
                         placeholder="Write comment here..." >
                     </textarea>
                     <p className={styles["error-msg"]}>{formErrors.comment}</p>
                 </div>
                 <div>
-            <button type="button" onClick={submitHandler} disabled={isClicked}></button>
+            <button type="button" onClick={onSubmit} disabled={isClicked}>Comment</button>
 
                 </div>
             </form>
@@ -137,9 +148,9 @@ return (
             <h2>Comments:</h2>
             <table>
                 <tbody>
-                    {/*{comments.map((comment) => (
-                        <tr key={id}><td><span>{email}: </span> {text}</td></tr>
-                    ))}*/}
+                   { Object.entries(comments).map((comment) => (
+                        <tr key={comment[1]._createdOn}><td><span>{email}: </span> {comment[1].text}</td></tr>
+                   ))}
                 </tbody>
             </table>
             {comments.length === 0 &&

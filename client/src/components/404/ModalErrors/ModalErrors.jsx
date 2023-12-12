@@ -3,15 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { Path, Notifications } from '../../../constants/constants';
 import { useState } from 'react';
 
-export default function Modal(error, props){
+export default function Modal(error){
     const navigate = useNavigate();
     const [isClosedClick, setIsClosedClick] = useState(false);
-    console.log('props test: ')
-    console.log(props)
 
-    const closeErrorModal = (props) => {
+    const closeErrorModal = () => {
         setIsClosedClick(true);
-        navigate(0);
+        navigate(-1);
     }
     return (
       <section>

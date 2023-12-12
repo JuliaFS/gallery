@@ -47,9 +47,9 @@ export default function Likes ({isOwner}){
         {Object.keys(error).length > 0 &&
             <Modal {...error}/>
         }
-        {Object.keys(error).length > 0 &&  
+        {/*{Object.keys(error).length > 0 &&  
                 <p className={styles["error-msg"]}>{error.message}</p> 
-        }
+        }*/}
         { userId && !isOwner &&
             <button onClick={onClickButtonLikes} disabled={isClicked}>Likes</button> 
         }
