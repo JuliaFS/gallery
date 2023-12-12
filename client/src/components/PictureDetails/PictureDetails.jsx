@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, useReducer, useMemo } from "react";
+import { useEffect, useState, useContext, useReducer } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 import * as pictureService from '../../services/pictureService';
@@ -11,6 +11,7 @@ import { pathToUrl } from "../../utils/pathUtils";
 import reducer from './commentReducer';
 import styles from "./PictureDetails.module.css";
 import Likes from "./Likes";
+import ImageMagnifier from "./ImageMagnifier";
 import Comments from "./Comments";
 
 export default function PictureDetails() {
@@ -29,28 +30,28 @@ export default function PictureDetails() {
             .then(result => setPicture(result))
             .catch(err => setError(err));
 
-        commentService.getAll(pictureId)
-            .then((result) => {
-                dispatch({
-                    type: 'GET_ALL_COMMENTS',
-                    payload: result,
-                });
-            });
+        // commentService.getAll(pictureId)
+        //     .then((result) => {
+        //         dispatch({
+        //             type: 'GET_ALL_COMMENTS',
+        //             payload: result,
+        //         });
+        //     });
     }, [pictureId]);
 
-    const addCommentHandler = async (values) => {
-        const newComment = await commentService.create(
-            pictureId,
-            values.comment
-        );
+    // const addCommentHandler = async (values) => {
+    //     const newComment = await commentService.create(
+    //         pictureId,
+    //         values.comment
+    //     );
 
-        newComment.owner = { email };
+    //     newComment.owner = { email };
 
-        dispatch({
-            type: 'ADD_COMMENT',
-            payload: newComment
-        })
-    }
+    //     dispatch({
+    //         type: 'ADD_COMMENT',
+    //         payload: newComment
+    //     })
+    // }
     const deleteButtonClickHandler = async () => {
         const isConfirmed = confirm('Are you sure you want to delete this picture?');
 
@@ -60,9 +61,9 @@ export default function PictureDetails() {
         }
     }
 
-    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
-        comment: '',
-    });
+    // const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+    //     comment: '',
+    // });
 
     const isOwner = userId === picture._ownerId;
 
@@ -94,11 +95,12 @@ export default function PictureDetails() {
             </div>
 
             <div>
-                <Likes {...picture} />
+                <Likes />
             </div>
 
             <article className={styles["create-comment"]}>
-                <legend>Add new comment:</legend>
+                <Comments />
+                {/* <legend>Add new comment:</legend>
                 
         {userId
             ? <form method="POST" onSubmit={onSubmit}>
@@ -134,7 +136,7 @@ export default function PictureDetails() {
             {comments.length === 0 &&
                 <p className={styles["no-comment"]}>No comments yet.</p>
             }
-        </div>
+        </div> */}
             </article>
         </section>
     );

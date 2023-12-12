@@ -1340,78 +1340,27 @@
     };
     var seedData = {
         pictures: {
-            "9beda7ff-9064-45f3-b039-a878960011d4": {
-                    "_ownerId": "3a0983c8-edc5-43f4-9993-e8cf767d4638",
-                    "title": "Autumn",
-                    "category": "Landscape",
-                    "painter": "Elif",
-                    "painterAge": "11",
-                    "imageUrl": "/images/autumn-500width-72.jpg",
-                    "description": "Very beautiful autumn landscape. Delight for the soul, uniquely conveys the beauty and natural autumn shades.",
-                    "likes": 0,
-                    "usersLiked": [],
-                    "_createdOn": 1701944299384,
-                    "_id": "9beda7ff-9064-45f3-b039-a878960011d4"
-                },
-            "66bc3aec-5447-4be8-acf2-c5102bb93030": {
-                    "title": "A boat 111",
-                    "category": "Landscape 111",
-                    "painter": "Elif 111",
-                    "painterAge": "20",
-                    "imageUrl": "/images/lodka-500width-72.jpg",
-                    "description": "Beautiful seascape.111",
-                    "_createdOn": 1701952582024,
-                    "_updatedOn": 1702020298744,
-                    "_ownerId": "12efe593-b5e4-4ddc-bf8f-dcf0e76edcdb",
-                    "_id": "66bc3aec-5447-4be8-acf2-c5102bb93030"
-                },
-            "0da94443-9ca9-4fc7-b2c8-e9e5840173ff": {
-                    "_ownerId": "12efe593-b5e4-4ddc-bf8f-dcf0e76edcdb",
-                    "title": "The doll",
-                    "category": "Doll",
-                    "painter": "Meral",
-                    "painterAge": "6",
-                    "imageUrl": "/images/skica-kukla--500width-72.jpg",
-                    "description": "A lovely paper doll...",
-                    "likes": 0,
-                    "usersLiked": [],
-                    "_createdOn": 1701955184405,
-                    "_id": "0da94443-9ca9-4fc7-b2c8-e9e5840173ff"
-                },
-            "bbc163b4-3462-4a08-81d3-ba5faab08e28": {
-                    "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                    "title": "ddfdsfds",
-                    "category": "dsdfs",
-                    "painter": "sdss",
-                    "painterAge": "10",
-                    "imageUrl": "/images/minzuhari-72dpi.jpg",
-                    "description": "erww",
-                    "likes": 0,
-                    "usersLiked": [],
-                    "_createdOn": 1701979764429,
-                    "_id": "bbc163b4-3462-4a08-81d3-ba5faab08e28"
-                },
             "b1a1c6c0-3123-4563-a97b-69a4d6ced58e": {
-                    "_ownerId": "12efe593-b5e4-4ddc-bf8f-dcf0e76edcdb",
-                    "title": "Julia creator",
-                    "category": "Test",
-                    "painter": "test name",
-                    "painterAge": "23",
-                    "imageUrl": "/images/minzuhari-72dpi.jpg",
-                    "description": "wrewr etr",
-                    "_createdOn": 1701987561758,
-                    "_id": "b1a1c6c0-3123-4563-a97b-69a4d6ced58e"
+                    _ownerId: "12efe593-b5e4-4ddc-bf8f-dcf0e76edcdb",
+                    title: "Julia creator",
+                    category: "Test",
+                    painter: "test name",
+                    painterAge: "23",
+                    imageUrl: "/images/minzuhari-72dpi.jpg",
+                    description: "wrewr etr",
+                    _createdOn: 1701987561758,
+                    _id: "b1a1c6c0-3123-4563-a97b-69a4d6ced58e"
                 },
             "374933ea-52f9-4b8d-8997-7a0b9db9cfc0": {
-                    "_ownerId": "5795b150-b4ae-40a9-9f9b-a0359e794428",
-                    "title": "dfgfdg",
-                    "category": "dgdd",
-                    "painter": "dfdg",
-                    "painterAge": "11",
-                    "imageUrl": "ereww",
-                    "description": "errgdt",
-                    "_createdOn": 1701987671815,
-                    "_id": "374933ea-52f9-4b8d-8997-7a0b9db9cfc0"
+                    _ownerId: "5795b150-b4ae-40a9-9f9b-a0359e794428",
+                    title: "dfgfdg",
+                    category: "dgdd",
+                    painter: "dfdg",
+                    painterAge: "11",
+                    imageUrl: "ereww",
+                    description: "errgdt",
+                    _createdOn: 1701987671815,
+                    _id: "374933ea-52f9-4b8d-8997-7a0b9db9cfc0"
                 }
             },
     	recipes: {

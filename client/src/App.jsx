@@ -17,6 +17,7 @@ import EditPicture from './components/PictureEdit/EditPicture';
 import Footer from './components/Footer/Footer';
 import ErrorBoundary from './components/404/Error boundary/ErrorBoundary';
 import AuthGuard from './components/quards/AuthGuard';
+import RegUsersGuard from './components/quards/RegUsersGuard';
 import PageNotFound from './components/404/PageNotFound/PageNotFound';
 import ErrorFallback from './components/common/ErrorFallBack';
 
@@ -24,7 +25,7 @@ export default function App() {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <AuthProvider>
-        <div>
+        <div className='main-container'>
           <Header />
 
           <Routes>
@@ -32,8 +33,10 @@ export default function App() {
             <Route path={Path.Gallery} element={<PicturesList />} />
             {/*<Route path={Path.CreatePicture} element={<CreatePicture />} />*/}
             {/*<Route element={<AuthGuard />}>*/}
+            <Route element={<RegUsersGuard />}>
               <Route path={Path.Login} element={<Login />} />
               <Route path={Path.Register} element={<Register />} />
+            </Route>
               {/*<Route path={Path.Logout} element={<Logout />} />*/}
             {/*</Route>*/}
             <Route path={Path.Details} element={<PictureDetails />} />
