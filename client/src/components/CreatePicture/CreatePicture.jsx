@@ -43,6 +43,7 @@ export default function CreatePicture() {
              formValues.category === '' ||
              formValues.painter === '' ||
              formValues.imageUrl === '' ||
+             formValues.painterAge < 1 ||
              formValues.description === '') {
                 setCreateError({message: Notifications.CreateError});
 

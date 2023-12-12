@@ -6,8 +6,6 @@ import * as authService from '../../services/authService';
 
 import { Path } from "../../constants/constants";
 
-
-
 export default function Logout(){
     const navigate = useNavigate();
     const { logoutHandler } = useContext(AuthContext);
@@ -19,7 +17,6 @@ export default function Logout(){
             navigate(Path.Home);
         })
     }, []);
-    console.log("logout");
-
+    //console.log("logout");
     return null;
 }

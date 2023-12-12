@@ -7,52 +7,47 @@
 
   * {
     box-sizing: border-box; 
-  }
-/*header {
-    background-color: rgb(183, 169, 145);
-} */
+  } 
   .curve {
     color: rgb(160, 146, 146);
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-align: center;
-    padding: 3rem 2rem;
-    width: 80%;
-    margin-right: 10%;
-    z-index: 2;
+    padding: 1.2rem -0.3rem;
+    width: 100%;
+    z-index: 1;
     
     &::before {
       content: '';
       display: block;
-      background-image: url("/images/fon-kartina.png");
+     /* background-image: url("/images/fon-kartina.png");*/
       background-color: rgb(183, 169, 145);
       /*background: radial-gradient(ellipse at center, rgba(124, 115, 115, 0.1) 25%,rgba(183, 169, 145) 100%);*/
       position: absolute;
-      left: 50%;
+      left: 60%;
       bottom: 0;
       transform: translateX(-50%);
       box-shadow: 0px 0px 9px 0px rgb(183, 169, 145), -7px -7px 10px #6f71740f;
       border-radius: 150vw;
-      width: 300vw;
-      height: 300vw;
+      width: 200vw;
+      height: 200vw;
       z-index: -1;
     }
   }
   
-.more {
+.navigation {
     float: right;
     position: relative;
-    padding: 1rem 2rem;
     text-align: right;
-    width: 80%;
-    margin-right: 10%;
+    width: 70%;
+    margin-top: 1%;
 }
 
 .home {
     font-size: 2em;
     font-family: "Finger_Paint", Times, serif;
     color: white;
-    margin-bottom: 10px;;
+    margin-bottom: 10px;
 }
 
 .home:hover{
@@ -70,16 +65,16 @@ header nav div{
 }
 
 header nav a {
-    color: white;
+    color:rgb(183, 169, 145);
     font-weight: bold;
     text-transform: uppercase;
     padding: 20px 20px;
-    border-right: 1px solid #f4f4f4;
+    border-right: 1px solid rgb(183, 169, 145);
     text-decoration: none;
   }
   
 header nav a:hover {
-    background-color: rgb(183, 169, 145);
+    background-color: white;
 }
 
 @media (min-width: 48em) {

@@ -7,7 +7,7 @@ import { Notifications } from '../../constants/constants';
 import styles from './PictureDetails.module.css';
 
 
-export default function Likes (){
+export default function Likes ({isOwner}){
     const { userId } = useContext(AuthContext);
     const { pictureId } = useParams();
     const [isClicked, setIsClicked] = useState(false);
@@ -18,12 +18,11 @@ export default function Likes (){
         likesService.getLikes(pictureId)
         .then(result => {
             setPictureLikes(result);
-            console.log(pictureLikes);
         }).catch(err => setError(err));
-    },[]);
+    },[pictureLikes]);
 
-    const isOwner = userId === pictureLikes._ownerId;
-
+    //const isOwner = userId === pictureLikes._ownerId;
+    //console.log(isOwner)
     const onClickButtonLikes = async () => {
         setIsClicked(true);
         const token = localStorage.getItem('accessToken');
@@ -45,12 +44,12 @@ export default function Likes (){
     }      
     return (
         <>
-        {/*{Object.keys(error).length > 0 &&
+        {Object.keys(error).length > 0 &&
             <Modal {...error}/>
-        }*/}
-        {Object.keys(error).length > 0 &&  
-                <p className={styles["error-msg"]}>{error.message}</p> 
         }
+        {/*{Object.keys(error).length > 0 &&  
+                <p className={styles["error-msg"]}>{error.message}</p> 
+        }*/}
         { userId && !isOwner &&
             <button onClick={onClickButtonLikes} disabled={isClicked}>Likes</button> 
         }
