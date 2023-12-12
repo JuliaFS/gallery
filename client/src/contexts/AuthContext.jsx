@@ -25,7 +25,7 @@ export const AuthProvider = ({
       } catch(error){
         setError(error);
         console.log(error)
-        console.log('Users data is not valid');
+        console.log('Users data is not valid. May be you have to register first.');
         //alert(error.message);
       }
     };

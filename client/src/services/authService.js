@@ -12,7 +12,7 @@ export const login = async (email, password) => {
 
     return result;
     } catch(error){
-        //throw new Error('Login is unsuccesfull. Email or password do not match.')
+        throw new Error('Login is unsuccesfull. Email or password do not match.');
         console.log(error.message)
     }
 };
