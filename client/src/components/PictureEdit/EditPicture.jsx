@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
-import * as pictureService from '../../services/pictureService';
+import * as pictureService from '../../services/authService';
+
+
 import { Path, Notifications } from '../../constants/constants';
 import { pathToUrl } from '../../utils/pathUtils';
 import Modal from '../404/ModalErrors/ModalErrors';
@@ -20,7 +22,7 @@ const formInitialState = {
     description: '',
 };
 
-export default function EditPicture() {
+export default function EditProfile() {
     const navigate = useNavigate();
     const { pictureId } = useParams();
     const [picture, setPicture] = useState(formInitialState);

@@ -1,0 +1,54 @@
+.modal-container {
+    font-weight: bold;
+    color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    z-index: 10;
+    overflow: hidden;
+    box-shadow: 0px 0px 18px 0px rgb(183, 169, 145), -7px -7px 10px #6f71740f;
+    background: rgb(183, 169, 145);
+    border: 1px solid white;
+}
+.modal-container h2{
+    background-color: antiquewhite;
+    color: rgb(183, 169, 145);
+    padding: 3% 0 3% 0;
+}
+.error-msg {
+    font-weight: bold;
+    color: white;
+    
+    padding: 2%;
+}
+.modal-close {
+  padding: 1%;
+  display: flex;
+  justify-content:center;
+  text-align: center;
+}
+.modal-close button {
+    width: 30%;
+    margin: 6% 6% 6% 0;
+    padding: 10px 5px 10px 10px;
+    display: block;
+    border: 1px solid #ededed;
+    border-radius: 4px;
+    transition: 0.2s ease-out;
+    color: rgb(183, 169, 145);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    
+    &:focus {
+        padding: 10px 5px 10px 10px;
+        outline: 0;
+        border-color: #ff7052;
+    }
+}
+
+.hide-modal{
+    display: none;
+}

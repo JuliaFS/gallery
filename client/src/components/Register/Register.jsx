@@ -10,6 +10,7 @@ import styles from './Register.module.css';
 
 
 const RegisterFormKeys = {
+    Username: 'username',
     Email: 'email',
     Password: 'password',
     ConfirmPassword: 'confirm-password'
@@ -31,6 +32,7 @@ export default function Register() {
     }, [error]);
 
     const { values, onChange, onSubmit} = useForm(registerSubmitHandler, {
+        [RegisterFormKeys.Username]: '',
         [RegisterFormKeys.Email]: '',
         [RegisterFormKeys.Password]: '',
         [RegisterFormKeys.ConfirmPassword]: ''
@@ -51,6 +53,16 @@ export default function Register() {
             }
             <form  method="post" onSubmit={onSubmit}>
                 <legend>Register</legend>
+                <input
+                    type="username"
+                    name="username"
+                    id="username"
+                    placeholder="Enter your username..."
+                    onChange={onChange}
+                    onBlur={validateInput}
+                    value={values[RegisterFormKeys.Username]}
+                />
+                <p className={styles["error-msg"]}>{formErrors[RegisterFormKeys.Username]}</p>
                 <input
                     type="email"
                     id="email"
@@ -83,7 +95,7 @@ export default function Register() {
                 <p className={styles["error-msg"]}>{formErrors[RegisterFormKeys.ConfirmPassword]}</p>
                 <input type="submit" value="Register" />
                 <p>
-                    <span>If you already have profile click <Link to={Path.Login}>here</Link></span>
+                    <span>If you already registered click <Link to={Path.Login}>here</Link></span>
                 </p>
             </form>
         </section>

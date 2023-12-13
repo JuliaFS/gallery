@@ -1,6 +1,8 @@
 const Path = {
     Home: "/",
     Register: "/register",
+    Profile: "/user-profile",
+    Modal: "/user-modal",
     Login: "/login",
     Logout: "/logout",
     Gallery: "/gallery",

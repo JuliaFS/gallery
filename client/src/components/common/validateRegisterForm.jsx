@@ -9,6 +9,15 @@ export default function validate(value){
     } else if(!regex.test(value.email)){
         errors.email = 'This is not a valid email format';
     }
+
+    if(!value.username){
+        errors.username = 'Username is required!';
+    } else if(value.username.length < 4){
+        errors.username = 'Username must be at least 4 character long';
+    }else if(value.username.length > 7){
+        errors.username = 'Username can not exceed more than 7 characters';
+    }
+
     if(!value.password){
         errors.password = 'Password is required!';
     } else if(value.password.length < 4){
@@ -16,6 +25,7 @@ export default function validate(value){
     }else if(value.password.length > 15){
         errors.password = 'Password can not exceed more than 15 characters';
     }
+    
     if(!value["confirm-password"]){
         errors["confirm-password"] = 'Confirming password is required';
     } else if (curPassword !== value["confirm-password"]){

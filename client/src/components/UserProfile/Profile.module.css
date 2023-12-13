@@ -1,9 +1,9 @@
-.register-page {
-    width: 30%;
+.update-profile {
+    width: 40%;
     height: auto;
-    position: relative;
     border-radius: 5px;
     box-sizing: border-box;
+    position: relative;
     text-align: center;
     box-shadow: 0px 0px 18px 0px rgb(183, 169, 145), -7px -7px 10px #6f71740f;
     display: inline-block;
@@ -11,7 +11,7 @@
     background: linear-gradient(90deg, rgb(183, 169, 145), rgba(152, 137, 137, 0.346));
 }
 
-.register-page form{
+.update-profile form{
     display: inline-block;
     width: 100%;
     box-shadow: bisque;
@@ -22,7 +22,7 @@
 
 }
 
-.register-page legend {
+.update-profile legend {
     position: relative;
     width: 100%;
     display: block;
@@ -48,7 +48,7 @@
     }
   }
 
-.register-page input{
+.update-profile input{
     width: 80%;
     margin: 10%;
     display: block;
@@ -65,7 +65,7 @@
     }
 }
 
-.register-page input[type="submit"]{
+.update-profile input[type="submit"]{
     width: 60%;
     margin-left: 10%;
     color: rgb(183, 169, 145);
@@ -75,11 +75,11 @@
     margin-left: 20%;
 }
 
-.register-page p{
+.update-profile p{
     color: white;
 }
 
-.register-page p a{
+.update-profile p a{
     color: white;
     font-size: 1.2em;
     font-weight: bold;
@@ -101,4 +101,4 @@
 .no-error{
     display: none;
     overflow: hidden;
-}
+} 

@@ -21,7 +21,6 @@ export default function Login() {
     
     const { loginSubmitHandler } = useContext(AuthContext);
     const { error } = useContext(AuthContext);
-    console.log(error)
    
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
         [LoginFormKeys.Email]: '',
