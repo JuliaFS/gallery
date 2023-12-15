@@ -1,6 +1,6 @@
 import styles from './Modal.module.css';
 import { useNavigate } from 'react-router-dom';
-import { Path, Notifications } from '../../../constants/constants';
+import { Path, Notifications } from '../../../../constants/constants';
 import { useState } from 'react';
 
 export default function Modal(){
@@ -22,6 +22,7 @@ export default function Modal(){
 
     return (
       <section>
+        <Modal />
         {/*{isClosedClick 
         ? <div className={styles["hide-modal"]}></div>
         : <div className={styles["modal-container"]}></div>

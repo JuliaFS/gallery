@@ -25,7 +25,8 @@ export default function Header(){
                 </div>
                 {isAuthenticated && (
                      <div className="user">
-                        <Link to={Path.Logout}><span>{email} | </span>Logout</Link>
+                        <Link to={Path.Logout}>Logout</Link>
+                        <Link to={Path.Profile}>User Profile</Link> 
                         <Link to={Path.CreatePicture}>Create picture</Link>
                     </div>
                 )}

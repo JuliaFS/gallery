@@ -20,7 +20,7 @@ body {
     height: 100%;
     /*background: linear-gradient(90deg, rgb(234, 220, 195), rgba(152, 137, 137, 0.346));*/
     background: antiquewhite;
-    display: inline-block;
+    display: block;
     margin: 0 10%;
     opacity: 0.95;
     border-left: 20px solid rgb(183, 169, 145);

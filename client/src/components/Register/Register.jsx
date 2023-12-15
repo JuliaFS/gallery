@@ -7,6 +7,7 @@ import validate from '../common/validateRegisterForm';
 
 import { Path } from '../../constants/constants';
 import styles from './Register.module.css';
+import Modal from '../PicturesList/PictureListItem/Modal/Modal';
 
 
 const RegisterFormKeys = {
@@ -21,7 +22,8 @@ export default function Register() {
     const [isBlur, setIsBlur] = useState(false);
     const [isError, setIsError] = useState(false);
 
-    const { registerSubmitHandler, error } = useContext(AuthContext);
+    const { registerSubmitHandler, error, isAuthenticated } = useContext(AuthContext);
+    console.log(isAuthenticated)
  
     useEffect(() => {
         if(Object.keys(error).length !== 0){

@@ -11,8 +11,9 @@ import PicturesList from './components/PicturesList/PicturesList';
 import CreatePicture from './components/CreatePicture/CreatePicture';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import Modal from './components/UserProfile/Modal/Modal';
+import Modal from './components/PicturesList/PictureListItem/Modal/Modal';
 import Profile from './components/UserProfile/Profile';
+import CardProfile from './components/UserProfile/CardProfile/CardProfile';
 import PictureDetails from './components/PictureDetails/PictureDetails';
 import Logout from './components/Logout/Logout';
 import EditPicture from './components/PictureEdit/EditPicture';
@@ -47,8 +48,9 @@ export default function App() {
             <Route element={<AuthGuard />}>
               <Route path={Path.CreatePicture} element={<CreatePicture />} />
               <Route path={Path.PictureEdit} element={<EditPicture />} />
-              <Route path={Path.Modal} element={<Modal />} />
+              {/*<Route path={Path.Modal} element={<Modal />} />*/}
               <Route path={Path.Profile} element={<Profile />} />
+              <Route path={Path.CardProfile} element={<CardProfile />} />
               <Route path={Path.Logout} element={<Logout />} />
             </Route>
             <Route path={Path.Error404Path} element={<PageNotFound />} />

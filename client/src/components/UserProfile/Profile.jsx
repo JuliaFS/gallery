@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { storage } from '../../firebase';
 import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
@@ -20,6 +20,7 @@ const formInitialState = {
 };
 
 export default function UpdateProfile() {
+    const navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
     const [isBlur, setIsBlur] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -68,8 +69,8 @@ export default function UpdateProfile() {
         //const imageListRef = ref(storage, "images/");
 
             if ( imageUpload == null ) {
-                setCreateError({message: Notifications.EditError});
-                setIsClicked(true);
+                //setCreateError({message: Notifications.EditError});
+                //setIsClicked(true);
                  return;
              }
 
@@ -81,6 +82,7 @@ export default function UpdateProfile() {
                  })
                  
              })
+             navigate(Path.CardProfile);
 
             //  useEffect(() => {
             //     listAll(imageListRef).then((response) => {
@@ -105,6 +107,7 @@ export default function UpdateProfile() {
         //     setCreateError({message: Notifications.OnEditError});
         //     console.log(err);
         // }
+        
     };
 
     const validateInput = (e) =>{
@@ -117,13 +120,13 @@ export default function UpdateProfile() {
                 ? <p className={styles["error-msg"]}>{error.message}</p> 
                 : <p className={styles["no-error"]}>{''}</p>
             }
-            <div>
+            {/*<div>
                 {
                     profileImage.map((url) => {
-                        return <img src={url} />;
+                        return <img  key={url} src={url} />;
                     })
                 }
-            </div>
+            </div>*/}
             <form  method="put">
                 <legend>Update profile</legend>
                 <input
@@ -131,8 +134,6 @@ export default function UpdateProfile() {
                     name="username"
                     id="username"
                     placeholder="Enter your username..."
-                    onChange={onChange}
-                    onBlur={validateInput}
                     value={profileInfo.username}
                     disabled
                 />
@@ -140,9 +141,7 @@ export default function UpdateProfile() {
                 <input  type="file" 
                         id="pictureUrl" 
                         name="pictureUrl" 
-                        value={profileInfo.pictureUrl}
                         onChange={(event) => setImageUpload(event.target.files[0])}
-                        onBlur={validateInput}
                         placeholder="Upload a profile picture..." 
                 />
                 <p className={styles["error-msg"]}>{formErrors.pictureUrl}</p>
@@ -151,170 +150,11 @@ export default function UpdateProfile() {
                     id="email"
                     name="email"
                     placeholder="Enter your email..."
-                    onChange={onChange}
-                    onBlur={validateInput}
                     value={profileInfo.email}
                     disabled
                 />
-                <button type="button" onClick={updateProfileSubmitHandler}>Update profile</button>
+                <button type="button" onClick={updateProfileSubmitHandler} data={profileImage}>Update profile</button>
             </form>
         </section>
     );
 }
-
-{/*}
-const ImgUpload =({
-    onChange,
-    src
-  })=>
-    <label htmlFor="photo-upload" className="custom-file-upload fas">
-      <div className="img-wrap img-upload" >
-        <img for="photo-upload" src={src}/>
-      </div>
-      <input id="photo-upload" type="file" onChange={onChange}/> 
-    </label>
-  
-  
-  const Name =({
-    onChange,
-    value
-  })=>
-    <div className="field">
-      <label htmlFor="name">
-        name:
-      </label>
-      <input 
-        id="name" 
-        type="text" 
-        onChange={onChange} 
-        maxlength="25" 
-        value={value} 
-        placeholder="Alexa" 
-        required/>
-    </div>
-  
-    
-  const Status =({
-    onChange,
-    value
-  })=>
-    <div className="field">
-      <label htmlFor="status">
-        status:
-      </label>
-      <input 
-        id="status" 
-        type="text" 
-        onChange={onChange} 
-        maxLength="35" 
-        value={value} 
-        placeholder="It's a nice day!" 
-        required/>
-    </div>
-  
-  
-  const Profile =({
-    onSubmit,
-    src,
-    name,
-    status,
-  })=>
-    <div className="card">
-      <form onSubmit={onSubmit}>
-        <h1>Profile Card</h1>
-        <label className="custom-file-upload fas">
-          <div className="img-wrap" >
-            <img for="photo-upload" src={src}/>
-          </div>
-        </label>
-        <div className="name">{name}</div>
-        <div className="status">{status}</div>
-        <button type="submit" className="edit">Edit Profile </button>
-      </form>
-    </div>
-       
-        
-  const Edit =({
-    onSubmit,
-    children,
-  })=>
-    <div className="card">
-      <form onSubmit={onSubmit}>
-        <h1>Profile Card</h1>
-          {children}
-        <button type="submit" className="save">Save </button>
-      </form>
-    </div>
-  
-  class CardProfile extends React.Component {
-    state = {
-      file: '',
-      imagePreviewUrl: 'https://github.com/OlgaKoplik/CodePen/blob/master/profile.jpg?raw=true',
-      name:'',
-      status:'',
-      active: 'edit'
-    }
-  
-    photoUpload = e =>{
-      e.preventDefault();
-      const reader = new FileReader();
-      const file = e.target.files[0];
-      reader.onloadend = () => {
-        this.setState({
-          file: file,
-          imagePreviewUrl: reader.result
-        });
-      }
-      reader.readAsDataURL(file);
-    }
-    editName = e =>{
-      const name = e.target.value;
-      this.setState({
-        name,
-      });
-    }
-    
-    editStatus = e => {
-      const status = e.target.value;
-      this.setState({
-        status,
-      });
-    }
-    
-    handleSubmit= e =>{
-      e.preventDefault();
-      let activeP = this.state.active === 'edit' ? 'profile' : 'edit';
-      this.setState({
-        active: activeP,
-      })
-    }
-    
-    render() {
-      const {imagePreviewUrl, 
-             name, 
-             status, 
-             active} = this.state;
-      return (
-        <div>
-          {(active === 'edit')?(
-            <Edit onSubmit={this.handleSubmit}>
-              <ImgUpload onChange={this.photoUpload} src={imagePreviewUrl}/>
-              <Name onChange={this.editName} value={name}/>
-              <Status onChange={this.editStatus} value={status}/>
-            </Edit>
-          ):(
-            <Profile 
-              onSubmit={this.handleSubmit} 
-              src={imagePreviewUrl} 
-              name={name} 
-              status={status}/>)}
-          
-        </div>
-      )
-    }
-  }
-  
-  ReactDOM.render(
-    <CardProfile/>,
-    document.getElementById('root')
-  )*/}
