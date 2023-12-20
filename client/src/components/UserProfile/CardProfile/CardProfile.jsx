@@ -14,11 +14,12 @@ import { Path } from '../../../constants/constants';
 
 
 
-export default function CardProfile() {
+export default function CardProfile(props) {
 
     //const navigate = useNavigate();
   
-    
+    console.log(props.children)
+    console.log(props.url)
 
    
   
@@ -51,6 +52,7 @@ export default function CardProfile() {
                         return <img  key={url} src={url} />;
                     })
                 }*/}
+                <p>User Profile box 111</p>
             </div>
             
         

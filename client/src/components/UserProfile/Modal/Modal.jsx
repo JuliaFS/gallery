@@ -1,7 +1,7 @@
 import styles from './Modal.module.css';
 import { useNavigate } from 'react-router-dom';
-import { Path, Notifications } from '../../../../constants/constants';
-import { useState } from 'react';
+import { Path, Notifications } from '../../../constants/constants';
+import { useEffect, useState } from 'react';
 
 export default function Modal(){
     const navigate = useNavigate();
@@ -13,20 +13,22 @@ export default function Modal(){
         navigate(Path.Gallery);
     }
 
-    const updateProfile = () => {
+    const updateProfile = (e) => {
+      e.stopPropagation();
         setIsUpdateClick(true);
-
-
-        navigate(Path.Profile);
+        navigate(Path.ProfilePage);
     }
 
     return (
       <section>
-        <Modal />
-        {/*{isClosedClick 
+        {isClosedClick 
         ? <div className={styles["hide-modal"]}></div>
         : <div className={styles["modal-container"]}></div>
-        }*/}
+        }
+        {isUpdateClick
+        ? <div className={styles["hide-modal"]}></div>
+        : <div className={styles["modal-container"]}></div>
+        }
         <div className={styles["modal-container"]}>
           <header>
             <h2>Profile created</h2>

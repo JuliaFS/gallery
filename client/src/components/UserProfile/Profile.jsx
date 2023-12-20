@@ -8,58 +8,48 @@ import * as authService from '../../services/authService';
 import AuthContext from '../../contexts/AuthContext';
 import useForm from '../../hooks/useForm';
 import validate from '../common/validateRegisterForm';
+import Modal from './Modal/Modal';
 
 import { Path } from '../../constants/constants';
 import styles from './Profile.module.css';
+import CardProfile from './CardProfile/CardProfile';
 
 
 const formInitialState = {
-    username: '',
-    email: '',
-    pictureUrl: '',
+    username:  '',
+    firstName: '',
+    lastName: '',
+    userAge: 0,
+    interest: '',
 };
 
-export default function UpdateProfile() {
+export default function UpdateProfile(children) {
     const navigate = useNavigate();
-    const [formErrors, setFormErrors] = useState({});
     const [isBlur, setIsBlur] = useState(false);
     const [isError, setIsError] = useState(false);
+
+    const [profile, setProfile] = useState(formInitialState);
+    const [isClicked, setIsClicked] = useState(false);
+    const [createError, setCreateError] = useState({});
+    const [formErrors, setFormErrors] = useState({});
 
     const [imageUpload, setImageUpload] = useState(null);
     const [profileImage, setProfileImage] = useState([]);
     const imageListRef = ref(storage, "images/");
 
     const { email, username, userId, error } = useContext(AuthContext);
+    const placeholderUsername = username;
     const [profileInfo, setProfileInfo] = useState({
-                username: username,
-                email: email,
-                pictureUrl: '',
+        username: username,
+        email: email,
+        pictureUrl: '',
     });
- console.log(userId)
- console.log(email)
- console.log(username)
-
- useEffect(() => {
-    listAll(imageListRef).then((response) => {
-        //console.log(response)
-        response.items.forEach((item) => {
-            getDownloadURL(item).then((url) => {
-                setProfileImage((prev) => [...prev, url])
-            })
-        })
-    })
- }, []);
+  
+    console.log(children)
    
-    // useEffect(() => {
-    //         setProfileInfo({ 
-    //             username: username,
-    //             email: email,
-    //             pictureUrl: '',
-    //         });
-    // }, []);
 
     const onChange = (e) => {
-        setProfileInfo(state => ({
+        setProfile(state => ({
             ...state,
             [e.target.name]: e.target.value
         }));
@@ -68,93 +58,65 @@ export default function UpdateProfile() {
     const updateProfileSubmitHandler = async () => {
         //const imageListRef = ref(storage, "images/");
 
-            if ( imageUpload == null ) {
-                //setCreateError({message: Notifications.EditError});
-                //setIsClicked(true);
-                 return;
-             }
-
-             const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-             uploadBytes(imageRef, imageUpload).then((snapshot) => {
-                 //alert("Image uploaded");
-                 getDownloadURL(snapshot.ref).then((url) => {
-                    setProfileImage((prev) => [...prev, url])
-                 })
-                 
-             })
-             navigate(Path.CardProfile);
-
-            //  useEffect(() => {
-            //     listAll(imageListRef).then((response) => {
-            //         console.log(response)
-            //     })
-            //  }, []);
-      
-
-      
+        if (imageUpload == null) {
+            //setCreateError({message: Notifications.EditError});
+            //setIsClicked(true);
+            return;
+        }
 
 
 
+        const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+        uploadBytes(imageRef, imageUpload).then((snapshot) => {
+            //alert("Image uploaded");
+            getDownloadURL(snapshot.ref).then((url) => {
+                setProfileImage((prev) => [...prev, url])
+            })
 
+        })
+        try {
+            const result = await authService.getUser(userId);
+            console.log(result)
+            console.log(profile)
+            //navigate(Path.ProfilePage);
+        } catch (err) {
+            //add error notification
+            setCreateError({message: Notifications.OnEditError});
+            console.log(err);
+        }
+        // navigate(Path.EditProfile);
 
+     
 
-        // try {
-        //     await authService.editProfile(userId, profileInfo);
-
-        //     //navigate(pathToUrl(Path.Details, {pictureId: pictureId}));
-        // } catch (err) {
-        //     //add error notification
-        //     setCreateError({message: Notifications.OnEditError});
-        //     console.log(err);
-        // }
-        
     };
 
-    const validateInput = (e) =>{
-        //setFormErrors(validate(picture));
+    const validateInput = (e) => {
+        setFormErrors(validate(profile));
     }
 
     return (
         <section className={styles["update-profile"]}>
-            {error  
-                ? <p className={styles["error-msg"]}>{error.message}</p> 
+            <Modal />
+            {error
+                ? <p className={styles["error-msg"]}>{error.message}</p>
                 : <p className={styles["no-error"]}>{''}</p>
             }
-            {/*<div>
-                {
-                    profileImage.map((url) => {
-                        return <img  key={url} src={url} />;
-                    })
-                }
-            </div>*/}
-            <form  method="put">
-                <legend>Update profile</legend>
-                <input
-                    type="username"
-                    name="username"
-                    id="username"
-                    placeholder="Enter your username..."
-                    value={profileInfo.username}
-                    disabled
-                />
-                <label>Attach profile picture</label>
-                <input  type="file" 
-                        id="pictureUrl" 
-                        name="pictureUrl" 
-                        onChange={(event) => setImageUpload(event.target.files[0])}
-                        placeholder="Upload a profile picture..." 
-                />
-                <p className={styles["error-msg"]}>{formErrors.pictureUrl}</p>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email..."
-                    value={profileInfo.email}
-                    disabled
-                />
-                <button type="button" onClick={updateProfileSubmitHandler} data={profileImage}>Update profile</button>
-            </form>
+        
+
+        <CardProfile {////////////////...snapshot}/>
+
+
+        <div>Test</div>
+        <p>Test</p>
+        <p>Test</p>
+        <p>Test</p>
+        <p>Test</p>
+        <p>Test</p>
+        <p>Test</p>
+        <p>Test</p>
+        <p>Test</p>
+        <p>Test</p>
+        <p>Test</p>
         </section>
     );
 }

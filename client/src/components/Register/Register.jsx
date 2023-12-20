@@ -7,7 +7,6 @@ import validate from '../common/validateRegisterForm';
 
 import { Path } from '../../constants/constants';
 import styles from './Register.module.css';
-import Modal from '../PicturesList/PictureListItem/Modal/Modal';
 
 
 const RegisterFormKeys = {
