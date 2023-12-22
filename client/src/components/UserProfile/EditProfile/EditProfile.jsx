@@ -20,6 +20,7 @@ const formInitialState = {
     lastName: '',
     userAge: 0,
     interest: '',
+
 };
 
 export default function UpdateProfile() {
@@ -37,6 +38,7 @@ export default function UpdateProfile() {
     const imageListRef = ref(storage, "images/");
 
     const { email, username, userId, error } = useContext(AuthContext);
+    console.log(userId)
     const placeholderUsername = username;
     const [profileInfo, setProfileInfo] = useState({
         username: username,
@@ -74,13 +76,14 @@ export default function UpdateProfile() {
     };
 
     const updateProfileSubmitHandler = async () => {
+        console.log(profile)
         //const imageListRef = ref(storage, "images/");
 
-        if (imageUpload == null) {
-            //setCreateError({message: Notifications.EditError});
-            //setIsClicked(true);
-            return;
-        }
+        // if (imageUpload == null) {
+        //     //setCreateError({message: Notifications.EditError});
+        //     //setIsClicked(true);
+        //     return;
+        // }
 
 //         if ( picture.first === '' ||
 //         picture.category === '' ||
@@ -93,17 +96,18 @@ export default function UpdateProfile() {
 //             return;
 //    }
 
-        const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-        uploadBytes(imageRef, imageUpload).then((snapshot) => {
-            //alert("Image uploaded");
-            getDownloadURL(snapshot.ref).then((url) => {
-                setProfileImage((prev) => [...prev, url])
-            })
+        // const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+        // uploadBytes(imageRef, imageUpload).then((snapshot) => {
+        //     //alert("Image uploaded");
+        //     getDownloadURL(snapshot.ref).then((url) => {
+        //         setProfileImage((prev) => [...prev, url])
+        //     })
 
-        })
+        // })
         try {
             await authService.editProfile(userId, profile);
-            console.log(profile)
+            // console.log('profile: ')
+            // console.log(profile)
             navigate(Path.ProfilePage);
         } catch (err) {
             //add error notification
@@ -122,7 +126,8 @@ export default function UpdateProfile() {
     };
 
     const validateInput = (e) => {
-        setFormErrors(validate(profile));
+        // da se validira formata !!!!!!!!!!!!!!!!!
+        //setFormErrors(validate(profile));
     }
 
     return (

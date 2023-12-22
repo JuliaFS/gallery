@@ -8,22 +8,25 @@ export default function Modal(){
     const [isClosedClick, setIsClosedClick] = useState(false);
     const [isUpdateClick, setIsUpdateClick] = useState(false);
 
+    useEffect(() => {
+      setIsClosedClick(true);
+    },[isClosedClick])
+
     const closeModal = () => {
-        setIsClosedClick(true);
-        navigate(Path.Gallery);
+        // setIsClosedClick(true);
+        navigate(Path.ProfilePage);
     }
 
     const updateProfile = (e) => {
-      e.stopPropagation();
         setIsUpdateClick(true);
-        navigate(Path.ProfilePage);
+        navigate(Path.EditProfile);
     }
 
     return (
       <section>
         {isClosedClick 
-        ? <div className={styles["hide-modal"]}></div>
-        : <div className={styles["modal-container"]}></div>
+        ? <div className={styles["modal-container"]}></div>
+        : <div className={styles["hide-modal"]}></div>
         }
         {isUpdateClick
         ? <div className={styles["hide-modal"]}></div>

@@ -42,6 +42,8 @@ export const editProfile = async (userId, userData) => {
 export const getUser = async (userId) => {
 
     const result = await request.get(`${baseUrl}/${userId}`);
+    console.log("result in getUser function: ")
+    console.log(result);
 
     return result;
 }

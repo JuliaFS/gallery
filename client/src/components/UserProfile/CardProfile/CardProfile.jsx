@@ -16,13 +16,7 @@ import { Path } from '../../../constants/constants';
 
 export default function CardProfile(props) {
 
-    //const navigate = useNavigate();
-  
-    console.log(props.children)
-    console.log(props.url)
-
-   
-  
+    //const navigate = useNavigate();  
 
     // const updateProfileSubmitHandler = async () => {
     //     //const imageListRef = ref(storage, "images/");
@@ -53,6 +47,7 @@ export default function CardProfile(props) {
                     })
                 }*/}
                 <p>User Profile box 111</p>
+                <span>{}</span>
             </div>
             
         

@@ -51,7 +51,7 @@ export default function App() {
               <Route path={Path.PictureEdit} element={<EditPicture />} />
               {/*<Route path={Path.Modal} element={<Modal />} />*/}
               <Route path={Path.Profile} element={<Profile />} />
-              {/*<Route path={Path.Details} element={<EditProfile /> } />*/}
+              <Route path={Path.EditProfile} element={<EditProfile /> } />
               <Route path={Path.ProfilePage} element={<CardProfile />} />
               <Route path={Path.Logout} element={<Logout />} />
             </Route>

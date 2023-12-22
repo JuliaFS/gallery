@@ -40,7 +40,7 @@ export const AuthProvider = ({
         console.log(values)
         localStorage.setItem('accessToken', result.accessToken);
 
-        navigate(Path.Gallery);
+        navigate(Path.EditProfile);
          //navigate(Path.Profile);
          //navigate(Path.Modal);
       } catch(err){

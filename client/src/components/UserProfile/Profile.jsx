@@ -23,7 +23,7 @@ const formInitialState = {
     interest: '',
 };
 
-export default function UpdateProfile(children) {
+export default function UpdateProfile(props) {
     const navigate = useNavigate();
     const [isBlur, setIsBlur] = useState(false);
     const [isError, setIsError] = useState(false);
@@ -44,9 +44,6 @@ export default function UpdateProfile(children) {
         email: email,
         pictureUrl: '',
     });
-  
-    console.log(children)
-   
 
     const onChange = (e) => {
         setProfile(state => ({
@@ -72,12 +69,13 @@ export default function UpdateProfile(children) {
             getDownloadURL(snapshot.ref).then((url) => {
                 setProfileImage((prev) => [...prev, url])
             })
-
         })
         try {
             const result = await authService.getUser(userId);
+            console.log('this is in result from getUser function: ')
             console.log(result)
-            console.log(profile)
+            console.log(info)
+            //console.log(profile)
             //navigate(Path.ProfilePage);
         } catch (err) {
             //add error notification
@@ -96,6 +94,7 @@ export default function UpdateProfile(children) {
 
     return (
         <section className={styles["update-profile"]}>
+            <div className={styles["hide-modal"]}></div>
             <Modal />
             {error
                 ? <p className={styles["error-msg"]}>{error.message}</p>
@@ -103,10 +102,10 @@ export default function UpdateProfile(children) {
             }
         
 
-        <CardProfile {////////////////...snapshot}/>
+       <CardProfile data={profile}/>
 
-
-        <div>Test</div>
+        
+        <div><span>Test props: </span>{props}</div>
         <p>Test</p>
         <p>Test</p>
         <p>Test</p>
