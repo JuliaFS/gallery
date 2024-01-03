@@ -26,7 +26,6 @@ export default function Header(){
                 {isAuthenticated && (
                      <div className="user">
                         <Link to={Path.Logout}>Logout</Link>
-                        <Link to={Path.Profile}>User Profile</Link> 
                         <Link to={Path.CreatePicture}>Create picture</Link>
                     </div>
                 )}

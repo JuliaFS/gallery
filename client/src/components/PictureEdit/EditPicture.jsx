@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-
-import * as pictureService from '../../services/authService';
-
+import * as pictureService from '../../services/pictureService';
 
 import { Path, Notifications } from '../../constants/constants';
 import { pathToUrl } from '../../utils/pathUtils';

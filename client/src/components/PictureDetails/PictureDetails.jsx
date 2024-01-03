@@ -10,9 +10,10 @@ import { pathToUrl } from "../../utils/pathUtils";
 
 import reducer from './commentReducer';
 import styles from "./PictureDetails.module.css";
+import Modal from "../404/ModalErrors/ModalErrors";
 import Likes from "./Likes";
 import ImageMagnifier from "./ImageMagnifier";
-import Comments from "./Comments";
+import DeleteModal from "./ModalDelete/DeleteModal";
 
 export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);
@@ -22,48 +23,52 @@ export default function PictureDetails() {
     const { pictureId } = useParams();
     const navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
+    const[msg, setMsg ] = useState({});
     const[error, setError ] = useState({});
-    const [isClicked, setIsClicked] = useState(false);
+    // const [isClicked, setIsClicked] = useState(false);
+    // const [isDeleteClicked, setIsDeleteClicked] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
+
 
     useEffect(() => {
         pictureService.getOne(pictureId)
             .then(result => setPicture(result))
             .catch(err => setError(err));
 
-        // commentService.getAll(pictureId)
-        //     .then((result) => {
-        //         dispatch({
-        //             type: 'GET_ALL_COMMENTS',
-        //             payload: result,
-        //         });
-        //     });
+        commentService.getAll(pictureId)
+            .then((result) => {
+                dispatch({
+                    type: 'GET_ALL_COMMENTS',
+                    payload: result,
+                });
+            });
     }, [pictureId]);
 
-    // const addCommentHandler = async (values) => {
-    //     const newComment = await commentService.create(
-    //         pictureId,
-    //         values.comment
-    //     );
+    const addCommentHandler = async (values) => {
+        const newComment = await commentService.create(
+            pictureId,
+            values.comment
+        );
 
-    //     newComment.owner = { email };
+        newComment.owner = { email };
 
-    //     dispatch({
-    //         type: 'ADD_COMMENT',
-    //         payload: newComment
-    //     })
-    // }
-    const deleteButtonClickHandler = async () => {
-        const isConfirmed = confirm('Are you sure you want to delete this picture?');
+        dispatch({
+            type: 'ADD_COMMENT',
+            payload: newComment
+        })
+    }
+    const closeButtonClickHandler = async (e) => {
+        //const isConfirmed = confirm('Are you sure you want to delete this picture?');
+        setOpenModal(true);
+        //e.stopPropagation();
 
-        if (isConfirmed) {
-            await pictureService.remove(pictureId);
-            navigate(Path.Gallery);
-        }
+        //pedro tech 12:40 min
+        setMsg({message: Notifications.ConfirmDelete});
     }
 
-    // const { values, onChange, onSubmit } = useForm(addCommentHandler, {
-    //     comment: '',
-    // });
+    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+        comment: '',
+    });
 
     const isOwner = userId === picture._ownerId;
 
@@ -74,6 +79,9 @@ export default function PictureDetails() {
             <div className={styles["info-section"]}>
             {Object.keys(error).length > 0 &&  
                 <p className={styles["error-msg"]}>{error.message}</p> 
+            }
+            {openModal && 
+                <DeleteModal msg={msg} closeModal={setOpenModal}/>
             }
                 <div className={styles["info-details"]}>
                     <div>
@@ -88,8 +96,10 @@ export default function PictureDetails() {
                 </div>
                 {isOwner && (
                     <div className={styles["buttons"]}>
-                        <Link to={pathToUrl(Path.PictureEdit, { pictureId })} className="button">Edit</Link>
-                        <button onClick={deleteButtonClickHandler}>Delete</button>
+                        <Link to={pathToUrl(Path.PictureEdit, { pictureId })}>
+                            <button className="button">Edit</button>
+                        </Link>
+                        <button className="button" onClick={closeButtonClickHandler}>Delete</button>
                     </div>
                 )}
             </div>
@@ -99,8 +109,7 @@ export default function PictureDetails() {
             </div>
 
             <article className={styles["create-comment"]}>
-                <Comments />
-                {/* <legend>Add new comment:</legend>
+             <legend>Add new comment:</legend>
                 
         {userId
             ? <form method="POST" onSubmit={onSubmit}>
@@ -136,7 +145,7 @@ export default function PictureDetails() {
             {comments.length === 0 &&
                 <p className={styles["no-comment"]}>No comments yet.</p>
             }
-        </div> */}
+        </div> 
             </article>
         </section>
     );

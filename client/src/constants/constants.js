@@ -1,10 +1,6 @@
 const Path = {
     Home: "/",
     Register: "/register",
-    Profile: "/user-profile",
-    //Modal: "/user-modal",
-    ProfilePage: "/profile",
-    EditProfile: "/edit-profile",
     Login: "/login",
     Logout: "/logout",
     Gallery: "/gallery",
@@ -24,6 +20,7 @@ const Notifications ={
         EditError: "Pls, fill all the fields correctly!",
         OnEditError: "Unsuccesfull edited!",
         CanNotGetImage: "Unsuccesfull loading the images...",
+        ConfirmDelete: "Are you sure you want to delete this picture?",
 }
 
 export {

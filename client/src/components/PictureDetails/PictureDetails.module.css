@@ -164,10 +164,7 @@ display: flex;
     margin-top: 0;
 }
 
-.picture-details .buttons{
-    width: 80%;
-    margin-left: 20%;
-}
+
 
 .picture-details>div>div button{
     width: 25%;
@@ -184,7 +181,7 @@ display: flex;
 
     &:hover {
         color: rgb(183, 169, 145);
-        padding: 10px 5px 10px 10px;
+        /*padding: 10px 5px 10px 10px;*/
         outline: 0;
         border-color:rgb(183, 169, 145);
     }
@@ -203,7 +200,7 @@ display: flex;
 
     &:hover {
         color:rgb(183, 169, 145);
-        padding: 10px 5px 10px 10px;
+        /*padding: 10px 5px 10px 10px;*/
         outline: 0;
         border-color: rgb(183, 169, 145);
     }
@@ -229,7 +226,7 @@ display: flex;
 
     &:hover {
         color: rgb(183, 169, 145);
-        padding: 10px 5px 10px 10px;
+        /*padding: 10px 5px 10px 10px;*/
         outline: 0;
         border-color: rgb(183, 169, 145);;
     }

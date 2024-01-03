@@ -11,9 +11,6 @@ import PicturesList from './components/PicturesList/PicturesList';
 import CreatePicture from './components/CreatePicture/CreatePicture';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import Profile from './components/UserProfile/Profile';
-import EditProfile from './components/UserProfile/EditProfile/EditProfile';
-import CardProfile from './components/UserProfile/CardProfile/CardProfile';
 import PictureDetails from './components/PictureDetails/PictureDetails';
 import Logout from './components/Logout/Logout';
 import EditPicture from './components/PictureEdit/EditPicture';
@@ -23,7 +20,6 @@ import AuthGuard from './components/quards/AuthGuard';
 import RegUsersGuard from './components/quards/RegUsersGuard';
 import PageNotFound from './components/404/PageNotFound/PageNotFound';
 import ErrorFallback from './components/common/ErrorFallBack';
-//import EditProfile from './components/PictureEdit/EditPicture';
 
 export default function App() {
   return (
@@ -35,24 +31,16 @@ export default function App() {
           <Routes>
             <Route path={Path.Home} element={<Home />} />
             <Route path={Path.Gallery} element={<PicturesList />} />
-            {/*<Route path={Path.CreatePicture} element={<CreatePicture />} />*/}
-            {/*<Route element={<AuthGuard />}>*/}
             <Route element={<RegUsersGuard />}>
               <Route path={Path.Login} element={<Login />} />
               <Route path={Path.Register} element={<Register />} />
             </Route>
-              {/*<Route path={Path.Logout} element={<Logout />} />*/}
-            {/*</Route>*/}
             <Route path={Path.Details} element={<PictureDetails />} />
             
 
             <Route element={<AuthGuard />}>
               <Route path={Path.CreatePicture} element={<CreatePicture />} />
               <Route path={Path.PictureEdit} element={<EditPicture />} />
-              {/*<Route path={Path.Modal} element={<Modal />} />*/}
-              <Route path={Path.Profile} element={<Profile />} />
-              <Route path={Path.EditProfile} element={<EditProfile /> } />
-              <Route path={Path.ProfilePage} element={<CardProfile />} />
               <Route path={Path.Logout} element={<Logout />} />
             </Route>
             <Route path={Path.Error404Path} element={<PageNotFound />} />

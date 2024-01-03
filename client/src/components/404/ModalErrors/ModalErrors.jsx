@@ -6,10 +6,12 @@ import { useState } from 'react';
 export default function Modal(error){
     const navigate = useNavigate();
     const [isClosedClick, setIsClosedClick] = useState(false);
+    const [visibleClass, setVisibleClass] = useState("modal-container");
 
     const closeErrorModal = () => {
         setIsClosedClick(true);
-        navigate(-1);
+        setVisibleClass("hide-modal");
+        //navigate(0);
     }
     return (
       <section>
@@ -17,7 +19,7 @@ export default function Modal(error){
         ? <div className={styles["hide-modal"]}></div>
         : <div className={styles["modal-container"]}></div>
         }*/}
-        <div className={styles["modal-container"]}>
+        <div className={styles[visibleClass]}>
           <header>
             <h2>Error</h2>
           </header>
