@@ -12,8 +12,8 @@ import reducer from './commentReducer';
 import styles from "./PictureDetails.module.css";
 import Modal from "../404/ModalErrors/ModalErrors";
 import Likes from "./Likes";
-//import ImageMagnifier from "./ImageMagnifier";
 import DeleteModal from "./ModalDelete/DeleteModal";
+import ImageMagnifier from "./ImageMagnifier/ImageMagnifier";
 
 export default function PictureDetails() {
     const { email, userId } = useContext(AuthContext);
@@ -84,8 +84,11 @@ export default function PictureDetails() {
                 <DeleteModal msg={msg} closeModal={setOpenModal}/>
             }
                 <div className={styles["info-details"]}>
-                    <div>
+                    {/*<div>
                         <img src={picture.imageUrl} alt={picture.title} />
+        </div>*/}
+                    <div>
+                        <ImageMagnifier {...picture} />
                     </div>
                     <div>
                         <p>Painter: {picture.painter} </p>
@@ -131,7 +134,7 @@ export default function PictureDetails() {
 
                 </div>
             </form>
-            : <p className={styles["comments-link"]}>To can comments you have to login <Link to={Path.Login}>Login</Link> or <Link to={Path.Register}>Register</Link>first!!!</p>
+            : <p className={styles["comments-link"]}>To can comments you have to login <Link to={Path.Login}>Login</Link> or <Link to={Path.Register}>Register</Link>first!</p>
         }
         <div className={styles["details-comments"]}>
             <h2>Comments:</h2>

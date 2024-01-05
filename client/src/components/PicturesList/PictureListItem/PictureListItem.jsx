@@ -14,7 +14,6 @@ export default function PictureListItem({
         <div className={styles["gallery-box"]}>
             <legend>{title}</legend>
             <img src={imageUrl} />
-            <ImageMagnifier imageUrl={imageUrl}/>
             {/*<p>Details: {description}</p>*/}
             <Link to={`${Path.Gallery}/${_id}`}>Details</Link>
         </ div>

@@ -212,9 +212,8 @@ display: flex;
 }
 
 .create-comment .comments-link{
-    color: white;
-    font-weight: bold;
     padding: 2%;
+    text-align: center;
 }
 
 .create-comment .comments-link a{
@@ -226,11 +225,12 @@ display: flex;
     display: inline-block;
     padding: 2%;
     text-decoration: none;
-    border: 1px solid antiquewhite;
+    border: 1px solid rgb(183, 169, 145);
     margin: 1%;
 
     &:hover {
-        color: rgb(183, 169, 145);
+        color: white;
+        background-color: rgb(183, 169, 145);
         /*padding: 10px 5px 10px 10px;*/
         outline: 0;
         border-color: rgb(183, 169, 145);;
