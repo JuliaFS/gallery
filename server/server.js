@@ -1394,7 +1394,19 @@
                 "description": "A wonderful blooming crocuses.",
                 "_createdOn": 1704490200352,
                 "_id": "23ede13e-0e77-4c6c-bc57-c54199542095"
-            }
+            }, 
+            "b2c73b99-b578-43c2-a97e-15becaa79e2c": {
+                "title": "A ship",
+                "category": "Seascape",
+                "painter": "Elif",
+                "painterAge": "11",
+                "imageUrl": "https://raw.githubusercontent.com/JuliaFS/gallery/main/client/public/images/ship-72dpi.jpg",
+                "description": "A ship in a rough sea.",
+                "_createdOn": 1704489401503,
+                "_ownerId": "7cadac10-3bc0-45d0-8333-01b5167e0274",
+                "_updatedOn": 1704489771838,
+                "_id": "b2c73b99-b578-43c2-a97e-15becaa79e2c"
+            },
         },
     	likes: {
     	}
