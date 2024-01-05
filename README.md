@@ -35,7 +35,6 @@ The application contains two parts:
     - delete existing picture by id
 * Any logged in user can:
     - create new picture: "/pictures/create-picture"
-    //- edit the details in the profile page: "/profile-edit"
 
 ## :hammer: Used technologies
 * HTML
