@@ -12,7 +12,7 @@ import reducer from './commentReducer';
 import styles from "./PictureDetails.module.css";
 import Modal from "../404/ModalErrors/ModalErrors";
 import Likes from "./Likes";
-import ImageMagnifier from "./ImageMagnifier";
+//import ImageMagnifier from "./ImageMagnifier";
 import DeleteModal from "./ModalDelete/DeleteModal";
 
 export default function PictureDetails() {
@@ -96,9 +96,9 @@ export default function PictureDetails() {
                 </div>
                 {isOwner && (
                     <div className={styles["buttons"]}>
-                        <Link to={pathToUrl(Path.PictureEdit, { pictureId })}>
-                            <button className="button">Edit</button>
-                        </Link>
+                        <button className="button">
+                            <Link to={pathToUrl(Path.PictureEdit, { pictureId })}>Edit</Link>
+                        </button>
                         <button className="button" onClick={closeButtonClickHandler}>Delete</button>
                     </div>
                 )}

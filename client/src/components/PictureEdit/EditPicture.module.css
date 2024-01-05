@@ -1,5 +1,5 @@
-.create-page {
-    width: 20%;
+  .create-page {
+    width: 35%;
     height: auto;
     border-radius: 5px;
     box-sizing: border-box;
@@ -24,13 +24,13 @@
 .create-page legend {
     position: relative;
     width: 100%;
-    display: block;
-    background: rgb(183, 169, 145);
+    text-align: center;
     padding: 25px 15px;
     font-size: 1.6em;
     font-weight: bold;
     text-transform: uppercase;
     color: #fff;
+    background: rgb(183, 169, 145);
   
     &:after {
       content: "";
@@ -84,7 +84,6 @@
 
     &:hover {
         color: red;
-        padding: 10px 5px 10px 10px;
         outline: 0;
         border-color: #ff7052;
     }

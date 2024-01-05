@@ -43,6 +43,7 @@
 }
 .info-details img{
     width: 70%;
+    border: 3px solid white;
 }
 .info-details>div>p{
     display: block;
@@ -185,6 +186,10 @@ display: flex;
         outline: 0;
         border-color:rgb(183, 169, 145);
     }
+}
+.buttons a{
+    text-decoration: none;
+    color: rgb(183, 169, 145);
 }
 
 .picture-details .buttons>a{

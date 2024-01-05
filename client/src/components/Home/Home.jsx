@@ -27,7 +27,7 @@ export default function Home({
             }*/}
             <div>
                 <p>This site is intended as an exhibition of the paintings of my princesses - Elif and Meral.</p>
-                <img src="./public/images/elif-meral.jpg"/>
+                <img src="./public/images/elif_meral.jpg"/>
 
             </div>
             <div>

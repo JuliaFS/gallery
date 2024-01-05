@@ -1,6 +1,16 @@
 .gallery{
     display: inline-block;
+    text-align: center;
+    justify-content: center;
+    position: relative;
     width: 80%;
+    margin: auto;
+}
+.container{
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .gallery h1 {

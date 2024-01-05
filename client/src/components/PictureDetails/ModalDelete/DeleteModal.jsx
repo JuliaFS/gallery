@@ -2,16 +2,10 @@ import styles from './DeleteModal.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Path, Notifications } from '../../../constants/constants';
 import * as pictureService from '../../../services/pictureService';
-import { useEffect, useState } from 'react';
 
 export default function Modal({closeModal, msg}){
     const navigate = useNavigate();
-    const [isClosedClick, setIsClosedClick] = useState(false);
-    const [isDeleteClicked, setIsDeleteClicked] = useState(false);
     const { pictureId } = useParams();
-    //const [classVisible, setClassVisible] = useState("modal-container");
-    console.log(pictureId);
-    console.log(msg)
 
 
     const closeErrorModal = () => {

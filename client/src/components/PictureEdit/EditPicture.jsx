@@ -50,7 +50,6 @@ export default function EditProfile() {
     };
 
     const editPictureSubmitHandler = async () => {
-        console.log(picture.title)
         if ( picture.title === '' ||
         picture.category === '' ||
         picture.painter === '' ||
