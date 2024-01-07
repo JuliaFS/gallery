@@ -178,13 +178,13 @@ display: flex;
     margin-left: 5%;
     margin-bottom: 7%;
     margin-top: 5%;
-    border: 1px solid antiquewhite;
+    border-color: rgb(183, 169, 145);
 
     &:hover {
-        color: rgb(183, 169, 145);
+        color: white;
+        background: rgb(183, 169, 145);
         /*padding: 10px 5px 10px 10px;*/
         outline: 0;
-        border-color:rgb(183, 169, 145);
     }
 }
 .buttons a{
@@ -233,7 +233,7 @@ display: flex;
         background-color: rgb(183, 169, 145);
         /*padding: 10px 5px 10px 10px;*/
         outline: 0;
-        border-color: rgb(183, 169, 145);;
+        border-color: rgb(183, 169, 145);
     }
 }
 .error-msg{

@@ -1419,6 +1419,29 @@
                 "_createdOn": 1704659238784,
                 "_id": "28bc79fa-3c3e-47ed-b8a6-38a8166df49f"
             },
+            "38774045-2b41-4f7c-b1e1-d00dd9f21770": {
+                "_ownerId": "df33e862-6554-4e22-9af5-aaeea68b8aac",
+                "title": "Winter story",
+                "category": "Landscape",
+                "painter": "Meral",
+                "painterAge": "6",
+                "imageUrl": "https://raw.githubusercontent.com/JuliaFS/gallery/main/client/public/images/meral-drujba-art-2023.jpg",
+                "description": "Children play with the snow.",
+                "_createdOn": 1704660346295,
+                "_id": "38774045-2b41-4f7c-b1e1-d00dd9f21770"
+            },
+            "4f4a5d9b-3dc4-4458-910f-b415cffb517c": {
+                "title": "Kanae",
+                "category": "Anime",
+                "painter": "Meral",
+                "painterAge": "6",
+                "imageUrl": "/images/kanae-72dpi.jpg",
+                "description": "Lovely sketch of Kanae.",
+                "_createdOn": 1704661009582,
+                "_ownerId": "df33e862-6554-4e22-9af5-aaeea68b8aac",
+                "_updatedOn": 1704661023812,
+                "_id": "4f4a5d9b-3dc4-4458-910f-b415cffb517c"
+            }
         },
     	likes: {
     	}
