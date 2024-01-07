@@ -1340,17 +1340,6 @@
     };
     var seedData = {
         pictures: {
-            "b1a1c6c0-3123-4563-a97b-69a4d6ced58e": {
-                    _ownerId: "12efe593-b5e4-4ddc-bf8f-dcf0e76edcdb",
-                    title: "Julia creator",
-                    category: "Test",
-                    painter: "test name",
-                    painterAge: "23",
-                    imageUrl: "/images/minzuhari-72dpi.jpg",
-                    description: "wrewr etr",
-                    _createdOn: 1701987561758,
-                    _id: "b1a1c6c0-3123-4563-a97b-69a4d6ced58e"
-                },
             "2987f7b5-d644-4fdf-8916-0f13b101c8ab": {
                 "_ownerId": "f6521735-3ed9-4820-b933-3ddc60a33de7",
                 "title": "Autumn",
@@ -1372,17 +1361,6 @@
                 "description": "Wonderful blooming flower.",
                 "_createdOn": 1704489048953,
                 "_id": "4026d531-b16a-4934-9289-b3270ab73c5b"
-            },
-            "374933ea-52f9-4b8d-8997-7a0b9db9cfc0": {
-                _ownerId: "5795b150-b4ae-40a9-9f9b-a0359e794428",
-                title: "dfgfdg",
-                category: "dgdd",
-                painter: "dfdg",
-                painterAge: "11",
-                imageUrl: "ereww",
-                description: "errgdt",
-                _createdOn: 1701987671815,
-                _id: "374933ea-52f9-4b8d-8997-7a0b9db9cfc0"
             },
             "23ede13e-0e77-4c6c-bc57-c54199542095": {
                 "_ownerId": "7cadac10-3bc0-45d0-8333-01b5167e0274",
