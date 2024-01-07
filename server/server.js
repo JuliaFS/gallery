@@ -1385,6 +1385,17 @@
                 "_updatedOn": 1704489771838,
                 "_id": "b2c73b99-b578-43c2-a97e-15becaa79e2c"
             },
+            "2dd13834-43dc-4958-97e4-eb4246aa7ee1": {
+                "_ownerId": "df33e862-6554-4e22-9af5-aaeea68b8aac",
+                "title": "A sheep",
+                "category": "Animals",
+                "painter": "Elif",
+                "painterAge": "11",
+                "imageUrl": "https://raw.githubusercontent.com/JuliaFS/gallery/main/client/public/images/sheep-72dpi.jpg",
+                "description": "An interesting picture of a sheep in the middle of a meadow.",
+                "_createdOn": 1704658451977,
+                "_id": "2dd13834-43dc-4958-97e4-eb4246aa7ee1"
+            },
         },
     	likes: {
     	}
