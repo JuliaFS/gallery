@@ -1441,6 +1441,28 @@
                 "_ownerId": "df33e862-6554-4e22-9af5-aaeea68b8aac",
                 "_updatedOn": 1704661023812,
                 "_id": "4f4a5d9b-3dc4-4458-910f-b415cffb517c"
+            },
+            "5ab8b78f-23f3-4cb4-ac0c-dcff6324cfc9": {
+                "_ownerId": "df33e862-6554-4e22-9af5-aaeea68b8aac",
+                "title": "The three sisters",
+                "category": "Anime",
+                "painter": "Meral",
+                "painterAge": "6",
+                "imageUrl": "https://raw.githubusercontent.com/JuliaFS/gallery/main/client/public/images/trite-sestri-72dpi.jpg",
+                "description": "Kochou Sisters is the family ship between Shinobu Kochou, Kanae Kochou, and Kanao Tsuyuri from the Demon Slayer fandom.",
+                "_createdOn": 1704661847675,
+                "_id": "5ab8b78f-23f3-4cb4-ac0c-dcff6324cfc9"
+            },
+            "bf08ec1b-6dac-41f3-8220-988cc18820e3": {
+                "_ownerId": "df33e862-6554-4e22-9af5-aaeea68b8aac",
+                "title": "Paper doll",
+                "category": "Doll",
+                "painter": "Meral",
+                "painterAge": "6",
+                "imageUrl": "https://raw.githubusercontent.com/JuliaFS/gallery/main/client/public/images/paper-doll-72dpi.jpg",
+                "description": "Beautiful paper doll - drawn, cut and glued entirely by Meral.",
+                "_createdOn": 1704662168538,
+                "_id": "bf08ec1b-6dac-41f3-8220-988cc18820e3"
             }
         },
     	likes: {
