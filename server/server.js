@@ -1435,7 +1435,7 @@
                 "category": "Anime",
                 "painter": "Meral",
                 "painterAge": "6",
-                "imageUrl": "/images/kanae-72dpi.jpg",
+                "imageUrl": "https://raw.githubusercontent.com/JuliaFS/gallery/main/client/public/images/kanae-72dpi.jpg",
                 "description": "Lovely sketch of Kanae.",
                 "_createdOn": 1704661009582,
                 "_ownerId": "df33e862-6554-4e22-9af5-aaeea68b8aac",
