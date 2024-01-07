@@ -1396,6 +1396,29 @@
                 "_createdOn": 1704658451977,
                 "_id": "2dd13834-43dc-4958-97e4-eb4246aa7ee1"
             },
+            "759ab04f-7f32-4cce-833b-07c2722a24b7": {
+                "title": "Spring bird",
+                "category": "Birsd",
+                "painter": "Elif",
+                "painterAge": "11",
+                "imageUrl": "https://raw.githubusercontent.com/JuliaFS/gallery/main/client/public/images/ptichka-72dpi.jpg",
+                "description": "A beautiful picture of a spring bird perched on a blossoming fruit tree.",
+                "_createdOn": 1704658656798,
+                "_ownerId": "df33e862-6554-4e22-9af5-aaeea68b8aac",
+                "_updatedOn": 1704658932643,
+                "_id": "759ab04f-7f32-4cce-833b-07c2722a24b7"
+            },
+            "28bc79fa-3c3e-47ed-b8a6-38a8166df49f": {
+                "_ownerId": "df33e862-6554-4e22-9af5-aaeea68b8aac",
+                "title": "Winter landscape",
+                "category": "Landscape",
+                "painter": "Elif",
+                "painterAge": "11",
+                "imageUrl": "https://raw.githubusercontent.com/JuliaFS/gallery/main/client/public/images/zimen-peizazh-72dpi.jpg",
+                "description": "Beautiful winter landscape.",
+                "_createdOn": 1704659238784,
+                "_id": "28bc79fa-3c3e-47ed-b8a6-38a8166df49f"
+            },
         },
     	likes: {
     	}
