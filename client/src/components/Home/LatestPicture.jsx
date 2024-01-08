@@ -12,7 +12,7 @@ export default function LatestPicture({
    
     return(
         <div className={styles["latest-image"]}>
-            <h3>{title}</h3>
+            <legend>{title}</legend>
             <div>
                 <img src={imageUrl}></img>
             </div>
@@ -20,3 +20,10 @@ export default function LatestPicture({
         </div>
     );
 }
+// {/*}
+// <div className={styles["gallery-box"]}>
+// <legend>{title}</legend>
+// <img src={imageUrl} />
+// {/*<p>Details: {description}</p>*/}
+// <Link to={`${Path.Gallery}/${_id}`}>Details</Link>
+// </ div>*/}

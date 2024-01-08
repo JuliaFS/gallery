@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 import styles from './PictureListItem.module.css';
 import { Path } from "../../../constants/constants";
-import ImageMagnifier from "./ImageMagnifier";
 
 export default function PictureListItem({
     _id,
