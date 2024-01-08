@@ -40,52 +40,47 @@
     display: inline-block;
     width: 80%;
     position: relative;
+    text-align: center;
 }
 
-
-/*.latest-pictures h1 {
-  margin-bottom: 10px;
-  background: linear-gradient(90deg, rgb(200, 187, 165), rgba(152, 137, 137, 0.346));
-  position: relative;
-  padding: 25px 15px;
-  font-size: 1.6em;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #fff;
-
-  &:after {
-    content: "";
-    background-image: url(https://simpleicon.com/wp-content/uploads/magic_wand.png);
-    background-size: 70px 70px;
-    background-repeat: no-repeat;
-    background-position: 95%;
-    opacity: 0.06;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-  }
+.latest-pictures>div:first-of-type img{
+  width: 40%;
+  border: 3px solid white;
 }
-*/
 
-.latest-pictures>div:first-of-type{
-}
-.latest-pictures>div:first-of-type p{
+.latest-pictures h1, h2{
+  color:  rgb(200, 187, 165);
   margin-top: 8%;
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
   padding-bottom: 1%;
   border-bottom: 3px solid antiquewhite;
 }
-.latest-pictures>div:first-of-type img{
+
+.latest-container{
   display: inline-block;
-  width: 30%;
-  border: 10px solid white;
+  text-align: center;
+  width: 90%;
+  height: 350px;
+  margin-bottom: 5%;
+}
+
+.latest-container p{
+  color:  rgb(183, 169, 145);
+  width: 100%;
+  margin-top: 8%;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 2%;
+  border: 1px solid rgb(183, 169, 145);;
 }
 
 .latest-image{
   padding: 1%;
   display: inline-block;
-  border: 1px solid white;
+  position: relative;
+  border: 1px solid rgb(183, 169, 145);
   width: 20%;
   margin: 1%;
 }
@@ -94,19 +89,18 @@
   padding: 20px;
   width: 80%;
   position: relative;
-  display: inline-block;
-  margin-top: 10%;
 }
 
 .latest-image a{
-  color: white;
+  color: rgb(183, 169, 145);;
   font-size: 1.2em;
   font-weight: bold;
   text-decoration: none;
   display: block;
   width: 60%;
   margin-top: 10%;
-  border-bottom: 2px solid white;
+  margin-bottom: 10%;
+  border-bottom: 2px solid rgb(183, 169, 145);
   padding: 10px;
 
 

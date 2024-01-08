@@ -35,7 +35,7 @@ export default function PicturesList(){
            </div>
 
            {pictures.length === 0 && (
-                <h3>No pictures yet!</h3>
+                <h3>No added pictures yet!</h3>
             )}
 
         </section>   

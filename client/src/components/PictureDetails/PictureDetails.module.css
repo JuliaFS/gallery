@@ -2,8 +2,9 @@
     width: 50%;
     display: inline-block;
     position: relative;
-    border: 1px solid white;
+    border: 1px solid rgb(183, 169, 145);
     padding: 0;
+    margin-top: 2%;
 }
 
 .picture-details h1{
@@ -15,6 +16,7 @@
     text-transform: uppercase;
     color: #fff;
     background: rgb(183, 169, 145);
+    margin: 0;
   
     &:after {
       content: "";
@@ -35,6 +37,7 @@
     display: flex;
     text-align: left;
     padding: 10px;
+    margin-top: 3%;
 }
 .info-details>div {
     width: 45%;
@@ -81,14 +84,14 @@
         font-size: 1.4em;
         font-weight: bold;
         text-transform: uppercase;
-        color: white;
+        color: rgb(183, 169, 145);
       
         &:after {
           content: "";
           background-image: url(https://simpleicon.com/wp-content/uploads/meeting.png);
           background-size: 100px 100px;
           background-repeat: no-repeat;
-          background-position: 20%;
+          background-position: 40%;
           opacity: 0.06;
           top: 0;
           left: 0;
@@ -110,7 +113,8 @@
     font-size: 1.6em;
     font-weight: bold;
     text-transform: uppercase;
-    color: white;
+    color: rgb(183, 169, 145);
+    margin-left: 2%;
     margin-bottom: 2%;
 
 }

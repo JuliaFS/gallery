@@ -1,10 +1,10 @@
 .gallery{
     display: inline-block;
     text-align: center;
-    justify-content: center;
     position: relative;
     width: 80%;
-    margin: auto;
+    height: 100vh;
+    margin: 0;
 }
 .container{
   position: relative;
@@ -44,9 +44,10 @@
     color:  rgb(200, 187, 165);
     margin-top: 8%;
     text-transform: uppercase;
-    display: inline-block;
-    padding-bottom: 1%;
-    border-bottom: 3px solid antiquewhite;
+    display: block;
+    position: relative;
+    padding: 2%;
+    border: 3px solid rgb(183, 169, 145);
 }
 .gallery>div>img{
   border: 5px solid white;

@@ -26,12 +26,12 @@ export default function Home({
                 <Modal {...errorMsg}/>
             }*/}
             <div>
-                <p>This site is intended as an exhibition of the paintings of my princesses - Elif and Meral.</p>
+                <h1>My little painters - Elif and Meral.</h1>
                 <img src="https://raw.githubusercontent.com/JuliaFS/gallery/main/client/public/images/elif_meral.jpg"/>
 
             </div>
-            <div>
-                <h3>Our latest 3 pictures</h3>
+            <h2>Our latest 3 pictures</h2>
+            <div className={styles["latest-container"]}>
                 {latestPicture.map(picture => <LatestPicture key={picture._id} {...picture} /> )}
                 {latestPicture.length === 0 && <p>No added picture in gallery yet!</p>}
             </div>
