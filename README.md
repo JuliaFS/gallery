@@ -48,6 +48,9 @@ The application contains two parts:
  - main folder for project = client (navigate to client falder in terminal): 
         npm install
         npm run dev
+- firebase link: https://galeriq-guyndogan.web.app/
+    - npm run build (to catch if have changes)
+    - firebase deploy (add changes to firebase)
 
 
 ## Resources

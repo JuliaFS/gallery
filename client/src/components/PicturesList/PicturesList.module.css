@@ -47,6 +47,7 @@
     position: relative;
     padding: 2%;
     border: 3px solid rgb(183, 169, 145);
+    margin-bottom: 70px;
 }
 .gallery>div>img{
   border: 5px solid white;
